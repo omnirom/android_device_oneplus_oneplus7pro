@@ -179,6 +179,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     omni.biometrics.fingerprint.inscreen@1.0-service.oneplus7pro
 
+# Remove unwanted packages
+PRODUCT_PACKAGES += \
+    RemovePackages
+
 # Temporary handling
 #
 # Include config.fs get only if legacy device/qcom/<target>/android_filesystem_config.h
