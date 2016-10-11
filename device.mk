@@ -151,6 +151,12 @@ PRODUCT_PACKAGES += \
     vendor.oneplus.fingerprint.extension@1.0 \
     vendor.qti.hardware.camera.device@1.0
 
+#Nfc
+PRODUCT_PACKAGES += \
+    android.hardware.nfc@1.0 \
+    android.hardware.nfc@1.1 \
+    android.hardware.nfc@1.2
+
 # Display
 PRODUCT_PACKAGES += \
     libion \
@@ -179,6 +185,10 @@ PRODUCT_PACKAGES += \
 # Fingerprint
 PRODUCT_PACKAGES += \
     omni.biometrics.fingerprint.inscreen@1.0-service.oneplus7pro
+
+# Remove unwanted packages
+PRODUCT_PACKAGES += \
+    RemovePackages
 
 # Temporary handling
 #
