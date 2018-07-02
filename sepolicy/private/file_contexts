@@ -30,3 +30,6 @@
 /system/bin/hw/omni\.biometrics\.fingerprint\.inscreen@1.0-service\.oneplus7pro    u:object_r:hal_fod_msmnile_exec:s0
 
 /sys/devices/platform/soc/c440000\.qcom,spmi/spmi-0/spmi0-02/c440000\.qcom,spmi\:qcom,pm8150b@2\:qcom,qpnp-smb5/power_supply/usb/otg_switch u:object_r:sysfs_usb_supply:s0
+
+# Lights
+/system/bin/hw/android\.hardware\.light@2\.0-service\.oneplus_sdm845    u:object_r:hal_light_sdm845_exec:s0
