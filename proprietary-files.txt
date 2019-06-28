@@ -54,7 +54,6 @@ etc/sensors/proto/sns_cal.proto
 etc/sensors/proto/sns_ccd_walk.proto
 etc/sensors/proto/sns_client.proto
 etc/sensors/proto/sns_cmc.proto
-etc/sensors/proto/sns_dae_ccd.proto
 etc/sensors/proto/sns_dae.proto
 etc/sensors/proto/sns_da_test.proto
 etc/sensors/proto/sns_device_mode.proto
@@ -120,7 +119,6 @@ framework/audiosphere.jar
 framework/com.qti.dpmframework.jar
 -framework/com.qti.location.sdk.jar
 -framework/com.qti.snapdragon.sdk.display.jar
--framework/com.qualcomm.qti.camera.jar
 -framework/com.qualcomm.qti.imscmservice-V2.0-java.jar
 -framework/com.qualcomm.qti.imscmservice-V2.1-java.jar
 -framework/com.qualcomm.qti.uceservice-V2.0-java.jar
@@ -129,7 +127,6 @@ framework/com.quicinc.cne.jar
 framework/dpmapi.jar
 framework/embmslibrary.jar
 framework/izat.xt.srv.jar
--framework/qtiNetworkLib.jar
 framework/vendor.qti.data.factory-V1.0-java.jar
 -framework/vendor.qti.hardware.alarm-V1.0-java.jar
 -framework/vendor.qti.hardware.data.dynamicdds-V1.0-java.jar
@@ -154,8 +151,6 @@ lib64/extractors/libmmparser.so
 lib64/libadsprpc_system.so
 lib64/libmdsprpc_system.so
 lib64/libantradio.so
-lib64/libaptX_encoder.so
-lib64/libaptXHD_encoder.so
 lib64/libbluetooth_qti.so
 lib64/libblurbuster.so
 lib64/libcdsprpc_system.so
@@ -183,7 +178,6 @@ lib64/libjni_clearsight.so
 lib64/libjni_dualcamera.so
 lib64/libjni_filtergenerator.so
 lib64/libjni_hazebuster.so
-lib64/libjni_makeupV2.so
 lib64/libjni_optizoom.so
 lib64/libjni_pacprocessor.so
 #lib64/libjni_panorama.so
@@ -243,7 +237,6 @@ lib64/vendor.qti.gnss@1.1.so
 lib64/vendor.qti.gnss@1.2.so
 lib64/vendor.qti.gnss@2.0.so
 lib64/vendor.qti.hardware.alarm@1.0.so
-lib64/vendor.qti.hardware.automotive.vehicle@1.0.so
 lib64/vendor.qti.hardware.camera.device@1.0.so
 lib64/vendor.qti.hardware.data.dynamicdds@1.0.so
 lib64/vendor.qti.hardware.data.latency@1.0.so
@@ -319,7 +312,6 @@ lib/libjni_chromaflash.so
 lib/libjni_dualcamera.so
 lib/libjni_filtergenerator.so
 lib/libjni_hazebuster.so
-lib/libjni_makeupV2.so
 lib/libjni_optizoom.so
 #lib/libjni_panorama.so
 lib/libjni_seestraight.so
@@ -375,7 +367,6 @@ lib/vendor.qti.gnss@1.1.so
 lib/vendor.qti.gnss@1.2.so
 lib/vendor.qti.gnss@2.0.so
 lib/vendor.qti.hardware.alarm@1.0.so
-lib/vendor.qti.hardware.automotive.vehicle@1.0.so
 lib/vendor.qti.hardware.camera.device@1.0.so
 lib/vendor.qti.hardware.data.dynamicdds@1.0.so
 lib/vendor.qti.hardware.data.latency@1.0.so
@@ -409,7 +400,6 @@ lib/vendor.qti.imsrtpservice@1.0.so
 lib/vendor.qti.voiceprint@1.0.so
 -priv-app/HotwordEnrollmentOKGoogleWCD9340/HotwordEnrollmentOKGoogleWCD9340.apk
 -priv-app/HotwordEnrollmentXGoogleWCD9340/HotwordEnrollmentXGoogleWCD9340.apk
--sbin/dashd;rootfs
 
 
 etc/voicemail-conf.xml
@@ -417,9 +407,6 @@ etc/nfc_card_config.conf
 etc/clatd.conf
 etc/sysconfig/google.xml
 etc/cdma_call_conf.xml
-
-lib/libCalibrationJNI.so
-lib64/libCalibrationJNI.so
 
 lib/libnl.so
 lib/libwfduibcsrcinterface.so
@@ -444,29 +431,17 @@ lib/libwfdmmsrc.so
 lib64/libwfdclient.so
 lib64/libwfdnative.so
 
-etc/qvr/qvrservice_config.txt
-etc/qvr/qvrservice_6dof_config.xml
-etc/qvr/ov7251_640x480_cam_config.xml
-etc/qvr/ov9282_stereo_2560x800_cam_config.xml
-etc/qvr/ov9282_stereo_1280x400_cam_config.xml
 etc/qvr/qvrservice_6dof_config_stereo.xml
-etc/qvr/ov9282_640x400_cam_config.xml
+etc/qvr/qvrservice_6dof_config.xml
+etc/qvr/qvrservice_config.txt
 
-lib/libts_detected_face_jni.so
-lib/libts_face_beautify_jni.so
-lib/libts_face_beautify_hal.so
-lib64/libts_detected_face_jni.so
-lib64/libts_face_beautify_jni.so
-lib64/libts_face_beautify_hal.so
-
-lib/libqvr_mapper_stub.so
 lib/rfsa/adsp/libdsp_streamer_qvrcam_receiver.so
 lib/rfsa/adsp/libeye_tracking_dsp_sample_skel.so
 lib/rfsa/adsp/libqvr_cam_dsp_driver_skel.so
 lib/rfsa/adsp/libqvr_dsp_driver_skel.so
-lib/rfsa/adsp/libqvr_mapper_skel.so
 lib/rfsa/adsp/libsns_device_mode_skel.so
 lib/rfsa/adsp/libsns_low_lat_stream_skel.so
+lib/rfsa/adsp/libtracker_6dof_skel.so
 lib/libqvr_cam_cdsp_driver_stub.so
 lib/libqvr_eyetracking_plugin.so
 lib/libqvr_cdsp_driver_stub.so
@@ -474,10 +449,8 @@ lib/libqvr_cdsp_driver_stub.so
 
 lib64/android.hardware.secure_element@1.0.so
 lib/android.hardware.secure_element@1.0.so
-lib64/ese_spi_nxp.so
-lib/ese_spi_nxp.so
-lib64/vendor.nxp.nxpese@1.0.so
-lib/vendor.nxp.nxpese@1.0.so
+lib/vendor.nxp.nxpnfc@1.0.so
+lib64/vendor.nxp.nxpnfc@1.0.so
 -app/NxpNfcNci/NxpNfcNci.apk|698ff1fab2a6e9843310713763533ed11d39f47e
 -app/NxpSecureElement/NxpSecureElement.apk
 -framework/com.nxp.nfc.jar
