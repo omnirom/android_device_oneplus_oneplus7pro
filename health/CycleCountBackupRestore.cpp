@@ -17,7 +17,7 @@
 
 namespace device {
 namespace oneplus {
-namespace oneplus6 {
+namespace oneplus7pro {
 namespace health {
 static constexpr char kCycCntFile[] = "sys/class/power_supply/bms/device/power_supply/bms/cycle_counts";
 static constexpr char kSysPersistFile[] = "/persist/battery/qcom_cycle_counts_bins";
@@ -98,6 +98,6 @@ void CycleCountBackupRestore::UpdateAndSave()
         SaveToStorage();
 }
 } // namespace health
-} // namespace oneplus6
+} // namespace oneplus7pro
 } // namespace oneplus
 } // namespace device

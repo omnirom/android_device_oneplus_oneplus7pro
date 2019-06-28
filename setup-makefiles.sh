@@ -19,10 +19,10 @@
 set -e
 
 # Required!
-DEVICE=oneplus6
+DEVICE=oneplus7pro
 VENDOR=oneplus
 
-INITIAL_COPYRIGHT_YEAR=2018
+INITIAL_COPYRIGHT_YEAR=2019
 
 # Load extractutils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
@@ -41,7 +41,7 @@ fi
 setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT"
 
 # Copyright headers and guards
-write_headers "oneplus6"
+write_headers "oneplus7pro"
 
 # The standard blobs
 write_makefiles "$MY_DIR"/proprietary-files.txt

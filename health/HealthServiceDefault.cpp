@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "android.hardware.health@2.0-service.oneplus6"
+#define LOG_TAG "android.hardware.health@2.0-service.oneplus7pro"
 #include <android-base/logging.h>
 #include <healthd/healthd.h>
 #include <health2/Health.h>
@@ -29,8 +29,8 @@
 
 using android::hardware::health::V2_0::StorageInfo;
 using android::hardware::health::V2_0::DiskStats;
-using ::device::oneplus::oneplus6::health::CycleCountBackupRestore;
-using ::device::oneplus::oneplus6::health::LearnedCapacityBackupRestore;
+using ::device::oneplus::oneplus7pro::health::CycleCountBackupRestore;
+using ::device::oneplus::oneplus7pro::health::LearnedCapacityBackupRestore;
 static constexpr int kBackupTrigger = 20;
 static CycleCountBackupRestore ccBackupRestore;
 static LearnedCapacityBackupRestore lcBackupRestore;

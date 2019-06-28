@@ -1,5 +1,5 @@
 LOCAL_PATH := $(call my-dir)
-ifeq ($(TARGET_DEVICE),$(filter $(TARGET_DEVICE),oneplus6 oneplus6t))
+ifeq ($(TARGET_DEVICE),$(filter $(TARGET_DEVICE),oneplus7 oneplus7pro))
 include $(CLEAR_VARS)
 
 LOCAL_MODULE_TAGS := optional

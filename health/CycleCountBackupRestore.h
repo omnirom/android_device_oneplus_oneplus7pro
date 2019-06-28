@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef DEVICE_ONEPLUS_ONEPLUS6_HEALTH_CYCLECOUNTBACKUPRESTORE_H
-#define DEVICE_ONEPLUS_ONEPLUS6_HEALTH_CYCLECOUNTBACKUPRESTORE_H
+#ifndef DEVICE_ONEPLUS_ONEPLUS7PRO_HEALTH_CYCLECOUNTBACKUPRESTORE_H
+#define DEVICE_ONEPLUS_ONEPLUS7PRO_HEALTH_CYCLECOUNTBACKUPRESTORE_H
 #include <string>
 #include <android-base/file.h>
 #include <android-base/strings.h>
 #include <android-base/logging.h>
 namespace device {
 namespace oneplus {
-namespace oneplus6 {
+namespace oneplus7pro {
 namespace health {
 static constexpr int kBucketCount = 8;
 class CycleCountBackupRestore {
@@ -39,8 +39,8 @@ private:
     void UpdateAndSave();
 };
 } // namespace health
-} // namespace oneplus6
+} // namespace oneplus7pro
 } // namespace oneplus
 } // namespace device
-#endif // #ifndef DEVICE_GOOGLE_WAHOO_HEALTH_CYCLECOUNTBACKUPRESTORE_H
+#endif // #ifndef DEVICE_ONEPLUS_ONEPLUS7PRO_HEALTH_CYCLECOUNTBACKUPRESTORE_H
 

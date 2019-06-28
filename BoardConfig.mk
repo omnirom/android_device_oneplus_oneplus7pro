@@ -18,13 +18,13 @@
 # device-specific aspects (drivers) with a device-agnostic
 # product configuration (apps).
 #
-BOARD_PATH := device/oneplus/oneplus6
+BOARD_PATH := device/oneplus/oneplus7pro
 
 TARGET_USE_SDCLANG:= true
 PRODUCT_FULL_TREBLE := false
 BOARD_VNDK_VERSION := current
 BOARD_VNDK_RUNTIME_DISABLE := false
-ifeq ($(TARGET_DEVICE),oneplus6)
+ifeq ($(TARGET_DEVICE),oneplus7pro)
 PRODUCT_SHIPPING_API_LEVEL := 27
 endif
 TARGET_NO_KERNEL := false
@@ -45,18 +45,18 @@ BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 BOARD_USES_RECOVERY_AS_BOOT := true
 
 TARGET_NO_BOOTLOADER := true
-ifeq ($(TARGET_DEVICE),oneplus6)
-TARGET_OTA_ASSERT_DEVICE := OnePlus6
+ifeq ($(TARGET_DEVICE),oneplus7pro)
+TARGET_OTA_ASSERT_DEVICE := OnePlus7Pro
 endif
 TARGET_KERNEL_VERSION := 4.9
-TARGET_KERNEL_CLANG_COMPILE := true
+#TARGET_KERNEL_CLANG_COMPILE := true
 #TARGET_KERNEL_CLANG_VERSION := 6.0.9
-TARGET_KERNEL_CLANG_PATH := "./vendor/qcom/sdclang/8.0/prebuilt/linux-x86_64"
-TARGET_BOOTLOADER_BOARD_NAME := sdm845
+#TARGET_KERNEL_CLANG_PATH := "./vendor/qcom/sdclang/8.0/prebuilt/linux-x86_64"
+TARGET_BOOTLOADER_BOARD_NAME := sm8150
 #TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 
 # Platform
-TARGET_BOARD_PLATFORM := sdm845
+TARGET_BOARD_PLATFORM := sm8150
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno630
 
 # Architecture
@@ -93,9 +93,9 @@ TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 #TARGET_KERNEL_APPEND_DTB := true
-TARGET_KERNEL_SOURCE := kernel/oneplus/sdm845
-ifeq ($(TARGET_DEVICE),oneplus6)
-TARGET_KERNEL_CONFIG := omni_oneplus6_defconfig
+TARGET_KERNEL_SOURCE := kernel/oneplus/sm8150
+ifeq ($(TARGET_DEVICE),oneplus7pro)
+TARGET_KERNEL_CONFIG := omni_oneplus7pro_defconfig
 endif
 BOARD_KERNEL_SEPARATED_DTBO := true
 
@@ -125,9 +125,6 @@ TARGET_COPY_OUT_VENDOR := vendor
 #Enable DRM plugins 64 bit compilation
 TARGET_ENABLE_MEDIADRM_64 := true
 
-TARGET_QCOM_DISPLAY_VARIANT := caf-sdm845
-TARGET_QCOM_MEDIA_VARIANT := caf-sdm845
-TARGET_QCOM_AUDIO_VARIANT := caf-sdm845
 # Generic AOSP image does NOT support HWC1
 TARGET_USES_HWC2 := true
 # Set emulator framebuffer display device buffer count to 3
@@ -197,7 +194,7 @@ BOARD_HAVE_BLUETOOTH_QCOM := true
 QCOM_BT_USE_BTNV := true
 
 #SEPERATE FROM OP6T
-ifeq ($(TARGET_DEVICE),oneplus6)
+ifeq ($(TARGET_DEVICE),oneplus7pro)
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(BOARD_PATH)/bluetooth
 endif
 
@@ -263,7 +260,7 @@ TARGET_KERNEL_HAVE_EXFAT := true
 #TARGET_LDPRELOAD := libNimsWrap.so
 BOARD_USES_QCNE := true
 
-ifeq ($(TARGET_DEVICE),oneplus6)
+ifeq ($(TARGET_DEVICE),oneplus7pro)
 TARGET_SYSTEM_PROP := $(BOARD_PATH)/system.prop
 endif
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true

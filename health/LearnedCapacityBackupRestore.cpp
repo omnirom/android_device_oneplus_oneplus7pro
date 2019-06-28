@@ -16,7 +16,7 @@
 #include "LearnedCapacityBackupRestore.h"
 namespace device {
 namespace oneplus {
-namespace oneplus6 {
+namespace oneplus7pro {
 namespace health {
 static constexpr char kChgFullFile[] = "sys/class/power_supply/bms/charge_full";
 static constexpr char kSysCFPersistFile[] = "/persist/battery/qcom_charge_full";
@@ -80,6 +80,6 @@ void LearnedCapacityBackupRestore::UpdateAndSave() {
         SaveToStorage();
 }
 }  // namespace health
-}  // namespace oneplus6
+}  // namespace oneplus7pro
 }  // namespace oneplus
 }  // namespace device

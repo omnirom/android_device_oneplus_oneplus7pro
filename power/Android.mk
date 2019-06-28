@@ -14,7 +14,7 @@ LOCAL_C_INCLUDES := external/libxml2/include \
 
 LOCAL_SRC_FILES += power-845.c
 
-LOCAL_MODULE := power.oneplus6
+LOCAL_MODULE := power.oneplus7pro
 LOCAL_MODULE_TAGS := optional
 LOCAL_CFLAGS += -Wno-unused-parameter -Wno-unused-variable
 include $(BUILD_SHARED_LIBRARY)
