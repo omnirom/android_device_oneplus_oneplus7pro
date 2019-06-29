@@ -221,8 +221,6 @@ PRODUCT_PACKAGES += \
     PresencePolling
 
 PRODUCT_BOOT_JARS += \
-    qtiNetworkLib \
-    com.qualcomm.qti.camera \
     com.nxp.nfc \
     tcmiface \
     WfdCommon \
