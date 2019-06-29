@@ -24,9 +24,7 @@ TARGET_USE_SDCLANG:= true
 PRODUCT_FULL_TREBLE := false
 BOARD_VNDK_VERSION := current
 BOARD_VNDK_RUNTIME_DISABLE := false
-ifeq ($(TARGET_DEVICE),oneplus7pro)
-PRODUCT_SHIPPING_API_LEVEL := 27
-endif
+PRODUCT_SHIPPING_API_LEVEL := 28
 TARGET_NO_KERNEL := false
 BOARD_AVB_ENABLE := false
 BOARD_BUILD_DISABLED_VBMETAIMAGE := true
@@ -48,16 +46,16 @@ TARGET_NO_BOOTLOADER := true
 ifeq ($(TARGET_DEVICE),oneplus7pro)
 TARGET_OTA_ASSERT_DEVICE := OnePlus7Pro
 endif
-TARGET_KERNEL_VERSION := 4.9
-#TARGET_KERNEL_CLANG_COMPILE := true
-#TARGET_KERNEL_CLANG_VERSION := 6.0.9
+TARGET_KERNEL_VERSION := 4.14
+TARGET_KERNEL_CLANG_COMPILE := true
+TARGET_KERNEL_CLANG_VERSION := 6.0.9
 #TARGET_KERNEL_CLANG_PATH := "./vendor/qcom/sdclang/8.0/prebuilt/linux-x86_64"
 TARGET_BOOTLOADER_BOARD_NAME := sm8150
 #TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 
 # Platform
-TARGET_BOARD_PLATFORM := sm8150
-TARGET_BOARD_PLATFORM_GPU := qcom-adreno630
+TARGET_BOARD_PLATFORM := msmnile
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno640
 
 # Architecture
 TARGET_ARCH := arm64
@@ -79,8 +77,8 @@ TARGET_COMPILE_WITH_MSM_KERNEL := true
 ENABLE_CPUSETS := true
 ENABLE_SCHEDBOOST := true
 
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 service_locator.enable=1 swiotlb=2048 androidboot.configfs=true androidboot.usbcontroller=a600000.dwc3 firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7
-BOARD_KERNEL_CMDLINE += androidboot.avb_version=1.0 androidboot.vbmeta.avb_version=1.0
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7 androidboot.usbcontroller=a600000.dwc3
+#BOARD_KERNEL_CMDLINE += androidboot.avb_version=1.0 androidboot.vbmeta.avb_version=1.0
 #BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
@@ -91,23 +89,24 @@ BOARD_ROOT_EXTRA_SYMLINKS := /vendor/dsp:/dsp /vendor/firmware_mnt:/firmware /ve
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
-BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
+BOARD_KERNEL_IMAGE_NAME := Image-dtb
 #TARGET_KERNEL_APPEND_DTB := true
 TARGET_KERNEL_SOURCE := kernel/oneplus/sm8150
 ifeq ($(TARGET_DEVICE),oneplus7pro)
-TARGET_KERNEL_CONFIG := omni_oneplus7pro_defconfig
+TARGET_KERNEL_CONFIG := vendor/omni_oneplus7pro_defconfig
 endif
 BOARD_KERNEL_SEPARATED_DTBO := true
 
 # partitions
-BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
-#BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2998927360
 BOARD_VENDORIMAGE_PARTITION_SIZE := 1073741824
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 10737418240
-BOARD_DTBOIMG_PARTITION_SIZE := 8388608
-BOARD_FLASH_BLOCK_SIZE := 131072
+BOARD_BOOTIMAGE_PARTITION_SIZE := 0x06000000
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3221225472
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 19327352832
+BOARD_PERSISTIMAGE_PARTITION_SIZE := 33554432
+BOARD_METADATAIMAGE_PARTITION_SIZE := 16777216
+BOARD_DTBOIMG_PARTITION_SIZE := 0x0800000
+BOARD_PERSISTIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
 
 # global
