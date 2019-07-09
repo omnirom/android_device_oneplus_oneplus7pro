@@ -26,11 +26,11 @@ import android.support.v7.preference.PreferenceManager;
 
 import org.omnirom.device.DeviceSettings;
 
-public class OnePlusModeSwitch {
+public class WideModeSwitch {
 
-    private static final String FILE = "/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/card0-DSI-1/oneplus_mode";
+    private static final String FILE = "/sys/class/drm/card0-DSI-1/native_display_customer_p3_mode";
 
-    public static final String SETTINGS_KEY = DeviceSettings.KEY_SETTINGS_PREFIX + DeviceSettings.KEY_ONEPLUS_SWITCH;
+    public static final String SETTINGS_KEY = DeviceSettings.KEY_SETTINGS_PREFIX + DeviceSettings.KEY_WIDE_SWITCH;
 
     public static String getFile() {
         if (Utils.fileWritable(FILE)) {
