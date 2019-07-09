@@ -279,6 +279,9 @@ DEVICE_FRAMEWORK_MANIFEST_FILE += \
 PRODUCT_PACKAGES += \
     OmniDisplayManager
 
+PRODUCT_PACKAGES += \
+    vendor.qti.hardware.wifi@1.0
+
 # Temporary handling
 #
 # Include config.fs get only if legacy device/qcom/<target>/android_filesystem_config.h
