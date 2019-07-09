@@ -65,7 +65,7 @@ PRODUCT_PACKAGES_DEBUG += \
     bootctl
 
 PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-    bootctrl.sdm845 \
+    bootctrl.msmnile \
     libcutils \
     libgptutils \
     libz \
