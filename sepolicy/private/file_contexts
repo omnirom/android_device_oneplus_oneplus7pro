@@ -12,7 +12,6 @@
 /system/lib/modules/wlan.ko    u:object_r:vendor_file:s0
 /system/bin/hw/android.hardware.health@2.0-service.oneplus7pro u:object_r:hal_health_omni_exec:s0
 
-#/system/bin/hw/android\.hardware\.power@1\.1-service\.oneplus7pro             u:object_r:hal_power_omni_exec:s0
-
 /data/vendor/omni/client_package_name                u:object_r:vendor_data_file:s0
 
+/sys/devices/platform/soc/89c000.i2c/i2c-2/2-005a/leds/vibrator/level u:object_r:sysfs_vibrator:s0
