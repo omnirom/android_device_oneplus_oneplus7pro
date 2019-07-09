@@ -316,7 +316,7 @@ public class KeyHandler implements DeviceKeyHandler {
                     String state = event.get("STATE");
                     boolean ringing = state.contains("USB=0");
                     boolean silent = state.contains("(null)=0");
-                    boolean vibrate = state.contains("USB_HOST=0");
+                    boolean vibrate = state.contains("USB-HOST=0");
                     android.util.Log.v("DeviceParts", "Got ringing = " + ringing + ", silent = " + silent + ", vibrate = " + vibrate);
                     if(ringing && !silent && !vibrate)
                         doHandleSliderAction(2);
