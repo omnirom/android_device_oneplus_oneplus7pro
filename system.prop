@@ -325,6 +325,8 @@ ro.location.osnlp.package=com.google.android.gms
 ro.location.osnlp.region.package=
 
 #omni
+persist.vendor.sensors.light.location_x=1000
+persist.vendor.sensors.light.location_y=260
 persist.vendor.cne.feature=1
 ro.hardware.lights=oneplus7pro
 ro.hardware.power=oneplus7pro
