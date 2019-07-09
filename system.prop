@@ -325,6 +325,8 @@ ro.location.osnlp.package=com.google.android.gms
 ro.location.osnlp.region.package=
 
 #omni
+ro.boot.project_name=18821
+ro.vendor.boot.project_name=18821
 persist.vendor.sys.fp.fod.location.X_Y=605,2613
 persist.vendor.sys.fp.fod.size.width_height=230,230
 persist.vendor.cne.feature=1
