@@ -150,6 +150,13 @@ on post-fs
     #chown system system /sys/class/timed_output/vibrator/vtg_min
     chown system system /sys/class/leds/vibrator/vmax_mv_user
 
+on property:sys.camera.motor.direction="up"
+    write /sys/devices/platform/vendor/vendor:motor_pl/direction 1
+    write /sys/devices/platform/vendor/vendor:motor_pl/enable 1
+
+on property:sys.camera.motor.direction="down"
+    write /sys/devices/platform/vendor/vendor:motor_pl/direction 0
+    write /sys/devices/platform/vendor/vendor:motor_pl/enable 1
 
 service dashd /sbin/dashd
     class core
