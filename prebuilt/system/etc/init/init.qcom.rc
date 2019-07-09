@@ -7,6 +7,9 @@ on init
     mount none /system/lib/hw/lights.oneplus7pro.so /vendor/lib/hw/lights.msmnile.so bind
     mount none /system/lib64/hw/lights.oneplus7pro.so /vendor/lib64/hw/lights.msmnile.so bind
     mount none /dev/null /vendor/overlay/SysuiDarkTheme/SysuiDarkThemeOverlay.apk bind
+    mount none /dev/null /vendor/overlay/BluetoothResCommon.apk bind
+    mount none /dev/null /vendor/overlay/FrameworksResCommon.apk bind
+    mount none /dev/null /vendor/overlay/SystemUIResCommon.apk bind
     mount none /system/lib/hw/power.oneplus7pro.so /vendor/lib/hw/power.qcom.so bind
     mount none /system/lib64/hw/power.oneplus7pro.so /vendor/lib64/hw/power.qcom.so bind
     mount none /dev/null /vendor/etc/init/android.hardware.health@2.0-service.rc bind
