@@ -144,11 +144,7 @@ on boot
 
 on post-fs
     # Vibrator
-    #chown system system /sys/class/timed_output/vibrator/vtg_default
-    #chown system system /sys/class/timed_output/vibrator/vtg_level
-    #chown system system /sys/class/timed_output/vibrator/vtg_max
-    #chown system system /sys/class/timed_output/vibrator/vtg_min
-    chown system system /sys/class/leds/vibrator/vmax_mv_user
+    chown system system /sys/devices/platform/soc/89c000.i2c/i2c-2/2-005a/leds/vibrator/level
 
 on property:sys.camera.motor.direction="up"
     write /sys/devices/platform/vendor/vendor:motor_pl/direction 1
