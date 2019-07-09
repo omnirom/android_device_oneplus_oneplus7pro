@@ -46,9 +46,9 @@ TARGET_NO_BOOTLOADER := true
 ifeq ($(TARGET_DEVICE),oneplus7pro)
 TARGET_OTA_ASSERT_DEVICE := OnePlus7Pro
 endif
-TARGET_KERNEL_VERSION := 4.9
-#TARGET_KERNEL_CLANG_COMPILE := true
-#TARGET_KERNEL_CLANG_VERSION := 6.0.9
+TARGET_KERNEL_VERSION := 4.14
+TARGET_KERNEL_CLANG_COMPILE := true
+TARGET_KERNEL_CLANG_VERSION := 6.0.2
 #TARGET_KERNEL_CLANG_PATH := "./vendor/qcom/sdclang/8.0/prebuilt/linux-x86_64"
 TARGET_BOOTLOADER_BOARD_NAME := sm8150
 #TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
@@ -88,7 +88,6 @@ BOARD_ROOT_EXTRA_FOLDERS := odm op1 op2
 BOARD_ROOT_EXTRA_SYMLINKS := /vendor/dsp:/dsp /vendor/firmware_mnt:/firmware /vendor/bt_firmware:/bt_firmware /mnt/vendor/persist:/persist
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 #TARGET_KERNEL_APPEND_DTB := true
 TARGET_KERNEL_SOURCE := kernel/oneplus/sm8150
