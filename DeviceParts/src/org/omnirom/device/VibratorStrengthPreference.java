@@ -40,18 +40,18 @@ public class VibratorStrengthPreference extends Preference implements
     private int mMaxValue;
     private Vibrator mVibrator;
 
-    private static final String FILE_LEVEL = "/sys/class/leds/vibrator/vmax_mv_user";
+    private static final String FILE_LEVEL = "/sys/devices/platform/soc/89c000.i2c/i2c-2/2-005a/leds/vibrator/level";
     private static final long testVibrationPattern[] = {0,250};
     public static final String SETTINGS_KEY = DeviceSettings.KEY_SETTINGS_PREFIX + DeviceSettings.KEY_VIBSTRENGTH;
-    public static final String DEFAULT_VALUE = "2008";
+    public static final String DEFAULT_VALUE = "3";
 
     public VibratorStrengthPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
         // from drivers/platform/msm/qpnp-haptic.c
         // #define QPNP_HAP_VMAX_MIN_MV		116
         // #define QPNP_HAP_VMAX_MAX_MV		3596
-        mMinValue = 116;
-        mMaxValue = 2088;
+        mMinValue = 1;
+        mMaxValue = 10;
 
         mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
         setLayoutResource(R.layout.preference_seek_bar);
