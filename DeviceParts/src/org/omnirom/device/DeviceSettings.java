@@ -54,7 +54,6 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String KEY_DCI_SWITCH = "dci";
     public static final String KEY_NIGHT_SWITCH = "night";
     public static final String KEY_WIDE_SWITCH = "wide";
-    public static final String KEY_ONEPLUS_SWITCH = "oneplus";
 
     public static final String KEY_OTG_SWITCH = "otg_switch";
 
