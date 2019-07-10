@@ -18,7 +18,7 @@ namespace device {
 namespace oneplus {
 namespace oneplus7pro {
 namespace health {
-static constexpr char kChgFullFile[] = "sys/class/power_supply/bms/charge_full";
+static constexpr char kChgFullFile[] = "/sys/class/power_supply/bms/charge_full";
 static constexpr char kSysCFPersistFile[] = "/persist/battery/qcom_charge_full";
 static constexpr int kBuffSize = 256;
 LearnedCapacityBackupRestore::LearnedCapacityBackupRestore() {}
