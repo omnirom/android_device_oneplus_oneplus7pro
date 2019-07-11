@@ -115,6 +115,7 @@ etc/sensors/proto/sns_timer.proto
 etc/sensors/proto/sns_ultra_violet.proto
 etc/wfdconfigsink.xml
 etc/wfdconfig.xml
+etc/voicemail-conf.xml
 framework/audiosphere.jar
 framework/com.qti.dpmframework.jar
 -framework/com.qti.location.sdk.jar
