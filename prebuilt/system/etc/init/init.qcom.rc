@@ -13,7 +13,8 @@ on init
     mount none /system/lib/hw/power.oneplus7pro.so /vendor/lib/hw/power.qcom.so bind
     mount none /system/lib64/hw/power.oneplus7pro.so /vendor/lib64/hw/power.qcom.so bind
     mount none /dev/null /vendor/etc/init/android.hardware.health@2.0-service.rc bind
-    #mount none /system/lib/hw/audio.primary.sdm845.so /vendor/lib/hw/audio.primary.sdm845.so bind
+    mount none /system/lib/sensors.ssc.so /vendor/lib/sensors.ssc.so bind
+    mount none /system/lib64/sensors.ssc.so /vendor/lib64/sensors.ssc.so bind
 
 on boot
     # default country code
