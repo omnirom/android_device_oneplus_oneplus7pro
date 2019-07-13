@@ -107,4 +107,7 @@
     <string name="tile_panel_mode">Panel modes</string>
     <string name="tile_hbm_mode">High brightness modes</string>
     <string name="wake_entry">Wakeup</string>
+
+    <string name="display_modes_category_title">Display modes</string>
+    <string name="display_modes_category_summary">Change resolution and refresh rate</string>
 </resources>
