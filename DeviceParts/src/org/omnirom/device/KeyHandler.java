@@ -103,7 +103,6 @@ public class KeyHandler implements DeviceKeyHandler {
     private static final String DOZE_INTENT = "com.android.systemui.doze.pulse";
     private static final int HANDWAVE_MAX_DELTA_MS = 1000;
     private static final int POCKET_MIN_DELTA_MS = 5000;
-    private static final int FP_GESTURE_LONG_PRESS = 305;
 
     private static final boolean sIsOnePlus6 = android.os.Build.MODEL.equals("ONEPLUS A6003");
 
@@ -125,7 +124,6 @@ public class KeyHandler implements DeviceKeyHandler {
         KEY_SLIDER_TOP,
         KEY_SLIDER_CENTER,
         KEY_SLIDER_BOTTOM,
-        FP_GESTURE_LONG_PRESS,
     };
 
     private static final int[] sSupportedGestures = new int[]{
@@ -178,9 +176,7 @@ public class KeyHandler implements DeviceKeyHandler {
     private boolean mUseWaveCheck;
     private Sensor mPocketSensor;
     private boolean mUsePocketCheck;
-    private boolean mFPcheck;
     private boolean mDispOn;
-    private boolean isFpgesture;
     private ClientPackageNameObserver mClientObserver;
     private IOnePlusCameraProvider mProvider;
     private boolean isOPCameraAvail;
@@ -349,23 +345,6 @@ public class KeyHandler implements DeviceKeyHandler {
         if (event.getAction() != KeyEvent.ACTION_UP) {
             return false;
         }
-
-        isFpgesture = false;
-
-        if (DEBUG) Log.i(TAG, "nav_code= " + event.getScanCode());
-        int fpcode = event.getScanCode();
-        mFPcheck = canHandleKeyEvent(event);
-        String value = getGestureValueForFPScanCode(fpcode);
-        if (mFPcheck && mDispOn && !TextUtils.isEmpty(value) && !value.equals(AppSelectListPreference.DISABLED_ENTRY)){
-            isFpgesture = true;
-            if (!launchSpecialActions(value) && !isCameraLaunchEvent(event)) {
-                    OmniVibe.performHapticFeedbackLw(HapticFeedbackConstants.LONG_PRESS, false, mContext);
-                    Intent intent = createIntent(value);
-                    if (DEBUG) Log.i(TAG, "intent = " + intent);
-                    mContext.startActivity(intent);
-            }
-        }
-        return isFpgesture;
     }
 
     @Override
@@ -393,13 +372,9 @@ public class KeyHandler implements DeviceKeyHandler {
         if (event.getAction() != KeyEvent.ACTION_UP) {
             return false;
         }
-        if (mFPcheck) {
-            String value = getGestureValueForFPScanCode(event.getScanCode());
-            return !TextUtils.isEmpty(value) && value.equals(AppSelectListPreference.CAMERA_ENTRY);
-        } else {
-            String value = getGestureValueForScanCode(event.getScanCode());
-            return !TextUtils.isEmpty(value) && value.equals(AppSelectListPreference.CAMERA_ENTRY);
-        }
+        String value = getGestureValueForScanCode(event.getScanCode());
+        return !TextUtils.isEmpty(value) && value.equals(AppSelectListPreference.CAMERA_ENTRY);
+        
     }
 
     @Override
@@ -678,14 +653,6 @@ public class KeyHandler implements DeviceKeyHandler {
             case GESTURE_RIGHT_SWIPE_SCANCODE:
                 return Settings.System.getStringForUser(mContext.getContentResolver(),
                     GestureSettings.DEVICE_GESTURE_MAPPING_9, UserHandle.USER_CURRENT);
-        }
-        return null;
-    }
-
-    private String getGestureValueForFPScanCode(int scanCode) {
-        if (FP_GESTURE_LONG_PRESS == scanCode) {
-            return Settings.System.getStringForUser(mContext.getContentResolver(),
-                   GestureSettings.DEVICE_GESTURE_MAPPING_10, UserHandle.USER_CURRENT);
         }
         return null;
     }

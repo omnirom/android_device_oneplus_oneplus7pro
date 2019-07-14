@@ -17,7 +17,6 @@
 <resources>
   <string name="app_name">OnePlus 5</string>
   <string name="category_gestures_title">Seadme žestid</string>
-  <string name="fp_gesture_title">Sõrmejäljelugeja žestid</string>
   <string name="category_vibrator">Vibraator</string>
   <string name="vib_strength_title_head">Tugevus</string>
   <string name="vib_strength_summary_head">Määra vibraatori tugevus</string>
@@ -64,12 +63,6 @@
   <string name="category_up_swipe_gesture">Üles libistamine</string>
   <string name="category_left_swipe_gesture">Vasakule libistamine</string>
   <string name="category_right_swipe_gesture">Paremale libistamine</string>
-  <string name="category_fp_down_swipe_gesture">Sõrmejälje alla libistamine</string>
-  <string name="category_fp_up_swipe_gesture">Sõrmejälje üles libistamine</string>
-  <string name="category_fp_right_swipe_gesture">Sõrmejälje paremale libistamine</string>
-  <string name="category_fp_left_swipe_gesture">Sõrmejälje vasakule libistamine</string>
-  <string name="fp_swipe_down_switch_summary_head">Vaikimisi sõrmejälje teate alla libistamise žest</string>
-  <string name="fp_swipe_down_switch_title_head">Sõrmejälje alla libistamise žest</string>
   <string name="doze_category_title">Ambientne ekraan</string>
   <string name="doze_category_summary">Ärata ekraan, kui saad teateid</string>
   <string name="wave_check_summary">Pulseeri teateid käeviibutusel</string>
