@@ -35,3 +35,5 @@
 /sys/devices/platform/vendor/vendor\:motor_pl/sw_switch u:object_r:omni_sysfs_motor:s0
 
 /system/bin/hw/android\.hardware\.vibrator@1\.2-service\.oneplus7pro u:object_r:hal_omni_vibrator_exec:s0
+/system/bin/hw/omni\.biometrics\.fingerprint\.inscreen@1.0-service\.oneplus7pro    u:object_r:hal_fod_msmnile_exec:s0
+
