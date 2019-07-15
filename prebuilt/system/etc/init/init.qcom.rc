@@ -151,6 +151,10 @@ on property:sys.camera.motor.direction="down"
     write /sys/devices/platform/vendor/vendor:motor_pl/direction 0
     write /sys/devices/platform/vendor/vendor:motor_pl/enable 1
 
+on property:vendor.radio.db_upgrade=1
+    # dont upgrade radio db on every flash
+    setprop vendor.radio.db_upgrade 0
+
 service dashd /sbin/dashd
     class core
     critical
