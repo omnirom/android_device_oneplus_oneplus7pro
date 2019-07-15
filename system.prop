@@ -331,18 +331,6 @@ persist.vendor.sys.fp.fod.location.X_Y=605,2613
 persist.vendor.sys.fp.fod.size.width_height=230,230
 persist.vendor.cne.feature=1
 ro.hardware.lights=oneplus7pro
-ro.config.ringtone=omni_ringtone1.ogg
-ro.config.notification_sound=omni_notification1.ogg
-ro.config.alarm_alert=omni_alarm1.ogg
-ro.services.whitelist.packagelist=com.google.android.gms
-net.tethering.noprovisioning=true
-persist.sys.enable_rescue=0
-ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html
-ro.com.android.wifi-watchlist=GoogleGuest
-ro.setupwizard.enterprise_mode=1
-persist.sys.disable_rescue=true
-ro.com.google.clientidbase=android-google
-ro.services.whitelist.packagelist=com.google.android.gms
 
 persist.sys.camera.preview.size=1920x1080
 
@@ -358,6 +346,7 @@ dalvik.vm.heapmaxfree=8m
 
 sdm.debug.disable_inline_rotator=1
 sdm.debug.disable_inline_rotator_secure=1
+persist.vendor.diag.max.size=500
 
 #HWC
 persist.vendor.color.matrix=2
