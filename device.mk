@@ -164,12 +164,6 @@ PRODUCT_PACKAGES += \
     ims-ext-common \
     tcmiface
 
-PRODUCT_PACKAGES += \
-    com.android.ims.rcsmanager \
-    com.android.ims.rcsmanager.xml \
-    RcsService \
-    PresencePolling
-
 PRODUCT_BOOT_JARS += \
     com.nxp.nfc \
     tcmiface \
