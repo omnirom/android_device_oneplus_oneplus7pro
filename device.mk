@@ -31,6 +31,9 @@ PRODUCT_COPY_FILES += \
 TARGET_SUPPORTS_32_BIT_APPS := true
 TARGET_SUPPORTS_64_BIT_APPS := true
 
+PRODUCT_PACKAGES += \
+    libinit_oneplus7pro
+
 # SP-NDK:
 PRODUCT_PACKAGES += \
     libvulkan \

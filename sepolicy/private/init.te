@@ -18,3 +18,5 @@ allow init vendor_file:file mounton;
 allow init sysfs_type:file { setattr };
 
 allow init omni_sysfs_motor:file { write open };
+
+allow init property_socket:sock_file write;
