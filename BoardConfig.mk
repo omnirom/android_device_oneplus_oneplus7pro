@@ -20,7 +20,8 @@
 #
 BOARD_PATH := device/oneplus/oneplus7pro
 
-TARGET_USE_SDCLANG:= true
+TARGET_INIT_VENDOR_LIB := libinit_oneplus7pro
+TARGET_USE_SDCLANG := true
 PRODUCT_FULL_TREBLE := true
 BOARD_VNDK_VERSION := current
 BOARD_VNDK_RUNTIME_DISABLE := false
