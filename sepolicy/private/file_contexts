@@ -31,3 +31,4 @@
 
 /sys/devices/platform/vendor/vendor\:motor_pl/direction u:object_r:omni_sysfs_motor:s0
 /sys/devices/platform/vendor/vendor\:motor_pl/enable u:object_r:omni_sysfs_motor:s0
+/sys/devices/platform/vendor/vendor\:motor_pl/sw_switch u:object_r:omni_sysfs_motor:s0
