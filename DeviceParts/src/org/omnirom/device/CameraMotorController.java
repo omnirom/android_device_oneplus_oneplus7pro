@@ -25,6 +25,7 @@ public class CameraMotorController {
     // Camera motor paths
     private static final String CAMERA_MOTOR_ENABLE_PATH = "/sys/devices/platform/vendor/vendor:motor_pl/enable";
     private static final String CAMERA_MOTOR_DIRECTION_PATH = "/sys/devices/platform/vendor/vendor:motor_pl/direction";
+    private static final String CAMERA_MOTOR_SW_SWITCH = "/sys/devices/platform/vendor/vendor:motor_pl/sw_switch";
 
     // Motor control values
     private static final String DIRECTION_DOWN = "0";
@@ -44,6 +45,15 @@ public class CameraMotorController {
         if (DEBUG) Log.d(TAG, "Writing camera enabled");
         // Run the camera
         Utils.writeValue(CAMERA_MOTOR_ENABLE_PATH, ENABLED);
+    }
+
+    /**
+      * Toggle the camera sw switch
+      */
+    public static void toggleCameraSwitch(boolean enable) {
+        if (DEBUG) Log.d(TAG, "Writing front camera switch " + enable);
+        // Write the direction
+        Utils.writeValue(CAMERA_MOTOR_SW_SWITCH, enable ? "1" : "0");
     }
 }
 
