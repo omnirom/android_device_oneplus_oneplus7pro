@@ -37,5 +37,9 @@
     -->
     <string name="doze_pickup_subtype_performs_proximity_check">!*</string>
 
+    <!-- Max visible notification icons -->
+    <integer name="config_maxVisibleNotificationIcons">8</integer>
+    <integer name="config_maxVisibleNotificationIconsWhenDark">9</integer>
+
 </resources>
 
