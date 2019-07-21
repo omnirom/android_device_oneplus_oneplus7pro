@@ -443,7 +443,7 @@ lib64/android.hardware.secure_element@1.0.so
 lib/android.hardware.secure_element@1.0.so
 lib/vendor.nxp.nxpnfc@1.0.so
 lib64/vendor.nxp.nxpnfc@1.0.so
--app/NxpNfcNci/NxpNfcNci.apk|e6b167f169b76116f462bd403e4b087b1158c076
+-app/NxpNfcNci/NxpNfcNci.apk|886bd7436efff9a6fb6cd86cc0fd2b77ee353a8d
 -app/NxpSecureElement/NxpSecureElement.apk
 -framework/com.nxp.nfc.jar
 etc/permissions/com.nxp.nfc.xml
