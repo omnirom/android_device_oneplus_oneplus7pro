@@ -125,6 +125,7 @@ framework/dpmapi.jar
 framework/embmslibrary.jar
 framework/izat.xt.srv.jar
 framework/vendor.qti.data.factory-V1.0-java.jar
+framework/vendor.qti.data.factory-V1.1-java.jar
 -framework/vendor.qti.hardware.alarm-V1.0-java.jar
 -framework/vendor.qti.hardware.data.dynamicdds-V1.0-java.jar
 -framework/vendor.qti.hardware.data.latency-V1.0-java.jar
