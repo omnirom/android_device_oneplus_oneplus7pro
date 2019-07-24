@@ -438,7 +438,7 @@ lib/libqvr_cam_cdsp_driver_stub.so
 lib/libqvr_eyetracking_plugin.so
 lib/libqvr_cdsp_driver_stub.so
 
--app/OPSoundTuner/OPSoundTuner.apk|09e66ce97f925f98acaaed68e09f27362e79a061
+-app/OPSoundTuner/OPSoundTuner.apk|f881f395dcd6bd574ce77607f483ec3fa4f2e549
 etc/permissions/com.dolby.daxservice.xml
 -priv-app/daxService/daxService.apk
 
