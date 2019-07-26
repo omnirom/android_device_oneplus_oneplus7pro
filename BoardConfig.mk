@@ -303,6 +303,10 @@ TW_NO_USB_STORAGE := false
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_THEME := portrait_hdpi
 
+TARGET_USES_ION := true
+TARGET_USES_NEW_ION_API :=true
+TARGET_USES_QCOM_BSP := false
+
 #HIDL
 DEVICE_MATRIX_FILE   := $(BOARD_PATH)/compatibility_matrix.device.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += $(BOARD_PATH)/vendor_framework_compatibility_matrix.xml
