@@ -121,6 +121,7 @@ framework/com.qti.dpmframework.jar
 -framework/com.qualcomm.qti.imscmservice-V2.0-java.jar
 -framework/com.qualcomm.qti.imscmservice-V2.1-java.jar
 -framework/com.qualcomm.qti.uceservice-V2.0-java.jar
+-app/uceShimService/uceShimService.apk
 framework/dpmapi.jar
 framework/embmslibrary.jar
 framework/izat.xt.srv.jar
@@ -503,3 +504,5 @@ framework/uimservicelibrary.jar
 -framework/uimremoteclientlibrary.jar
 etc/permissions/uimremoteclient.xml
 etc/permissions/lpa.xml
+
+-app/DynamicDDSService/DynamicDDSService.apk
