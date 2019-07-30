@@ -1,0 +1,1 @@
+allow untrusted_app_27 exported_system_prop:file { read };
