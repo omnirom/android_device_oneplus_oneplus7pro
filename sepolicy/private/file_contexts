@@ -13,7 +13,7 @@
 
 /data/vendor/omni/client_package_name                u:object_r:vendor_data_file:s0
 
-/sys/devices/platform/soc/89c000.i2c/i2c-2/2-005a/leds/vibrator/level u:object_r:sysfs_vibrator:s0
+/sys/devices/platform/soc/89c000.i2c/i2c-2/2-005a/leds/vibrator(/.*)? u:object_r:sysfs_vibrator:s0
 
 
 /sys/devices/platform/soc/ae00000\.qcom,mdss_mdp/drm/card0/card0-DSI-1/native_display_p3_mode              u:object_r:omni_sysfs_drm:s0
@@ -31,3 +31,5 @@
 /sys/devices/platform/vendor/vendor\:motor_pl/direction u:object_r:omni_sysfs_motor:s0
 /sys/devices/platform/vendor/vendor\:motor_pl/enable u:object_r:omni_sysfs_motor:s0
 /sys/devices/platform/vendor/vendor\:motor_pl/sw_switch u:object_r:omni_sysfs_motor:s0
+
+/system/bin/hw/android\.hardware\.vibrator@1\.2-service\.oneplus7pro u:object_r:hal_omni_vibrator_exec:s0

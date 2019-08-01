@@ -1,0 +1,4 @@
+service system.vibrator-1-2 /system/bin/hw/android.hardware.vibrator@1.2-service.oneplus7pro
+    class hal
+    user system
+    group system

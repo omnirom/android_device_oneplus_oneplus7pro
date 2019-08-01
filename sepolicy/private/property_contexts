@@ -1,3 +1,7 @@
 persist.vendor.sys.fp.fod.location.X_Y u:object_r:exported_system_prop:s0
 persist.vendor.sys.fp.fod.size.width_height u:object_r:exported_system_prop:s0
 sys.camera.motor.direction  u:object_r:exported_system_prop:s0 exact string
+ro.vibrator.hal.tick.duration u:object_r:exported_system_prop:s0 exact int
+ro.vibrator.hal.click.duration u:object_r:exported_system_prop:s0 exact int
+ro.vibrator.hal.heavyclick.duration u:object_r:exported_system_prop:s0 exact int
+

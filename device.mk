@@ -227,7 +227,8 @@ PRODUCT_PACKAGES += \
     OmniDisplayManager
 
 PRODUCT_PACKAGES += \
-    vendor.qti.hardware.wifi@1.0
+    vendor.qti.hardware.wifi@1.0 \
+    android.hardware.vibrator@1.2-service.oneplus7pro
 
 # Temporary handling
 #

@@ -158,3 +158,6 @@ service dashd /sbin/dashd
 
 service factory-hal-1-0 /system/bin/true
     disabled
+
+service vendor.vibrator-1-0 /system/bin/true
+    disabled
