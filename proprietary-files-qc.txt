@@ -1,7 +1,7 @@
 -priv-app/WfdService/WfdService.apk
 -framework/WfdCommon.jar
 -framework/qcrilhook.jar
--framework/qti-telephony-common.jar|bf30864fca6ffb151e916becd3ace92a33b1b45c
+-framework/qti-telephony-common.jar|a700fa4432fec0141869ee5e020637c817d01e1e
 -framework/qcnvitems.jar
 -priv-app/dpmserviceapp/dpmserviceapp.apk
 -app/AntHalService/AntHalService.apk
