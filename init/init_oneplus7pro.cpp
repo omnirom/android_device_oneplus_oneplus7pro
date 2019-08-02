@@ -99,13 +99,13 @@ void vendor_load_properties()
     op_variant = read_file2(OP_VARIANT, tmp, sizeof(tmp));
     LOG(INFO) << name;
     if (name == "OnePlus7Pro_EEA") {
-        property_override("ro.build.fingerprint", "OnePlus/OnePlus7Pro_EEA/OnePlus7Pro:9/PKQ1.190110.001/1907122210:user/release-keys");
-        property_override("ro.build.description", "OnePlus7Pro-user 9 PKQ1.190110.001 1907122210 release-keys");
+        property_override("ro.build.fingerprint", "OnePlus/OnePlus7Pro_EEA/OnePlus7Pro:9/PKQ1.190110.001/1907281556:user/release-keys");
+        property_override("ro.build.description", "OnePlus7Pro-user 9 PKQ1.190110.001 1907281556 release-keys");
         property_override("ro.build.model", "GM1913");
     }
     if (name == "OnePlus7Pro") {
-        property_override("ro.build.fingerprint", "OnePlus/OnePlus7Pro/OnePlus7Pro:9/PKQ1.190110.001/1907122210:user/release-keys");
-        property_override("ro.build.description", "OnePlus7Pro-user 9 PKQ1.190110.001 1907122210 release-keys");
+        property_override("ro.build.fingerprint", "OnePlus/OnePlus7Pro/OnePlus7Pro:9/PKQ1.190110.001/1907281556:user/release-keys");
+        property_override("ro.build.description", "OnePlus7Pro-user 9 PKQ1.190110.001 1907281556 release-keys");
         property_override("ro.build.model", "GM1917");
     }
 
