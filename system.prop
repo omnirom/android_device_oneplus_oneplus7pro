@@ -324,6 +324,7 @@ ro.location.osnlp.package=com.google.android.gms
 ro.location.osnlp.region.package=
 
 #omni
+ro.camera.notify_nfc=0
 ro.boot.project_name=18821
 ro.vendor.boot.project_name=18821
 persist.vendor.sys.fp.fod.location.X_Y=605,2613
