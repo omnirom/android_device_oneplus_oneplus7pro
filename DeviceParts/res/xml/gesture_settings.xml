@@ -50,12 +50,12 @@
             android:key="up_arrow_gesture_app"
             android:title="@string/category_up_arrow_gesture"
             android:persistent="false" />
-
+<!--
         <org.omnirom.device.AppSelectListPreference
             android:key="down_arrow_gesture_app"
             android:title="@string/category_down_arrow_gesture"
             android:persistent="false"/>
-
+-->
         <org.omnirom.device.AppSelectListPreference
             android:key="down_swipe_gesture_app"
             android:title="@string/category_down_swipe_gesture"

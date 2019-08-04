@@ -101,17 +101,12 @@ public class Startup extends BroadcastReceiver {
         enabled = !value.equals(AppSelectListPreference.DISABLED_ENTRY);
         restore(getGestureFile(GestureSettings.KEY_CIRCLE_APP), enabled);
 
-        // down arrow -> flashlight
-        mapping = GestureSettings.DEVICE_GESTURE_MAPPING_2;
-        value = Settings.System.getString(context.getContentResolver(), mapping);
+        // up arrow
+        mapping = GestureSettings.DEVICE_GESTURE_MAPPING_3;
         if (TextUtils.isEmpty(value)) {
             value = AppSelectListPreference.TORCH_ENTRY;
             Settings.System.putString(context.getContentResolver(), mapping, value);
         }
-        enabled = !value.equals(AppSelectListPreference.DISABLED_ENTRY);
-        restore(getGestureFile(GestureSettings.KEY_DOWN_ARROW_APP), enabled);
-
-        // up arrow
         value = Settings.System.getString(context.getContentResolver(), GestureSettings.DEVICE_GESTURE_MAPPING_3);
         enabled = !TextUtils.isEmpty(value) && !value.equals(AppSelectListPreference.DISABLED_ENTRY);
         restore(getGestureFile(GestureSettings.KEY_UP_ARROW_APP), enabled);
