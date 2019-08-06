@@ -2248,7 +2248,7 @@ status_t AudioPolicyManagerCustom::startInput(audio_io_handle_t input,
         if (inputDesc->getAudioSessionCount(true/*activeOnly*/) == 1) {
             // if input maps to a dynamic policy with an activity listener, notify of state change
             if ((inputDesc->mPolicyMix.promote() != NULL)
-                    && ((inputDesc->mPolicyMix.promote()->mCbFlags & AudioPolicyMix::kCbFlagNotifyActivity) != 0)) {
+                    && ((inputDesc->mPolicyMix.promote()->mCbFlags & AudioMix::kCbFlagNotifyActivity) != 0)) {
                 mpClientInterface->onDynamicPolicyMixStateUpdate(inputDesc->mPolicyMix.promote()->mDeviceAddress,
                         MIX_STATE_MIXING);
             }
