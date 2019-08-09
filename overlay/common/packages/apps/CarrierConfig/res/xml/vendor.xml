@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<carrier_config_list>
+    <carrier_config>
+        <boolean name="has_in_call_noise_suppression_bool" value="true" />
+        <boolean name="show_cdma_choices_bool" value="false" />
+        <boolean name="ignore_reset_ut_capability_bool" value="true" />
+        <boolean name="carrier_wfc_supports_wifi_only_bool" value="true" />
+        <boolean name="carrier_default_wfc_ims_roaming_enabled_bool" value="true" />
+        <boolean name="rtt_supported_bool" value="true" />
+    </carrier_config>
+</carrier_config_list>

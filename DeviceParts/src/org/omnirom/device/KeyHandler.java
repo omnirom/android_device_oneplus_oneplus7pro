@@ -73,6 +73,7 @@ public class KeyHandler implements DeviceKeyHandler {
     protected static final int GESTURE_REQUEST = 1;
     private static final int GESTURE_WAKELOCK_DURATION = 2000;
     private static final String DT2W_CONTROL_PATH = "/proc/touchpanel/double_tap_enable";
+    private static final String AOD_CONTROL_PATH = "/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/card0-DSI-1/aod";
 
     private static final int GESTURE_CIRCLE_SCANCODE = 250;
     private static final int GESTURE_V_SCANCODE = 252;
@@ -178,6 +179,8 @@ public class KeyHandler implements DeviceKeyHandler {
     private boolean mToggleTorch = false;
     private boolean mTorchState = false;
     private boolean mDoubleTapToWake;
+    private boolean mAodEnabled;
+    private boolean mShouldToggleAod;
 
     private SensorEventListener mProximitySensor = new SensorEventListener() {
         @Override
@@ -233,6 +236,9 @@ public class KeyHandler implements DeviceKeyHandler {
             mContext.getContentResolver().registerContentObserver(Settings.Secure.getUriFor(
                     Settings.Secure.DOUBLE_TAP_TO_WAKE),
                     false, this);
+            mContext.getContentResolver().registerContentObserver(Settings.Secure.getUriFor(
+                    Settings.Secure.DOZE_ALWAYS_ON),
+                    false, this);
             update();
             updateDozeSettings();
         }
@@ -258,7 +264,9 @@ public class KeyHandler implements DeviceKeyHandler {
                     UserHandle.USER_CURRENT) == 1;
             mDoubleTapToWake = Settings.Secure.getInt(
                     mContext.getContentResolver(), Settings.Secure.DOUBLE_TAP_TO_WAKE, 1) == 1;
-            updateDoubleTapToWake();
+            mAodEnabled = Settings.Secure.getInt(
+                    mContext.getContentResolver(), Settings.Secure.DOZE_ALWAYS_ON, 1) == 1;
+            updateSettings();
         }
     }
 
@@ -433,6 +441,13 @@ public class KeyHandler implements DeviceKeyHandler {
         }
     }
 
+    private void updateSettings() {
+        Log.i(TAG, "udateDoubleTapToWake " + mDoubleTapToWake);
+        if (Utils.fileWritable(DT2W_CONTROL_PATH)) {
+            Utils.writeValue(DT2W_CONTROL_PATH, mDoubleTapToWake ? "1" : "0");
+        }
+    }
+
     private void onDisplayOn() {
         if (DEBUG) Log.i(TAG, "Display on");
         if (enableProxiSensor()) {
@@ -449,12 +464,10 @@ public class KeyHandler implements DeviceKeyHandler {
             //mMotorHandler.removeCallbacksAndMessages(mCameraMotorSwitch);
             CameraMotorController.toggleCameraSwitch(true);
         }
-    }
-
-    private void updateDoubleTapToWake() {
-        Log.i(TAG, "udateDoubleTapToWake " + mDoubleTapToWake);
-        if (Utils.fileWritable(DT2W_CONTROL_PATH)) {
-            Utils.writeValue(DT2W_CONTROL_PATH, mDoubleTapToWake ? "1" : "0");
+        if (mAodEnabled) {
+            if (Utils.fileWritable(AOD_CONTROL_PATH)) {
+                Utils.writeValue(AOD_CONTROL_PATH, "0");
+            }
         }
     }
 
@@ -476,6 +489,11 @@ public class KeyHandler implements DeviceKeyHandler {
         }
         if (sIsOnePlus7pro) {
             CameraMotorController.toggleCameraSwitch(false);
+        }
+        if (mAodEnabled) {
+            if (Utils.fileWritable(AOD_CONTROL_PATH)) {
+                Utils.writeValue(AOD_CONTROL_PATH, "1");
+            }
         }
     }
 
