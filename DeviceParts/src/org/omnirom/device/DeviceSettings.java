@@ -50,6 +50,7 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String KEY_SRGB_SWITCH = "srgb";
     public static final String KEY_HBM_SWITCH = "hbm";
     public static final String KEY_PROXI_SWITCH = "proxi";
+    public static final String KEY_DCD_SWITCH = "dcd";
     public static final String KEY_DCI_SWITCH = "dci";
     public static final String KEY_NIGHT_SWITCH = "night";
     public static final String KEY_WIDE_SWITCH = "wide";
@@ -65,6 +66,7 @@ public class DeviceSettings extends PreferenceFragment implements
     private ListPreference mSliderModeCenter;
     private ListPreference mSliderModeBottom;
     private static TwoStatePreference mHBMModeSwitch;
+    private static TwoStatePreference mDCDModeSwitch;
     private static TwoStatePreference mOtgSwitch;
 
 
@@ -102,6 +104,11 @@ public class DeviceSettings extends PreferenceFragment implements
         mHBMModeSwitch.setEnabled(HBMModeSwitch.isSupported());
         mHBMModeSwitch.setChecked(HBMModeSwitch.isCurrentlyEnabled(this.getContext()));
         mHBMModeSwitch.setOnPreferenceChangeListener(new HBMModeSwitch(getContext()));
+
+        mDCDModeSwitch = (TwoStatePreference) findPreference(KEY_DCD_SWITCH);
+        mDCDModeSwitch.setEnabled(DCDModeSwitch.isSupported());
+        mDCDModeSwitch.setChecked(DCDModeSwitch.isCurrentlyEnabled(this.getContext()));
+        mDCDModeSwitch.setOnPreferenceChangeListener(new DCDModeSwitch(getContext()));
 
         mOtgSwitch = (TwoStatePreference) findPreference(KEY_OTG_SWITCH);
         mOtgSwitch.setEnabled(UsbOtgSwitch.isSupported());
