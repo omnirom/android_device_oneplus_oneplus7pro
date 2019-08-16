@@ -6,6 +6,7 @@
 /persist(/.*)?           u:object_r:persist_file:s0
 
 /system/etc/audio_policy_configuration_omni.xml    u:object_r:vendor_configs_file:s0
+/system/etc/audio_effects\.xml    u:object_r:vendor_configs_file:s0
 /system/etc/mixer_paths_tavil.xml    u:object_r:vendor_configs_file:s0
 /system/etc/WCNSS_qcom_cfg.ini    u:object_r:vendor_configs_file:s0
 /system/lib/modules/wlan.ko    u:object_r:vendor_file:s0

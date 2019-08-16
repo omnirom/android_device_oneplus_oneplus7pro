@@ -1,4 +1,5 @@
 on init
+    mount none /system/etc/audio_effects.xml /vendor/etc/audio_effects.xml bind
     #mount none /system/etc/media_profiles_vendor.xml /vendor/etc/media_profiles_vendor.xml bind
     mount none /system/etc/audio_policy_configuration_omni.xml /vendor/etc/audio/audio_policy_configuration.xml bind
     #mount none /system/etc/mixer_paths_tavil.xml /vendor/etc/mixer_paths_tavil.xml bind
