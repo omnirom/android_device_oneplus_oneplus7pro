@@ -43,9 +43,7 @@
     <bool name="config_supportSystemNavigationKeys">true</bool>
 
     <!-- Show a custom view for FOD -->
-    <bool name="config_needCustomFODView">true</bool>
-
-    <bool name="config_usesOnePlusFOD">true</bool>
+    <bool name="config_usesFOD">true</bool>
 
     <!-- The default intensity level for haptic feedback. See
          Settings.System.HAPTIC_FEEDBACK_INTENSITY more details on the constant values and
