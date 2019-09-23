@@ -31,13 +31,13 @@ import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.UserHandle;
 import android.provider.Settings;
-import android.support.v14.preference.PreferenceFragment;
-import android.support.v7.preference.ListPreference;
-import android.support.v7.preference.Preference;
-import android.support.v7.preference.PreferenceCategory;
-import android.support.v7.preference.PreferenceManager;
-import android.support.v7.preference.PreferenceScreen;
-import android.support.v7.preference.TwoStatePreference;
+import androidx.preference.PreferenceFragment;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceCategory;
+import androidx.preference.PreferenceManager;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.TwoStatePreference;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -79,8 +79,8 @@ public class DisplayModesSettings extends PreferenceFragment implements RadioGro
                 mRadioGroup.addView(rb[i]);
             }
         }
-        int displayMode = Settings.System.getIntForUser(getContext().getContentResolver(),
-                         Settings.System.OMNI_DISPLAY_MODE, 3, UserHandle.USER_CURRENT);
+        int displayMode = 3; //Settings.System.getIntForUser(getContext().getContentResolver(),
+                         //Settings.System.OMNI_DISPLAY_MODE, 3, UserHandle.USER_CURRENT);
         mRadioGroup.check(displayMode);
         mRadioGroup.setOnCheckedChangeListener(this);
     }
@@ -102,11 +102,11 @@ public class DisplayModesSettings extends PreferenceFragment implements RadioGro
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-            int displayMode = Settings.System.getIntForUser(getContext().getContentResolver(),
-                         Settings.System.OMNI_DISPLAY_MODE, 3, UserHandle.USER_CURRENT);
+            int displayMode = 3; //Settings.System.getIntForUser(getContext().getContentResolver(),
+                         //Settings.System.OMNI_DISPLAY_MODE, 3, UserHandle.USER_CURRENT);
             if (checkedId == displayMode)
                 return;
-            Settings.System.putInt(getContext().getContentResolver(), Settings.System.OMNI_DISPLAY_MODE, checkedId);
+            //Settings.System.putInt(getContext().getContentResolver(), Settings.System.OMNI_DISPLAY_MODE, checkedId);
             removeRunningTask();
             killRunningProcess();
     }
