@@ -67,11 +67,10 @@ PRODUCT_HOST_PACKAGES += \
 PRODUCT_PACKAGES_DEBUG += \
     bootctl
 
-PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-    bootctrl.msmnile \
-    libcutils \
-    libgptutils \
-    libz \
+# Boot control
+PRODUCT_PACKAGES += \
+    android.hardware.boot@1.0-impl.recovery \
+    bootctrl.msmnile.recovery
 
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
@@ -105,10 +104,6 @@ PRODUCT_AAPT_CONFIG := xxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 PRODUCT_CHARACTERISTICS := nosdcard
 
-# audio
-PRODUCT_PACKAGES += \
-    audio.a2dp.default \
-
 # Lights
 PRODUCT_PACKAGES += \
     lights.oneplus7pro
@@ -121,35 +116,6 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_codecs_google_video.xml
-
-# NFC - NCI
-#PRODUCT_PACKAGES += \
-    NfcNci \
-    libnfc_nci_jni \
-    Tag \
-    com.android.nfc_extras
-
-PRODUCT_PACKAGES += \
-    android.hardware.nfc@1.1 \
-    android.hardware.nfc@1.0
-
-# NFC - NQ (NXP)
-PRODUCT_PACKAGES += \
-    Tag \
-    com.android.nfc_extras
-
-PRODUCT_PACKAGES += \
-    libwifi-hal-qcom \
-    wificond \
-    wifilogd \
-    libwpa_client \
-    hostapd \
-    wpa_supplicant \
-    wpa_supplicant.conf
-
-PRODUCT_PACKAGES += \
-    libcld80211 \
-    lib_driver_cmd_qcwcn
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -182,7 +148,14 @@ PRODUCT_PACKAGES += \
     android.hidl.base@1.0
 
 PRODUCT_PACKAGES += \
-    vendor.display.config@1.7
+    vendor.display.config@1.10 \
+    libdisplayconfig \
+    libqdMetaData.system \
+    vendor.nxp.nxpese@1.0 \
+    vendor.nxp.nxpnfc@1.0 \
+    vendor.oneplus.camera.CameraHIDL@1.0 \
+    vendor.oneplus.fingerprint.extension@1.0 \
+    vendor.qti.hardware.camera.device@1.0
 
 # Display
 PRODUCT_PACKAGES += \
@@ -192,15 +165,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libtinyalsa
 
-PRODUCT_PACKAGES += \
-    ld.config.txt
-
-# Support for the O-MR1 devices
-#PRODUCT_COPY_FILES += \
-    build/make/target/product/vndk/init.gsi.rc:system/etc/init/init.gsi.rc \
-    build/make/target/product/vndk/init.vndk-27.rc:system/etc/init/gsi/init.vndk-27.rc
-
-#PRODUCT_EXTRA_VNDK_VERSIONS := 27
 
 # TODO(b/78308559): includes vr_hwc into GSI before vr_hwc move to vendor
 PRODUCT_PACKAGES += \
@@ -212,8 +176,6 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_codecs_google_video.xml
 
 PRODUCT_PACKAGES += android.hardware.health@2.0-service.oneplus7pro
-DEVICE_FRAMEWORK_MANIFEST_FILE += \
-    system/libhidl/vintfdata/manifest_healthd_exclude.xml
 
 PRODUCT_PACKAGES += \
     OmniDisplayManager
