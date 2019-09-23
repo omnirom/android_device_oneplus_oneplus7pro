@@ -56,10 +56,12 @@ AB_OTA_POSTINSTALL_CONFIG += \
 
 PRODUCT_PACKAGES += \
     otapreopt_script \
-    brillo_update_payload \
     update_engine \
     update_engine_sideload \
     update_verifier
+
+PRODUCT_HOST_PACKAGES += \
+    brillo_update_payload
 
 # Boot control
 PRODUCT_PACKAGES_DEBUG += \
