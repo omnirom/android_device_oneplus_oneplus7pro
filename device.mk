@@ -167,14 +167,6 @@ PRODUCT_PACKAGES += \
     ims-ext-common \
     tcmiface
 
-PRODUCT_BOOT_JARS += \
-    com.nxp.nfc \
-    tcmiface \
-    WfdCommon \
-    com.qti.snapdragon.sdk.display \
-    qcnvitems \
-    qcrilhook
-
 # Netutils
 PRODUCT_PACKAGES += \
     netutils-wrapper-1.0 \
