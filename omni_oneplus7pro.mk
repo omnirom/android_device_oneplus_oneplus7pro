@@ -51,6 +51,8 @@ ALLOW_MISSING_DEPENDENCIES := true
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service
 
+PRODUCT_SHIPPING_API_LEVEL := 29
+
 # Discard inherited values and use our own instead.
 PRODUCT_NAME := omni_oneplus7pro
 PRODUCT_DEVICE := oneplus7pro
