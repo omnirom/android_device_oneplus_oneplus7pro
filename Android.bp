@@ -1,3 +1,7 @@
 subdirs = [
     "vibrator",
+    "bootctrl",
+    "gpt-utils",
+    "health",
+    "fod",
 ]
