@@ -21,6 +21,9 @@
 #
 $(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
 
+# Enable updating of APEXes
+$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+
 #from build treble includes
 PRODUCT_COPY_FILES += \
     system/core/rootdir/init.zygote64_32.rc:root/init.zygote64_32.rc \
