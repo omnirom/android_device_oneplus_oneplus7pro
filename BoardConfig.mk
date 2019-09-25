@@ -19,19 +19,21 @@
 # product configuration (apps).
 #
 BOARD_PATH := device/oneplus/oneplus7pro
-
+include $(BOARD_PATH)/BoardConfigGsi.mk
 TARGET_INIT_VENDOR_LIB := libinit_oneplus7pro
-TARGET_USE_SDCLANG := true
 PRODUCT_FULL_TREBLE := true
 BOARD_VNDK_VERSION := current
 BOARD_VNDK_RUNTIME_DISABLE := false
 TARGET_NO_KERNEL := false
 BOARD_AVB_ENABLE := true
-BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --set_hashtree_disabled_flag
-BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 2
-BOARD_BUILD_DISABLED_VBMETAIMAGE := true
+BOARD_AVB_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
+#BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --set_hashtree_disabled_flag
+#BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 2
+#BOARD_BUILD_DISABLED_VBMETAIMAGE := true
 BOARD_USES_VENDORIMAGE := true
-SELINUX_IGNORE_NEVERALLOWS := false
+SELINUX_IGNORE_NEVERALLOWS := true
+DEXPREOPT_GENERATE_APEX_IMAGE := true
+DEXPREOPT_USE_APEX_IMAGE := true
 
 # Split selinux policy
 PRODUCT_SEPOLICY_SPLIT := true
@@ -50,7 +52,7 @@ TARGET_OTA_ASSERT_DEVICE := OnePlus7Pro
 endif
 TARGET_KERNEL_VERSION := 4.14
 TARGET_KERNEL_CLANG_COMPILE := true
-TARGET_KERNEL_CLANG_VERSION := 4.0.2
+#TARGET_KERNEL_CLANG_VERSION := 4.0.2
 #TARGET_KERNEL_CLANG_PATH := "./vendor/qcom/sdclang/8.0/prebuilt/linux-x86_64"
 TARGET_BOOTLOADER_BOARD_NAME := msmnile
 #TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
@@ -64,7 +66,7 @@ TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
-TARGET_CPU_VARIANT := kryo300
+TARGET_CPU_VARIANT := kryo
 
 TARGET_2ND_ARCH := arm
 TARGET_2ND_ARCH_VARIANT := armv8-a
@@ -81,16 +83,16 @@ ENABLE_SCHEDBOOST := true
 
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7 androidboot.usbcontroller=a600000.dwc3
 #BOARD_KERNEL_CMDLINE += androidboot.avb_version=1.0 androidboot.vbmeta.avb_version=1.0
-#BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
 BOARD_RAMDISK_OFFSET     := 0x02000000
-BOARD_ROOT_EXTRA_FOLDERS := odm op1 op2
-BOARD_ROOT_EXTRA_SYMLINKS := /vendor/dsp:/dsp /vendor/firmware_mnt:/firmware /vendor/bt_firmware:/bt_firmware /mnt/vendor/persist:/persist
+BOARD_ROOT_EXTRA_FOLDERS += odm op1 op2
+BOARD_ROOT_EXTRA_SYMLINKS := /vendor/dsp:/dsp /vendor/firmware_mnt:/firmware /mnt/vendor/persist:/persist
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
+#TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 BOARD_KERNEL_IMAGE_NAME := Image-dtb
 TARGET_KERNEL_SOURCE := kernel/oneplus/sm8150
 ifeq ($(TARGET_DEVICE),oneplus7pro)
@@ -109,6 +111,9 @@ BOARD_DTBOIMG_PARTITION_SIZE := 0x0800000
 BOARD_PERSISTIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
+
+BUILD_BROKEN_DUP_RULES := true
+BUILD_BROKEN_PHONY_TARGETS := true
 
 # global
 TARGET_SPECIFIC_HEADER_PATH := $(BOARD_PATH)/include
@@ -181,8 +186,11 @@ AUDIO_FEATURE_ENABLED_SND_MONITOR := false
 BOARD_USES_ALSA_AUDIO := true
 BOARD_USES_GENERIC_AUDIO := true
 TARGET_USES_QCOM_MM_AUDIO := true
-USE_CUSTOM_AUDIO_POLICY := 1
+#USE_CUSTOM_AUDIO_POLICY := 1
 AUDIO_FEATURE_ENABLED_RECORD_PLAY_CONCURRENCY := true
+
+#Modules
+NEED_KERNEL_MODULE_SYSTEM := true
 
 #effects
 TARGET_SYSTEM_AUDIO_EFFECTS := true
@@ -201,7 +209,7 @@ BOARD_SUPPRESS_SECURE_ERASE := true
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
-QCOM_BT_USE_BTNV := true
+#QCOM_BT_USE_BTNV := true
 
 #SEPERATE FROM OP6T
 ifeq ($(TARGET_DEVICE),oneplus7pro)
@@ -252,16 +260,6 @@ TARGET_USES_NQ_NFC := true
 TARGET_USES_PREBUILT_ANT := true
 BOARD_ANT_WIRELESS_DEVICE := "qualcomm-hidl"
 
-# GPS
-TARGET_NO_RPC := true
-USE_DEVICE_SPECIFIC_GPS := true
-BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
-BOARD_VENDOR_QCOM_LOC_PDK_FEATURE_SET := true
-
-# Crypto
-#TARGET_HW_DISK_ENCRYPTION := true
-#TARGET_CRYPTFS_HW_PATH := $(BOARD_PATH)/cryptfs_hw
-
 #vold
 TARGET_KERNEL_HAVE_NTFS := true
 TARGET_KERNEL_HAVE_EXFAT := true
@@ -276,15 +274,11 @@ endif
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
 # selinux
-#include device/qcom/sepolicy/sepolicy.mk
+include device/qcom/sepolicy/sepolicy.mk
 include vendor/omni/sepolicy/sepolicy.mk
 #BOARD_SEPOLICY_DIRS += $(BOARD_PATH)/sepolicy/qcom
 BOARD_PLAT_PUBLIC_SEPOLICY_DIR += $(BOARD_PATH)/sepolicy/public
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(BOARD_PATH)/sepolicy/private
-BOARD_PLAT_PUBLIC_SEPOLICY_DIR += \
-    device/qcom/sepolicy/public
-BOARD_PLAT_PRIVATE_SEPOLICY_DIR += \
-    device/qcom/sepolicy/private
 
 
 BOARD_SECCOMP_POLICY += $(BOARD_PATH)/seccomp_policy
