@@ -192,6 +192,10 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.wifi@1.0 \
     android.hardware.vibrator@1.2-service.oneplus7pro
 
+# Fingerprint
+PRODUCT_PACKAGES += \
+    omni.biometrics.fingerprint.inscreen@1.0-service.oneplus7pro
+
 # Temporary handling
 #
 # Include config.fs get only if legacy device/qcom/<target>/android_filesystem_config.h

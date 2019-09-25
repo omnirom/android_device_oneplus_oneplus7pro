@@ -313,3 +313,5 @@ TARGET_USES_QCOM_BSP := false
 #HIDL
 DEVICE_MATRIX_FILE   := $(BOARD_PATH)/compatibility_matrix.device.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += $(BOARD_PATH)/vendor_framework_compatibility_matrix.xml
+# HIDL
+DEVICE_FRAMEWORK_MANIFEST_FILE += $(BOARD_PATH)/framework_manifest.xml
