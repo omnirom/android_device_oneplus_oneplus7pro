@@ -6,3 +6,4 @@ allow hal_omni_vibrator hal_vibrator_hwservice:hwservice_manager find;
 allow hal_omni_vibrator sysfs_vibrator:file rw_file_perms;
 allow hal_omni_vibrator sysfs_vibrator:lnk_file rw_file_perms;
 allow hal_omni_vibrator sysfs:lnk_file rw_file_perms;
+allow hal_omni_vibrator sysfs_oem:file rw_file_perms;
