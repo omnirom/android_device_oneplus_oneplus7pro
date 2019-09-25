@@ -15,10 +15,6 @@
 -product/framework/com.qti.dpmframework.jar
 -product/app/datastatusnotification/datastatusnotification.apk
 -product/priv-app/ims/ims.apk
-product/etc/permissions/qti_telephony_hidl_wrapper.xml
-product/etc/permissions/qti_telephony_utils.xml
--product/framework/qti-telephony-hidl-wrapper.jar
--product/framework/qti-telephony-utils.jar
 product/lib64/vendor.qti.gnss@3.0.so
 product/lib64/vendor.qti.hardware.bluetooth_audio@2.0.so
 product/lib64/vendor.qti.hardware.btconfigstore@1.0.so
