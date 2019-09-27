@@ -219,7 +219,7 @@ debug.sf.enable_hwc_vds=1
 debug.sf.latch_unsignaled=1
 
 #ifdef VENDOR_EDIT
-persist.vendor.naruto.light.support=true
+persist.vendor.naruto.light.support=false
 #endif
 
 #ifdef VENDOR_EDIT
