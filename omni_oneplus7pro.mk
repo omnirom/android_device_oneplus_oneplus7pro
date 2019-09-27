@@ -43,13 +43,13 @@ DEVICE_PACKAGE_OVERLAYS += vendor/omni/overlay/CarrierConfig
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/omni/config/common.mk)
 
+# get the rest of aosp stuff after ours
+$(call inherit-product, $(SRC_TARGET_DIR)/product/mainline_system_arm64.mk)
+
 # Inherit from hardware-specific part of the product configuration
 $(call inherit-product, device/oneplus/oneplus7pro/device.mk)
 
 ALLOW_MISSING_DEPENDENCIES := true
-
-PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1-service
 
 PRODUCT_SHIPPING_API_LEVEL := 29
 
@@ -63,15 +63,12 @@ PRODUCT_MODEL := GM1913
 TARGET_DEVICE := OnePlus7Pro
 PRODUCT_SYSTEM_NAME := OnePlus7Pro
 
-OMNI_BUILD_FINGERPRINT := OnePlus/OnePlus7Pro_EEA/OnePlus7Pro:9/PKQ1.190110.001/1907122210:user/release-keys \
-OMNI_PRIVATE_BUILD_DESC := OnePlus7Pro-user 9 PKQ1.190110.001 1907122210 release-keys
+OMNI_BUILD_FINGERPRINT := OnePlus/OnePlus7Pro_EEA/OnePlus7Pro:10/QKQ1.190716.003/1909110008:user/release-keys
+OMNI_PRIVATE_BUILD_DESC := OnePlus7Pro-user 10 QKQ1.190716.003 1909110008 release-keys
 
 PLATFORM_SECURITY_PATCH_OVERRIDE := 2019-08-01
 
 TARGET_VENDOR := oneplus
-
-#PRODUCT_SYSTEM_PROPERTY_BLACKLIST += \
-    ro.product.model
 
 $(call inherit-product, vendor/oneplus/oneplus7pro/oneplus7pro-vendor.mk)
 

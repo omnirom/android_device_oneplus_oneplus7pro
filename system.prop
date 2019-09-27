@@ -1,6 +1,5 @@
-ro.adb.secure=0
-ro.apex.updatable=true
-ro.control_privapp_permissions=disable
+# system.prop for sdm845
+#
 
 rild.libpath=/vendor/lib64/libril-qc-hal-qmi.so
 #rild.libargs=-d /dev/smd0
@@ -253,9 +252,29 @@ persist.vendor.audio_hal.dsp_bit_width_enforce_mode=24
 #endif
 # end of vendor/oneplus/config/msmnile/system.prop
 
-#
-# ADDITIONAL_BUILD_PROPERTIES
-#
-ro.treble.enabled=true
-net.bt.name=Android
+#omni
 ro.vendor.qti.va_aosp.support=1
+ro.apex.updatable=true
+ro.camera.notify_nfc=0
+ro.boot.project_name=18821
+ro.vendor.boot.project_name=18821
+persist.vendor.sys.fp.fod.location.X_Y=605,2613
+persist.vendor.sys.fp.fod.size.width_height=230,230
+persist.vendor.cne.feature=1
+ro.hardware.lights=oneplus7pro
+
+persist.sys.camera.preview.size=1920x1080
+
+persist.vendor.radio.aosp_usr_pref_sel=true
+persist.vendor.radio.add_power_save=false
+
+sdm.debug.disable_inline_rotator=1
+sdm.debug.disable_inline_rotator_secure=1
+persist.vendor.diag.max.size=500
+
+ro.vibrator.hal.tick.duration=0
+ro.vibrator.hal.click.duration=0
+ro.vibrator.hal.heavyclick.duration=10
+
+#HWC
+persist.vendor.color.matrix=2
