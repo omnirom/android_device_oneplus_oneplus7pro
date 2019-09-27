@@ -12,5 +12,5 @@
 -->
 
 <permissions>
-    <feature name="vendor.omni.biometrics.fingerprint.inscreen" />
+    <feature name="android.hardware.fod" />
 </permissions>

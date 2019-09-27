@@ -2,6 +2,7 @@
 -framework/WfdCommon.jar
 -product/framework/qcrilhook.jar
 -product/framework/qti-telephony-common.jar
+-product/framework/op-telephony-common.jar
 -framework/qcnvitems.jar
 -product/priv-app/dpmserviceapp/dpmserviceapp.apk
 -app/AntHalService/AntHalService.apk
@@ -14,7 +15,9 @@
 -product/app/imssettings/imssettings.apk
 -product/framework/com.qti.dpmframework.jar
 -product/app/datastatusnotification/datastatusnotification.apk
--product/priv-app/ims/ims.apk
+-product/priv-app/ims/ims.apk|dc485154a51f48e90ee88511cd9931cd5a991621
 product/lib64/vendor.qti.gnss@3.0.so
-product/lib64/vendor.qti.hardware.bluetooth_audio@2.0.so
 product/lib64/vendor.qti.hardware.btconfigstore@1.0.so
+product/lib64/vendor.qti.imsrtpservice@2.1.so
+product/lib/vendor.qti.imsrtpservice@2.1.so
+

@@ -4,6 +4,9 @@ hal_server_domain(hal_fod_msmnile, hal_omni_fod)
 type hal_fod_msmnile_exec, exec_type, file_type;
 init_daemon_domain(hal_fod_msmnile)
 
+# Allow access to the HALs
+hal_client_domain(hal_fod_msmnile, hal_fingerprint)
+
 # Allow binder communication with hal_display_default
 binder_call(hal_fod_msmnile, hal_display_default)
 

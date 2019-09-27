@@ -21,23 +21,11 @@
 #
 $(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
 
-# Enable updating of APEXes
-$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
-
-#from build treble includes
-PRODUCT_COPY_FILES += \
-    system/core/rootdir/init.zygote64_32.rc:root/init.zygote64_32.rc \
-    system/core/rootdir/init.zygote32_64.rc:root/init.zygote32_64.rc
-
-TARGET_SUPPORTS_32_BIT_APPS := true
-TARGET_SUPPORTS_64_BIT_APPS := true
+PRODUCT_PACKAGES := com.android.apex.cts.shim.v1_prebuilt
+TARGET_FLATTEN_APEX := false
 
 PRODUCT_PACKAGES += \
     libinit_oneplus7pro
-
-# SP-NDK:
-PRODUCT_PACKAGES += \
-    libvulkan \
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.build.version.all_codenames=$(PLATFORM_VERSION_ALL_CODENAMES) \
@@ -182,8 +170,6 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_codecs_google_video.xml
-
-PRODUCT_PACKAGES += android.hardware.health@2.0-service.oneplus7pro
 
 PRODUCT_PACKAGES += \
     OmniDisplayManager

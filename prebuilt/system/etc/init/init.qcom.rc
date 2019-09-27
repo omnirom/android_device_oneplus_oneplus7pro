@@ -1,6 +1,4 @@
 on init
-    mount none /system/etc/audio_effects.xml /vendor/etc/audio_effects.xml bind
-    mount none /system/etc/media_profiles_vendor.xml /vendor/etc/media_profiles_vendor.xml bind
     mount none /system/lib/modules/wlan.ko /vendor/lib/modules/qca_cld3_wlan.ko bind
     mount none /system/lib/hw/lights.oneplus7pro.so /vendor/lib/hw/lights.msmnile.so bind
     mount none /system/lib64/hw/lights.oneplus7pro.so /vendor/lib64/hw/lights.msmnile.so bind
@@ -8,8 +6,7 @@ on init
     mount none /dev/null /vendor/overlay/BluetoothResCommon.apk bind
     mount none /dev/null /vendor/overlay/SystemUIResCommon.apk bind
     mount none /dev/null /vendor/overlay/FrameworksResCommon.apk bind
-    mount none /dev/null /vendor/etc/init/android.hardware.health@2.0-service.rc bind
-    #mount none /system/lib/hw/audio.primary.sdm845.so /vendor/lib/hw/audio.primary.sdm845.so bind
+    mount none /dev/null /vendor/overlay bind
 
 on boot
     # default country code
@@ -161,4 +158,7 @@ service factory-hal-1-0 /system/bin/true
     disabled
 
 service vendor.vibrator-1-0 /system/bin/true
+    disabled
+
+service oneplus_brain_service /system/bin/true
     disabled
