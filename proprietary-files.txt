@@ -5,10 +5,7 @@ product/etc/dpm/dpm.conf
 product/etc/init/dpmd.rc
 etc/init/wfdservice.rc
 etc/bluetooth/bt_profile.conf
-etc/bluetooth/bt_did.conf
-etc/bluetooth/bt_stack_debug.conf
 etc/bluetooth/interop_database.conf
-etc/bluetooth/bt_stack.conf
 etc/permissions/audiosphere.xml
 product/etc/permissions/com.qti.dpmframework.xml
 etc/permissions/com.qualcomm.location.xml
@@ -113,7 +110,6 @@ etc/sensors/proto/sns_ultra_violet.proto
 etc/wfdconfigsink.xml
 etc/voicemail-conf.xml
 framework/audiosphere.jar
-product/framework/com.qti.dpmframework.jar
 -product/framework/com.qualcomm.qti.imscmservice-V2.0-java.jar
 -product/framework/com.qualcomm.qti.imscmservice-V2.1-java.jar
 -product/framework/com.qualcomm.qti.imscmservice-V2.2-java.jar
@@ -135,7 +131,6 @@ product/framework/vendor.qti.hardware.data.qmi-V1.0-java.jar
 -product/framework/vendor.qti.ims.rcsconfig-V1.0-java.jar
 -product/framework/vendor.qti.voiceprint-V1.0-java.jar
 product/lib64/com.qualcomm.qti.ant@1.0.so
-product/lib64/com.qualcomm.qti.bluetooth_audio@1.0.so
 product/lib64/com.qualcomm.qti.dpm.api@1.0.so
 product/lib64/com.qualcomm.qti.imscmservice@1.0.so
 product/lib64/com.qualcomm.qti.imscmservice@2.0.so
@@ -149,7 +144,6 @@ lib64/libbluetooth_qti.so
 lib64/libcdsprpc_system.so
 lib64/libchromaflash.so
 lib64/libdiag_system.so
-lib64/libdisplayconfig.so
 product/lib64/libdpmctmgr.so
 product/lib64/libdpmfdmgr.so
 product/lib64/libdpmframework.so
@@ -171,7 +165,6 @@ lib64/libjni_dualcamera.so
 lib64/libjni_filtergenerator.so
 lib64/libjni_hazebuster.so
 lib64/libjni_optizoom.so
-lib64/libjni_pacprocessor.so
 #lib64/libjni_panorama.so
 lib64/libjni_seestraight.so
 lib64/libjni_sharpshooter.so
@@ -190,7 +183,6 @@ lib64/libOmxMux.so
 lib64/libopcameralib-em.so
 lib64/libOpenCL_system.so
 lib64/liboptizoom.so
-lib64/libqdMetaData.system.so
 lib64/libqmi_cci_system.so
 lib64/libqti-at.so
 lib64/libqti-perfd-client_system.so
@@ -217,9 +209,6 @@ lib64/libxt_native.so
 product/lib64/vendor.display.color@1.0.so
 product/lib64/vendor.display.color@1.1.so
 product/lib64/vendor.display.postproc@1.0.so
-lib64/vendor.oneplus.camera.CameraHIDL@1.0-adapter-helper.so
-lib64/vendor.oneplus.camera.CameraHIDL@1.0.so
-lib64/vendor.oneplus.fingerprint.extension@1.0.so
 product/lib64/vendor.qti.gnss@1.0.so
 product/lib64/vendor.qti.gnss@1.1.so
 product/lib64/vendor.qti.gnss@1.2.so
@@ -259,7 +248,6 @@ product/lib64/libGPTEE_system.qti.so
 product/lib64/libQTEEConnector_system.so
 product/lib64/libGPQTEEC_system.qti.so
 product/lib/com.qualcomm.qti.ant@1.0.so
-product/lib/com.qualcomm.qti.bluetooth_audio@1.0.so
 product/lib/com.qualcomm.qti.dpm.api@1.0.so
 product/lib/com.qualcomm.qti.imscmservice@1.0.so
 product/lib/com.qualcomm.qti.imscmservice@2.0.so
@@ -272,7 +260,6 @@ lib/libbluetooth_qti.so
 lib/libcdsprpc_system.so
 lib/libchromaflash.so
 lib/libdiag_system.so
-lib/libdisplayconfig.so
 product/lib/libdpmctmgr.so
 product/lib/libdpmfdmgr.so
 product/lib/libdpmframework.so
@@ -311,7 +298,6 @@ lib/libOmxMux.so
 lib/libopcameralib-em.so
 lib/libOpenCL_system.so
 lib/liboptizoom.so
-lib/libqdMetaData.system.so
 lib/libqmi_cci_system.so
 lib/libqti-at.so
 lib/libqti-perfd-client_system.so
@@ -335,9 +321,6 @@ lib/libxt_native.so
 product/lib/vendor.display.color@1.0.so
 product/lib/vendor.display.color@1.1.so
 product/lib/vendor.display.postproc@1.0.so
-lib/vendor.oneplus.camera.CameraHIDL@1.0-adapter-helper.so
-lib/vendor.oneplus.camera.CameraHIDL@1.0.so
-lib/vendor.oneplus.fingerprint.extension@1.0.so
 product/lib/vendor.qti.gnss@1.0.so
 product/lib/vendor.qti.gnss@1.1.so
 product/lib/vendor.qti.gnss@1.2.so
@@ -377,11 +360,9 @@ product/lib/vendor.qti.voiceprint@1.0.so
 
 etc/voicemail-conf.xml
 etc/nfc_card_config.conf
-etc/clatd.conf
 product/etc/sysconfig/google.xml
 etc/cdma_call_conf.xml
 
-lib/libnl.so
 lib/libwfduibcsrcinterface.so
 lib/libwfdmmsink.so
 lib/libwfduibcsinkinterface.so
@@ -412,23 +393,17 @@ lib/libqvr_cam_cdsp_driver_stub.so
 lib/libqvr_eyetracking_plugin.so
 lib/libqvr_cdsp_driver_stub.so
 
--app/OPSoundTuner/OPSoundTuner.apk|f881f395dcd6bd574ce77607f483ec3fa4f2e549
+-app/OPSoundTuner/OPSoundTuner.apk|4c3c86a7a2984165c76b687c7582eebe8ba109cc
 etc/permissions/com.dolby.daxservice.xml
 -priv-app/daxService/daxService.apk
 
-lib64/android.hardware.secure_element@1.0.so
-lib/android.hardware.secure_element@1.0.so
-lib/vendor.nxp.nxpnfc@1.0.so
-lib64/vendor.nxp.nxpnfc@1.0.so
--app/NxpNfcNci/NxpNfcNci.apk|886bd7436efff9a6fb6cd86cc0fd2b77ee353a8d
+-app/NxpNfcNci/NxpNfcNci.apk|9a32dcf8d46010691bf169e55755e0cd45a41c9b
 -app/NxpSecureElement/NxpSecureElement.apk
 -framework/com.nxp.nfc.jar
 etc/permissions/com.nxp.nfc.xml
 lib64/libnxpnfc_nci_jni.so
 lib64/libnxpnfc-nci.so
 lib/libnxpnfc-nci.so
-lib64/vendor.nxp.nxpnfc@1.0.so
-lib/vendor.nxp.nxpnfc@1.0.so
 etc/nfcee_access.xml
 
 -priv-app/OPNetworkSetting/OPNetworkSetting.apk|d25e3155dc84b34f233e1f543c2d3deace603385
@@ -440,9 +415,9 @@ product/lib64/vendor.qti.hardware.data.connection@1.0.so
 product/lib/vendor.qti.hardware.data.connection@1.1.so
 product/lib64/vendor.qti.hardware.data.connection@1.1.so
 -product/framework/vendor.qti.hardware.data.connection-V1.0-java.jar
-product/etc/permissions/vendor.qti.hardware.data.connection-V1.0-java.xml
+#product/etc/permissions/vendor.qti.hardware.data.connection-V1.0-java.xml
 -product/framework/vendor.qti.hardware.data.connection-V1.1-java.jar
-product/etc/permissions/vendor.qti.hardware.data.connection-V1.1-java.xml
+#product/etc/permissions/vendor.qti.hardware.data.connection-V1.1-java.xml
 
 #cne
 product/framework/com.quicinc.cne.api-V1.1-java.jar
