@@ -33,8 +33,10 @@
 #define OP_DISPLAY_SET_DIM 10
 
 // This is not a typo by me. It's by OnePlus.
-#define HBM_ENABLE_PATH "/sys/class/drm/card0-DSI-1/op_friginer_print_hbm"
+#define HBM_ENABLE_PATH "/sys/class/drm/card0-DSI-1/hbm"
+#define HBM_DIM_PATH "/sys/class/drm/card0-DSI-1/hbm_brightness"
 #define DIM_AMOUNT_PATH "/sys/class/drm/card0-DSI-1/dim_alpha"
+#define DC_DIM_PATH "/sys/class/drm/card0-DSI-1/dimlayer_bl_en"
 
 namespace vendor {
 namespace omni {
@@ -44,6 +46,8 @@ namespace inscreen {
 namespace V1_0 {
 namespace implementation {
 
+int dimAmount;
+bool dcDimState;
 /*
  * Write value to path and close file.
  */
@@ -82,16 +86,16 @@ Return<void> FingerprintInscreen::onFinishEnroll() {
 
 Return<void> FingerprintInscreen::onPress() {
     this->mVendorDisplayService->setMode(OP_DISPLAY_AOD_MODE, 2);
-    this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 1);
-    set(HBM_ENABLE_PATH, 1);
+    this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 5);
+    set(HBM_ENABLE_PATH, 5);
     this->mVendorDisplayService->setMode(OP_DISPLAY_NOTIFY_PRESS, 1);
 
     return Void();
 }
 
 Return<void> FingerprintInscreen::onRelease() {
-    this->mVendorDisplayService->setMode(OP_DISPLAY_AOD_MODE, 0);
-    this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 0);
+//    this->mVendorDisplayService->setMode(OP_DISPLAY_AOD_MODE, 0);
+//    this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 0);
     set(HBM_ENABLE_PATH, 0);
     this->mVendorDisplayService->setMode(OP_DISPLAY_NOTIFY_PRESS, 0);
 
@@ -99,13 +103,18 @@ Return<void> FingerprintInscreen::onRelease() {
 }
 
 Return<void> FingerprintInscreen::onShowFODView() {
+    dcDimState = get(DC_DIM_PATH, 0);
+    set(DC_DIM_PATH, 0);
+    set(HBM_DIM_PATH, 260 - getDimAmount(255));
     return Void();
 }
 
 Return<void> FingerprintInscreen::onHideFODView() {
-    this->mVendorDisplayService->setMode(OP_DISPLAY_AOD_MODE, 0);
-    this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 0);
+//    this->mVendorDisplayService->setMode(OP_DISPLAY_AOD_MODE, 0);
+//    this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 0);
+//    set(HBM_DIM_PATH, 0);
     set(HBM_ENABLE_PATH, 0);
+    set(DC_DIM_PATH, dcDimState);
     this->mVendorDisplayService->setMode(OP_DISPLAY_NOTIFY_PRESS, 0);
 
     return Void();
@@ -150,7 +159,7 @@ Return<void> FingerprintInscreen::setLongPressEnabled(bool enabled) {
 }
 
 Return<int32_t> FingerprintInscreen::getDimAmount(int32_t) {
-    int dimAmount = get(DIM_AMOUNT_PATH, 0);
+    dimAmount = get(DIM_AMOUNT_PATH, 0);
     LOG(INFO) << "dimAmount = " << dimAmount;
 
     return dimAmount;

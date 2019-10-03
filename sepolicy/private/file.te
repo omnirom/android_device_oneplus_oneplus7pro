@@ -9,6 +9,7 @@ type op2_file, file_type;
 type omni_sysfs_drm, sysfs_type, fs_type;
 type omni_sysfs_motor, sysfs_type, fs_type;
 type sysfs_oem, sysfs_type, fs_type;
+type sysfs_graphics, sysfs_type, fs_type;
 type proc_touchpanel, fs_type;
 type sysfs_fod, sysfs_type, fs_type;
-# type sysfs_kgsl, sysfs_type, fs_type;
+type sysfs_usb_supply, sysfs_type, fs_type;

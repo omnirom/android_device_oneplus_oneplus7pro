@@ -21,3 +21,7 @@ allow hal_fod_msmnile hal_fingerprint_hwservice:hwservice_manager find;
 
 # Allow hal_fod_msmnile to read and write to sysfs_fod
 allow hal_fod_msmnile sysfs_fod:file rw_file_perms;
+allow hal_fod_msmnile sysfs_oem:file rw_file_perms;
+allow hal_fod_msmnile sysfs_graphics:file rw_file_perms;
+allow hal_fod_msmnile omni_sysfs_drm:file rw_file_perms;
+
