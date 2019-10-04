@@ -1,0 +1,2 @@
+allow hal_sensors oem_audio_device:chr_file getattr;
+
