@@ -60,6 +60,15 @@ on boot
     chown system system /proc/touchpanel/down_swipe_enable
     chmod 0660 /proc/touchpanel/down_swipe_enable
 
+    chown system system /proc/touchpanel/letter_m_enable
+    chmod 0660 /proc/touchpanel/letter_m_enable
+
+    chown system system /proc/touchpanel/letter_w_enable
+    chmod 0660 /proc/touchpanel/letter_w_enable
+
+    chown system system /proc/touchpanel/letter_s_enable
+    chmod 0660 /proc/touchpanel/letter_s_enable
+
     chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/proximity_state
     chown system system /sys/devices/soc/soc:fpc_fpc1020/proximity_state
 

@@ -50,30 +50,20 @@
             android:key="up_arrow_gesture_app"
             android:title="@string/category_up_arrow_gesture"
             android:persistent="false" />
-<!--
+
         <org.omnirom.device.AppSelectListPreference
-            android:key="down_arrow_gesture_app"
-            android:title="@string/category_down_arrow_gesture"
-            android:persistent="false"/>
--->
-        <org.omnirom.device.AppSelectListPreference
-            android:key="down_swipe_gesture_app"
-            android:title="@string/category_down_swipe_gesture"
+            android:key="gesture_m_app"
+            android:title="@string/category_s_gesture"
             android:persistent="false"/>
 
         <org.omnirom.device.AppSelectListPreference
-            android:key="up_swipe_gesture_app"
-            android:title="@string/category_up_swipe_gesture"
+            android:key="gesture_w_app"
+            android:title="@string/category_w_gesture"
             android:persistent="false"/>
 
         <org.omnirom.device.AppSelectListPreference
-            android:key="left_swipe_gesture_app"
-            android:title="@string/category_left_swipe_gesture"
-            android:persistent="false"/>
-
-        <org.omnirom.device.AppSelectListPreference
-            android:key="right_swipe_gesture_app"
-            android:title="@string/category_right_swipe_gesture"
+            android:key="gesture_s_app"
+            android:title="@string/category_m_gesture"
             android:persistent="false"/>
 
     </PreferenceCategory>

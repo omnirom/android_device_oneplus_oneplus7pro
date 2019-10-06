@@ -83,10 +83,9 @@
     <string name="navigate_recent">Recent</string>
     <string name="not_ready_summary">Resolving...</string>
     <string name="resolve_failed_summary">Resolving app failed</string>
-    <string name="category_down_swipe_gesture">Down swipe</string>
-    <string name="category_up_swipe_gesture">Up swipe</string>
-    <string name="category_left_swipe_gesture">Left swipe</string>
-    <string name="category_right_swipe_gesture">Right swipe</string>
+    <string name="category_s_gesture">S swipe</string>
+    <string name="category_m_gesture">M swipe</string>
+    <string name="category_w_gesture">W swipe</string>
 
     <string name="doze_category_title">Ambient display</string>
     <string name="doze_category_summary">Wake screen when you receive notifications</string>
