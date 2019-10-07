@@ -261,7 +261,6 @@ ro.vendor.boot.project_name=18821
 persist.vendor.sys.fp.fod.location.X_Y=605,2613
 persist.vendor.sys.fp.fod.size.width_height=230,230
 persist.vendor.cne.feature=1
-#ro.hardware.lights=oneplus7pro
 
 persist.sys.camera.preview.size=1920x1080
 
