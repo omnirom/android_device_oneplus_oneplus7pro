@@ -21,4 +21,8 @@
     <!-- Whether to show Connected MAC Randomization in Developer Options -->
     <bool name="config_wifi_support_connected_mac_randomization">true</bool>
 
+    <!-- Whether to use a UI variant that minimizes the number of UI elements on screen. This is
+         typically used when there is not enough space to display everything, because pattern view
+         doesn't interact well with scroll view -->
+    <bool name="config_lock_pattern_minimal_ui">false</bool>
 </resources>

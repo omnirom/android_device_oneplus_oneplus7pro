@@ -314,6 +314,11 @@
     <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
     <bool translatable="false" name="config_wifi_dual_band_support">true</bool>
 
+  <!-- Enable ACS (auto channel selection) for Wifi hotspot (SAP) -->
+  <bool translatable="false" name="config_wifi_softap_acs_supported">true</bool>
+  <!-- Enable 802.11ac for Wifi hotspot (SAP) -->
+  <bool translatable="false" name="config_wifi_softap_ieee80211ac_supported">true</bool>
+
     <!-- Wifi driver supports batched scan -->
     <bool translatable="false" name="config_wifi_batched_scan_supported">true</bool>
 
@@ -710,7 +715,7 @@
     <bool name="config_haveHigherAspectRatioScreen">true</bool>
 
     <!-- Allow automatic adjusting of the screen brightness while dozing in low power state. -->
-    <bool name="config_allowAutoBrightnessWhileDozing">true</bool>
+    <bool name="config_allowAutoBrightnessWhileDozing">false</bool>
 
     <!-- The list of vendor package signatures that should also be considered
          platform signatures, specifically for use on devices with a vendor partition. -->
