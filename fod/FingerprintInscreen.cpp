@@ -86,7 +86,6 @@ Return<void> FingerprintInscreen::onFinishEnroll() {
 }
 
 Return<void> FingerprintInscreen::onPress() {
-    this->mVendorDisplayService->setMode(OP_DISPLAY_AOD_MODE, 2);
     this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 5);
     set(HBM_ENABLE_PATH, 5);
     this->mVendorDisplayService->setMode(OP_DISPLAY_NOTIFY_PRESS, 1);
@@ -95,8 +94,6 @@ Return<void> FingerprintInscreen::onPress() {
 }
 
 Return<void> FingerprintInscreen::onRelease() {
-//    this->mVendorDisplayService->setMode(OP_DISPLAY_AOD_MODE, 0);
-//    this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 0);
     set(HBM_ENABLE_PATH, 0);
     this->mVendorDisplayService->setMode(OP_DISPLAY_NOTIFY_PRESS, 0);
 
@@ -104,6 +101,7 @@ Return<void> FingerprintInscreen::onRelease() {
 }
 
 Return<void> FingerprintInscreen::onShowFODView() {
+    this->mVendorDisplayService->setMode(OP_DISPLAY_AOD_MODE, 2);
     dcDimState = get(DC_DIM_PATH, 0);
     set(DC_DIM_PATH, 0);
     set(HBM_DIM_PATH, 260 - getDimAmount(255));
@@ -111,9 +109,6 @@ Return<void> FingerprintInscreen::onShowFODView() {
 }
 
 Return<void> FingerprintInscreen::onHideFODView() {
-//    this->mVendorDisplayService->setMode(OP_DISPLAY_AOD_MODE, 0);
-//    this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 0);
-//    set(HBM_DIM_PATH, 0);
     set(HBM_ENABLE_PATH, 0);
     set(DC_DIM_PATH, dcDimState);
     this->mVendorDisplayService->setMode(OP_DISPLAY_NOTIFY_PRESS, 0);
