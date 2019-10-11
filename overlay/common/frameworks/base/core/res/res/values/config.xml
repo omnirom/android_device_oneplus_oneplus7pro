@@ -810,4 +810,17 @@
     <integer name="config_defaultPeakRefreshRate">90</integer>
 
     <integer name="config_defaultMaxCachedProcesses">64</integer>
+
+    <string-array name="fingerprint_error_vendor">
+        <item>error 0</item>
+        <item>error 1</item>
+        <item>error 2</item>
+        <item>error 3</item>
+        <item>error 4</item>
+        <item>error 5</item>
+        <item>Sorry, fingerprint not available right now</item>
+        <item>error 7</item>
+        <item>error 8</item>
+    </string-array>
+
 </resources>
