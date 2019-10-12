@@ -100,12 +100,12 @@ void vendor_load_properties()
     if (name == "OnePlus7Pro_EEA") {
         property_override("ro.build.fingerprint", "OnePlus/OnePlus7Pro_EEA/OnePlus7Pro:10/QKQ1.190716.003/1910071200:user/release-keys");
         property_override("ro.build.description", "OnePlus7Pro-user 10 QKQ1.190716.003 1910071200 release-keys");
-        property_override("ro.build.model", "GM1913");
+        property_override("ro.build.model", "GM1917");
     }
     if (name == "OnePlus7Pro") {
         property_override("ro.build.fingerprint", "OnePlus/OnePlus7Pro/OnePlus7Pro:10/QKQ1.190716.003/1910071200:user/release-keys");
         property_override("ro.build.description", "OnePlus7Pro-user 10 QKQ1.190716.003 1910071200 release-keys");
-        property_override("ro.build.model", "GM1917");
+        property_override("ro.build.model", "GM1913");
     }
 
     /*Check for kgsl node and disable HW composition*/
