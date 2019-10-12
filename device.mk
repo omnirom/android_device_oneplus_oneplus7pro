@@ -24,7 +24,7 @@ $(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
 PRODUCT_PACKAGES := com.android.apex.cts.shim.v1_prebuilt
 TARGET_FLATTEN_APEX := false
 
-#PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES += \
     libinit_oneplus7pro
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
