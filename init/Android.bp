@@ -1,0 +1,14 @@
+cc_library_static {
+    name: "libinit_oneplus7pro",
+
+    include_dirs: [
+        "system/core/base/include",
+        "system/core/init",
+    ],
+    cflags: [
+        "-Wall",
+    ],
+    srcs: ["init_oneplus7pro.cpp"],
+    recovery_available: true,
+}
+
