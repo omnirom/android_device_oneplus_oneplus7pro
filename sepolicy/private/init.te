@@ -25,3 +25,6 @@ allow init property_socket:sock_file write;
 
 #vendor init
 allow init property_socket:sock_file write;
+
+allow init null_device:chr_file mounton;
+

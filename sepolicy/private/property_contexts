@@ -5,3 +5,6 @@ ro.vibrator.hal.tick.duration u:object_r:exported_system_prop:s0 exact int
 ro.vibrator.hal.click.duration u:object_r:exported_system_prop:s0 exact int
 ro.vibrator.hal.heavyclick.duration u:object_r:exported_system_prop:s0 exact int
 
+persist.sys.force_sw_gles u:object_r:exported_system_prop:s0 exact int
+persist.rcs.otp_sms_port u:object_r:exported_system_prop:s0 exact int
+persist.netmon.linger u:object_r:exported_system_prop:s0 exact int

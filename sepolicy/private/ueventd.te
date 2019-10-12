@@ -1,0 +1,3 @@
+allow ueventd metadata_file:dir search;
+allow ueventd self:capability sys_admin;
+

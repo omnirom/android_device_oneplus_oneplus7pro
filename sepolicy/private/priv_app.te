@@ -1,3 +1,10 @@
 allow priv_app op1_file:filesystem { getattr };
 #allow priv_app firmware_file:filesystem { getattr };
 # allow priv_app bt_firmware_file:filesystem { getattr };
+
+
+allow priv_app metadata_file:dir getattr;
+allow priv_app op1_file:dir getattr;
+allow priv_app op2_file:dir getattr;
+allow priv_app postinstall_mnt_dir:dir getattr;
+allow priv_app proc_net:file read;
