@@ -73,6 +73,7 @@ public class KeyHandler implements DeviceKeyHandler {
     protected static final int GESTURE_REQUEST = 1;
     private static final int GESTURE_WAKELOCK_DURATION = 2000;
     private static final String DT2W_CONTROL_PATH = "/proc/touchpanel/double_tap_enable";
+    private static final String SINGLE_TAP_CONTROL_PATH = "/proc/touchpanel/single_tap_enable";
 
     private static final int GESTURE_CIRCLE = 250;
     private static final int GESTURE_UP_ARROW = 252;
@@ -163,9 +164,8 @@ public class KeyHandler implements DeviceKeyHandler {
     private boolean mUseTiltCheck;
     private boolean mProxyWasNear;
     private long mProxySensorTimestamp;
-    private boolean mUseWaveCheck;
     private Sensor mPocketSensor;
-    private boolean mUsePocketCheck;
+    private boolean mUseSingleTap;
     private boolean mDispOn;
     private ClientPackageNameObserver mClientObserver;
     private IOnePlusCameraProvider mProvider;
@@ -174,32 +174,6 @@ public class KeyHandler implements DeviceKeyHandler {
     private boolean mToggleTorch = false;
     private boolean mTorchState = false;
     private boolean mDoubleTapToWake;
-
-    private SensorEventListener mProximitySensor = new SensorEventListener() {
-        @Override
-        public void onSensorChanged(SensorEvent event) {
-            mProxyIsNear = event.values[0] == 1;
-            if (DEBUG_SENSOR) Log.i(TAG, "mProxyIsNear = " + mProxyIsNear + " mProxyWasNear = " + mProxyWasNear);
-            if (mUseWaveCheck || mUsePocketCheck) {
-                if (mProxyWasNear && !mProxyIsNear) {
-                    long delta = SystemClock.elapsedRealtime() - mProxySensorTimestamp;
-                    if (DEBUG_SENSOR) Log.i(TAG, "delta = " + delta);
-                    if (mUseWaveCheck && delta < HANDWAVE_MAX_DELTA_MS) {
-                        launchDozePulse();
-                    }
-                    if (mUsePocketCheck && delta > POCKET_MIN_DELTA_MS) {
-                        launchDozePulse();
-                    }
-                }
-                mProxySensorTimestamp = SystemClock.elapsedRealtime();
-                mProxyWasNear = mProxyIsNear;
-            }
-        }
-
-        @Override
-        public void onAccuracyChanged(Sensor sensor, int accuracy) {
-        }
-    };
 
     private SensorEventListener mTiltSensorListener = new SensorEventListener() {
         @Override
@@ -376,6 +350,7 @@ public class KeyHandler implements DeviceKeyHandler {
             if (DEBUG) Log.i(TAG, "isWakeEvent " + event.getScanCode() + value);
             return true;
         }
+        if (event.getScanCode() == KEY_SINGLE_TAP) launchDozePulse();
         return event.getScanCode() == KEY_DOUBLE_TAP;
     }
 
@@ -431,12 +406,6 @@ public class KeyHandler implements DeviceKeyHandler {
 
     private void onDisplayOn() {
         if (DEBUG) Log.i(TAG, "Display on");
-        if (enableProxiSensor()) {
-            mSensorManager.unregisterListener(mProximitySensor, mPocketSensor);
-        }
-        if (mUseTiltCheck) {
-            mSensorManager.unregisterListener(mTiltSensorListener, mTiltSensor);
-        }
         if ((mClientObserver == null) && (isOPCameraAvail)) {
             mClientObserver = new ClientPackageNameObserver(CLIENT_PACKAGE_PATH);
             mClientObserver.startWatching();
@@ -454,14 +423,15 @@ public class KeyHandler implements DeviceKeyHandler {
         }
     }
 
+    private void updateSingleTap() {
+        Log.i(TAG, "udateSingleTap " + mUseSingleTap);
+        if (Utils.fileWritable(SINGLE_TAP_CONTROL_PATH)) {
+            Utils.writeValue(SINGLE_TAP_CONTROL_PATH, mUseSingleTap ? "1" : "0");
+        }
+    }
+
     private void onDisplayOff() {
         if (DEBUG) Log.i(TAG, "Display off");
-        if (enableProxiSensor()) {
-            mProxyWasNear = false;
-            mSensorManager.registerListener(mProximitySensor, mPocketSensor,
-                    SensorManager.SENSOR_DELAY_NORMAL);
-            mProxySensorTimestamp = SystemClock.elapsedRealtime();
-        }
         if (mUseTiltCheck) {
             mSensorManager.registerListener(mTiltSensorListener, mTiltSensor,
                     SensorManager.SENSOR_DELAY_NORMAL);
@@ -654,7 +624,7 @@ public class KeyHandler implements DeviceKeyHandler {
     }
 
     private boolean enableProxiSensor() {
-        return mUsePocketCheck || mUseWaveCheck || mUseProxiCheck;
+        return mUseProxiCheck;
     }
 
     private void updateDozeSettings() {
@@ -664,9 +634,9 @@ public class KeyHandler implements DeviceKeyHandler {
         if (DEBUG) Log.i(TAG, "Doze settings = " + value);
         if (!TextUtils.isEmpty(value)) {
             String[] parts = value.split(":");
-            mUseWaveCheck = Boolean.valueOf(parts[0]);
-            mUsePocketCheck = Boolean.valueOf(parts[1]);
-            mUseTiltCheck = Boolean.valueOf(parts[2]);
+            mUseTiltCheck = Boolean.valueOf(parts[0]);
+            mUseSingleTap = Boolean.valueOf(parts[1]);
+            updateSingleTap();
         }
     }
 
