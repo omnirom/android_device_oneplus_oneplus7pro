@@ -145,6 +145,7 @@ PRODUCT_PACKAGES += \
     vendor.display.config@1.10 \
     libdisplayconfig \
     libqdMetaData.system \
+    libqdMetaData \
     vendor.nxp.nxpese@1.0 \
     vendor.nxp.nxpnfc@1.0 \
     vendor.oneplus.camera.CameraHIDL@1.0 \
@@ -189,6 +190,12 @@ PRODUCT_PACKAGES += \
 # Remove unwanted packages
 PRODUCT_PACKAGES += \
     RemovePackages
+
+PRODUCT_BOOT_JARS += \
+    com.nxp.nfc \
+    tcmiface \
+    WfdCommon \
+    qcnvitems
 
 # Temporary handling
 #
