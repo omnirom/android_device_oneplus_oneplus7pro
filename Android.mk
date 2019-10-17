@@ -35,6 +35,16 @@ $(foreach mk,$(subdir_makefiles),$(info including $(mk) ...)$(eval include $(mk)
 
 include $(CLEAR_VARS)
 
+WFD_LIB := libwfdnative.so
+WFD_SYMLINKS := $(addprefix $(TARGET_OUT_APPS_PRIVILEGED)/WfdService/lib/arm64/,$(notdir $(WFD_LIB)))
+$(WFD_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "WFD lib link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /system/lib64/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(WFD_SYMLINKS)
+
 IMS_LIBS := libimscamera_jni.so libimsmedia_jni.so
 IMS_SYMLINKS := $(addprefix $(TARGET_OUT_APPS_PRIVILEGED)/ims/lib/arm64/,$(notdir $(IMS_LIBS)))
 $(IMS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
