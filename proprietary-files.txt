@@ -367,6 +367,14 @@ product/lib64/vendor.qti.hardware.wifidisplaysession@1.0.so
 product/lib/vendor.qti.hardware.wifidisplaysession@1.0.so
 lib64/libmiracastsystem.so
 lib/libmiracastsystem.so
+system/bin/sigma_miracasthalservice
+product/lib64/vendor.qti.hardware.sigma_miracast@1.0.so
+product/lib/vendor.qti.hardware.sigma_miracast@1.0.so
+lib64/hw/vendor.qti.hardware.sigma_miracast@1.0-impl.so
+lib64/vendor.qti.hardware.sigma_miracast@1.0-halimpl.so
+etc/init/com.qualcomm.qti.sigma_miracast@1.0-service.rc
+lib/hw/vendor.qti.hardware.sigma_miracast@1.0-impl.so
+lib/vendor.qti.hardware.sigma_miracast@1.0-halimpl.so
 lib64/libwfdclient.so
 lib64/libwfdcommonutils.so
 lib64/libwfdconfigutils.so
@@ -398,6 +406,7 @@ lib/libwfduibcsink.so
 lib/libwfduibcsinkinterface.so
 lib/libwfduibcsrc.so
 lib/libwfduibcsrcinterface.so
+
 
 etc/qvr/qvrservice_config.txt
 
