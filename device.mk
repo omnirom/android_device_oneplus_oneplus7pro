@@ -61,7 +61,8 @@ PRODUCT_PACKAGES_DEBUG += \
 # Boot control
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl.recovery \
-    bootctrl.msmnile.recovery
+    bootctrl.msmnile.recovery \
+    fastbootd
 
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
