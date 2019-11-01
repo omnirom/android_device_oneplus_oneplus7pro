@@ -26,6 +26,8 @@ import android.provider.Settings;
 import android.text.TextUtils;
 
 public class Startup extends BroadcastReceiver {
+    private static final boolean sIsOnePlus7pro = android.os.Build.PRODUCT.equals("OnePlus7pro");
+
     private static void restore(String file, boolean enabled) {
         if (file == null) {
             return;
@@ -80,7 +82,9 @@ public class Startup extends BroadcastReceiver {
     public void onReceive(final Context context, final Intent bootintent) {
         maybeImportOldSettings(context);
         restoreAfterUserSwitch(context);
-        context.startService(new Intent(context, FallSensorService.class));
+        if (sIsOnePlus7pro) {
+            context.startService(new Intent(context, FallSensorService.class));
+        }
     }
 
     public static void restoreAfterUserSwitch(Context context) {
