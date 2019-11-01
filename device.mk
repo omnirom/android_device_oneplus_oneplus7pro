@@ -24,8 +24,10 @@ $(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
 PRODUCT_PACKAGES := com.android.apex.cts.shim.v1_prebuilt
 TARGET_FLATTEN_APEX := false
 
+ifeq ($(TARGET_DEVICE),oneplus7pro)
 PRODUCT_PACKAGES += \
     libinit_oneplus7pro
+endif
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.build.version.all_codenames=$(PLATFORM_VERSION_ALL_CODENAMES) \
@@ -91,6 +93,10 @@ PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,device/oneplus/oneplus7pro/prebuilt/system,system) \
     $(call find-copy-subdir-files,*,device/oneplus/oneplus7pro/prebuilt/root,root)
 
+ifeq ($(TARGET_DEVICE),oneplus7pro)
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,device/oneplus/oneplus7pro/prebuilt/product,system/product)
+endif
 
 PRODUCT_AAPT_CONFIG := xxxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
