@@ -19,9 +19,7 @@
 # device-specific aspects (drivers) with a device-agnostic
 # product configuration (apps).
 #
-$(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
-
-PRODUCT_PACKAGES := com.android.apex.cts.shim.v1_prebuilt
+PRODUCT_PACKAGES += com.android.apex.cts.shim.v1_prebuilt
 TARGET_FLATTEN_APEX := false
 
 PRODUCT_PACKAGES += \
@@ -155,7 +153,10 @@ PRODUCT_PACKAGES += \
     vendor.nxp.nxpnfc@1.0 \
     vendor.oneplus.camera.CameraHIDL@1.0 \
     vendor.oneplus.fingerprint.extension@1.0 \
-    vendor.qti.hardware.camera.device@1.0
+    vendor.qti.hardware.camera.device@1.0 \
+    vendor.qti.hardware.camera.postproc@1.0 \
+    vendor.qti.hardware.systemhelper@1.1 \
+    vendor.qti.hardware.bluetooth_dun@1.0
 
 #Nfc
 PRODUCT_PACKAGES += \
@@ -201,6 +202,11 @@ PRODUCT_BOOT_JARS += \
     tcmiface \
     WfdCommon \
     qcnvitems
+
+
+# Video seccomp policy files
+PRODUCT_COPY_FILES += \
+    device/oneplus/oneplus7pro/seccomp/codec2.software.ext.policy:$(TARGET_COPY_OUT)/etc/seccomp_policy/codec2.software.ext.policy
 
 # Temporary handling
 #

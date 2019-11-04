@@ -8,3 +8,16 @@ ro.vibrator.hal.heavyclick.duration u:object_r:exported_system_prop:s0 exact int
 persist.sys.force_sw_gles u:object_r:exported_system_prop:s0 exact int
 persist.rcs.otp_sms_port u:object_r:exported_system_prop:s0 exact int
 persist.netmon.linger u:object_r:exported_system_prop:s0 exact int
+
+camera.OPpictureId u:object_r:vendor_camera_prop:s0 exact int
+
+vendor.fastrpc.perf.kernel u:object_r:vendor_adsprpc_prop:s0 exact int
+vendor.fastrpc.perf.adsp u:object_r:vendor_adsprpc_prop:s0 exact int
+vendor.fastrpc.perf.freq u:object_r:vendor_adsprpc_prop:s0 exact int
+vendor.fastrpc.process.attrs u:object_r:vendor_adsprpc_prop:s0 exact int
+vendor.fastrpc.debug.trace u:object_r:vendor_adsprpc_prop:s0 exact int
+
+persist.vendor.debug.sensors.ssc_latency u:object_r:sensors_dbg_prop:s0 exact string
+
+ro.camera.res.fmq.size u:object_r:exported_system_prop:s0 exact int
+ro.camera.req.fmq.size u:object_r:exported_system_prop:s0 exact int
