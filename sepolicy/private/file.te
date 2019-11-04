@@ -13,5 +13,8 @@ type sysfs_graphics, sysfs_type, fs_type;
 type proc_touchpanel, fs_type;
 type sysfs_fod, sysfs_type, fs_type;
 type sysfs_usb_supply, sysfs_type, fs_type;
+type sysfs_battery_supply, sysfs_type, fs_type;
 
 type oem_device, dev_type;
+
+type wifi_vendor_data_file, file_type, data_file_type;
