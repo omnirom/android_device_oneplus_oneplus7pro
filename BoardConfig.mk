@@ -22,9 +22,7 @@ BOARD_PATH := device/oneplus/oneplus7pro
 include $(BOARD_PATH)/BoardConfigGsi.mk
 
 PRODUCT_SOONG_NAMESPACES := $(BOARD_PATH)
-ifeq ($(TARGET_DEVICE),oneplus7pro)
 TARGET_INIT_VENDOR_LIB := //$(BOARD_PATH):libinit_oneplus7pro
-endif
 PRODUCT_FULL_TREBLE := true
 BOARD_VNDK_VERSION := current
 BOARD_VNDK_RUNTIME_DISABLE := false

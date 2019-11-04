@@ -24,10 +24,8 @@ $(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
 PRODUCT_PACKAGES := com.android.apex.cts.shim.v1_prebuilt
 TARGET_FLATTEN_APEX := false
 
-ifeq ($(TARGET_DEVICE),oneplus7pro)
 PRODUCT_PACKAGES += \
     libinit_oneplus7pro
-endif
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.build.version.all_codenames=$(PLATFORM_VERSION_ALL_CODENAMES) \

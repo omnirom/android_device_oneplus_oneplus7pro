@@ -107,7 +107,16 @@ void vendor_load_properties()
         property_override("ro.build.description", "OnePlus7Pro-user 10 QKQ1.190716.003 1910071200 release-keys");
         property_override("ro.build.model", "GM1913");
     }
-
+    if (name == "OnePlus7T_EEA") {
+        property_override("ro.build.fingerprint", "OnePlus/OnePlus7T_EEA/OnePlus7T:10/QKQ1.190716.003/1910122101:user/release-keys");
+        property_override("ro.build.description", "OnePlus7T_EEA-user 10 QKQ1.190716.003 1910122101 release-keys");
+        property_override("ro.build.model", "HD1903");
+    }
+    /*if (name == "OnePlus7T") {
+        property_override("ro.build.fingerprint", "OnePlus/OnePlus7T/OnePlus7T:10/QKQ1.190716.003/1910122101:user/release-keys");
+        property_override("ro.build.description", "OnePlus7T-user 10 QKQ1.190716.003 1910122101 release-keys");
+        property_override("ro.build.model", "HD1903");
+    }*/
     /*Check for kgsl node and disable HW composition*/
     if (access("/dev/kgsl-3d0", F_OK) < 0) {
         property_set("persist.sys.force_sw_gles", "1");
