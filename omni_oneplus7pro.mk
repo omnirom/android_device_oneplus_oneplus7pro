@@ -19,7 +19,7 @@
 # product configuration (apps).
 #
 
-VENDOR_EXCEPTION_PATHS := oneplus \
+VENDOR_EXCEPTION_PATHS += oneplus \
     omni
 
 # Sample: This is where we'd set a backup provider if we had one
@@ -40,14 +40,18 @@ DEVICE_PACKAGE_OVERLAYS += device/oneplus/oneplus7pro/overlay/common
 DEVICE_PACKAGE_OVERLAYS += device/oneplus/oneplus7pro/overlay/device
 DEVICE_PACKAGE_OVERLAYS += vendor/omni/overlay/CarrierConfig
 
+#BOARD_AVB_ALGORITHM := SHA256_RSA2048
+#BOARD_AVB_KEY_PATH := build/target/product/security/verity.pem
+
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/omni/config/common.mk)
+
+# Inherit from hardware-specific part of the product configuration
+$(call inherit-product, device/oneplus/oneplus7pro/device.mk)
 
 # get the rest of aosp stuff after ours
 $(call inherit-product, $(SRC_TARGET_DIR)/product/mainline_system_arm64.mk)
 
-# Inherit from hardware-specific part of the product configuration
-$(call inherit-product, device/oneplus/oneplus7pro/device.mk)
 
 ALLOW_MISSING_DEPENDENCIES := true
 

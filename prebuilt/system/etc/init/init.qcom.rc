@@ -1,5 +1,5 @@
 on init
-    mount none /system/lib/modules/wlan.ko /vendor/lib/modules/qca_cld3_wlan.ko bind
+#   mount none /system/lib/modules/wlan.ko /vendor/lib/modules/qca_cld3_wlan.ko bind
     mount none /dev/null /vendor/overlay/SysuiDarkTheme/SysuiDarkThemeOverlay.apk bind
     mount none /dev/null /vendor/overlay/BluetoothResCommon.apk bind
     mount none /dev/null /vendor/overlay/SystemUIResCommon.apk bind
@@ -18,7 +18,7 @@ on init
 
 on boot
     # default country code
-    setprop ro.boot.wificountrycode 00
+#    setprop ro.boot.wificountrycode 00
 
     # Touchscreen
     chown system system /proc/touchpanel/single_tap_enable
