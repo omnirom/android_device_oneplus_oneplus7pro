@@ -1,5 +1,7 @@
 allow cameraserver property_socket:sock_file write;
-allow cameraserver vendor_data_file:file rw_file_perms;
+allow cameraserver omni_data_file:file rw_file_perms;
+allow cameraserver omni_data_file:dir write;
 
 allow cameraserver exported_system_prop:property_service set;
 allow cameraserver init:unix_stream_socket connectto;
+

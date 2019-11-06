@@ -18,3 +18,6 @@ type sysfs_battery_supply, sysfs_type, fs_type;
 type oem_device, dev_type;
 
 type wifi_vendor_data_file, file_type, data_file_type;
+
+
+type omni_data_file, file_type, data_file_type,  core_data_file_type;

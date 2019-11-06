@@ -1,1 +1,2 @@
 allow hal_camera exported_system_prop:file { read open getattr map };
+

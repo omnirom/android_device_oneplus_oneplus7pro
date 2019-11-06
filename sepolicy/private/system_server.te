@@ -1,7 +1,7 @@
 allow system_server omni_sysfs_drm:file rw_file_perms;
 allow system_server omni_sysfs_motor:file rw_file_perms;
 
-allow system_server vendor_data_file:file { getattr open read };
+allow system_server omni_data_file:file r_file_perms;
 allow system_server thermal_service:service_manager { find };
 
 allow system_server hal_cameraHIDL_hwservice:hwservice_manager find;

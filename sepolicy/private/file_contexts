@@ -8,7 +8,7 @@
 #/system/etc/audio_policy_configuration_omni.xml    u:object_r:vendor_configs_file:s0
 /system/lib/modules/wlan.ko    u:object_r:vendor_file:s0
 
-/data/vendor/omni/client_package_name                u:object_r:vendor_data_file:s0
+/data/misc/omni/client_package_name                u:object_r:omni_data_file:s0
 
 /sys/devices/platform/soc/89c000.i2c/i2c-2/2-005a/leds/vibrator(/.*)? u:object_r:sysfs_vibrator:s0
 
