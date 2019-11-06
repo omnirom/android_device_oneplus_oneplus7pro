@@ -19,4 +19,8 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <dimen name="config_dialogCornerRadius">64px</dimen> <!-- default: 2dp -->
+    <dimen name="config_buttonCornerRadius">64px</dimen> <!-- default: 2dp -->
+    <dimen name="status_bar_heights">88px</dimen> <!-- default: 24dp -->
+
 </resources>
