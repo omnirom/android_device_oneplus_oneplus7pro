@@ -675,7 +675,7 @@ public class KeyHandler implements DeviceKeyHandler {
 
     @Override
     public String getCustomProxiSensor() {
-        return "oneplus.sensor.pocket";
+        return "oneplus.sensor.ultrasound.proximity";
     }
 
     private class ClientPackageNameObserver extends FileObserver {
