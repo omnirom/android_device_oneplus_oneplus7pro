@@ -95,6 +95,7 @@ public class KeyHandler implements DeviceKeyHandler {
 
     private static final int MIN_PULSE_INTERVAL_MS = 2500;
     private static final String DOZE_INTENT = "com.android.systemui.doze.pulse";
+    private static final int HANDWAVE_MAX_DELTA_MS = 1000;
 
     private static final boolean sIsOnePlus7pro = android.os.Build.PRODUCT.equals("OnePlus7pro");
 
@@ -158,8 +159,11 @@ public class KeyHandler implements DeviceKeyHandler {
     private SensorManager mSensorManager;
     private boolean mProxyIsNear;
     private boolean mUseProxiCheck;
+    private boolean mUseWaveCheck;
     private Sensor mTiltSensor;
     private boolean mUseTiltCheck;
+    private boolean mProxyWasNear;
+    private long mProxySensorTimestamp;
     private Sensor mPocketSensor;
     private boolean mUseSingleTap;
     private boolean mDispOn;
@@ -176,6 +180,17 @@ public class KeyHandler implements DeviceKeyHandler {
         public void onSensorChanged(SensorEvent event) {
             mProxyIsNear = event.values[0] == 1;
             if (DEBUG_SENSOR) Log.i(TAG, "mProxyIsNear = " + mProxyIsNear);
+            if (mUseWaveCheck) {
+                if (mProxyWasNear && !mProxyIsNear) {
+                    long delta = SystemClock.elapsedRealtime() - mProxySensorTimestamp;
+                    if (DEBUG_SENSOR) Log.i(TAG, "delta = " + delta);
+                    if (mUseWaveCheck && delta < HANDWAVE_MAX_DELTA_MS) {
+                        launchDozePulse();
+                    }
+                }
+                mProxySensorTimestamp = SystemClock.elapsedRealtime();
+                mProxyWasNear = mProxyIsNear;
+            }
         }
 
         @Override
@@ -446,6 +461,7 @@ public class KeyHandler implements DeviceKeyHandler {
         if (enableProxiSensor()) {
             mSensorManager.registerListener(mProximitySensor, mPocketSensor,
                     SensorManager.SENSOR_DELAY_NORMAL);
+            mProxySensorTimestamp = SystemClock.elapsedRealtime();
         }
         if (mUseTiltCheck) {
             mSensorManager.registerListener(mTiltSensorListener, mTiltSensor,
@@ -639,7 +655,7 @@ public class KeyHandler implements DeviceKeyHandler {
     }
 
     private boolean enableProxiSensor() {
-        return mUseProxiCheck;
+        return mUseProxiCheck || mUseWaveCheck;
     }
 
     private void updateDozeSettings() {
@@ -651,6 +667,11 @@ public class KeyHandler implements DeviceKeyHandler {
             String[] parts = value.split(":");
             mUseTiltCheck = Boolean.valueOf(parts[0]);
             mUseSingleTap = Boolean.valueOf(parts[1]);
+            if (parts.length == 3) {
+                mUseWaveCheck = Boolean.valueOf(parts[2]);
+            } else {
+                mUseWaveCheck = false;
+            }
             updateSingleTap();
         }
     }

@@ -41,10 +41,12 @@ public class DozeSettings extends PreferenceFragment  {
 
     private static final String KEY_TILT_CHECK = "tilt_check";
     private static final String KEY_SINGLE_TAP = "single_tap";
+    private static final String KEY_WAVE_CHECK = "wave_check";
     private static final String KEY_FOOTER = "footer";
 
     private boolean mUseTiltCheck;
     private boolean mUseSingleTap;
+    private boolean mUseWaveCheck;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -72,6 +74,16 @@ public class DozeSettings extends PreferenceFragment  {
                 return true;
             }
         });
+        TwoStatePreference waveSwitch = (TwoStatePreference) findPreference(KEY_WAVE_CHECK);
+        waveSwitch.setChecked(mUseWaveCheck);
+        waveSwitch.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                mUseWaveCheck = (Boolean) newValue;
+                setDozeSettings();
+                return true;
+            }
+        });
         Preference footer = findPreference(KEY_FOOTER);
         if (isAmbientDisplayEnabled()) {
             getPreferenceScreen().removePreference(footer);
@@ -85,11 +97,16 @@ public class DozeSettings extends PreferenceFragment  {
             String[] parts = value.split(":");
             mUseTiltCheck = Boolean.valueOf(parts[0]);
             mUseSingleTap = Boolean.valueOf(parts[1]);
+            if (parts.length == 3) {
+                mUseWaveCheck = Boolean.valueOf(parts[2]);
+            } else {
+                mUseWaveCheck = false;
+            }
         }
     }
 
     private void setDozeSettings() {
-        String newValue = String.valueOf(mUseTiltCheck) + ":" + String.valueOf(mUseSingleTap);
+        String newValue = String.valueOf(mUseTiltCheck) + ":" + String.valueOf(mUseSingleTap) + ":" + String.valueOf(mUseWaveCheck);
         Settings.System.putString(getContext().getContentResolver(), Settings.System.OMNI_DEVICE_FEATURE_SETTINGS, newValue);
     }
 
