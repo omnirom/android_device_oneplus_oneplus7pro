@@ -14,20 +14,16 @@
      limitations under the License.
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <!--
     <SwitchPreference
         android:key="wave_check"
         android:summary="@string/wave_check_summary"
         android:title="@string/wave_check_title"
-        android:enabled="false"
         android:persistent="false" />
     <SwitchPreference
         android:key="pocket_check"
         android:summary="@string/pocket_check_summary"
         android:title="@string/pocket_check_title"
-        android:enabled="false"
         android:persistent="false" />
--->
     <SwitchPreference
         android:key="tilt_check"
         android:summary="@string/tilt_check_summary"
