@@ -95,8 +95,6 @@ public class KeyHandler implements DeviceKeyHandler {
 
     private static final int MIN_PULSE_INTERVAL_MS = 2500;
     private static final String DOZE_INTENT = "com.android.systemui.doze.pulse";
-    private static final int HANDWAVE_MAX_DELTA_MS = 1000;
-    private static final int POCKET_MIN_DELTA_MS = 5000;
 
     private static final boolean sIsOnePlus7pro = android.os.Build.PRODUCT.equals("OnePlus7pro");
 
@@ -109,9 +107,9 @@ public class KeyHandler implements DeviceKeyHandler {
         GESTURE_UP_ARROW,
         GESTURE_LEFT_V,
         GESTURE_RIGHT_V,
-	GESTURE_M,
-	GESTURE_W,
-	GESTURE_S,
+        GESTURE_M,
+        GESTURE_W,
+        GESTURE_S,
         KEY_SINGLE_TAP,
         KEY_DOUBLE_TAP,
         KEY_SLIDER_TOP,
@@ -125,9 +123,9 @@ public class KeyHandler implements DeviceKeyHandler {
         GESTURE_UP_ARROW,
         GESTURE_LEFT_V,
         GESTURE_RIGHT_V,
-	GESTURE_M,
-	GESTURE_W,
-	GESTURE_S,
+        GESTURE_M,
+        GESTURE_W,
+        GESTURE_S,
         KEY_SINGLE_TAP,
         KEY_DOUBLE_TAP,
         KEY_SLIDER_TOP,
@@ -141,9 +139,9 @@ public class KeyHandler implements DeviceKeyHandler {
         GESTURE_UP_ARROW,
         GESTURE_LEFT_V,
         GESTURE_RIGHT_V,
-	GESTURE_M,
-	GESTURE_W,
-	GESTURE_S,
+        GESTURE_M,
+        GESTURE_W,
+        GESTURE_S,
         KEY_SINGLE_TAP,
         KEY_DOUBLE_TAP
     };
@@ -162,8 +160,6 @@ public class KeyHandler implements DeviceKeyHandler {
     private boolean mUseProxiCheck;
     private Sensor mTiltSensor;
     private boolean mUseTiltCheck;
-    private boolean mProxyWasNear;
-    private long mProxySensorTimestamp;
     private Sensor mPocketSensor;
     private boolean mUseSingleTap;
     private boolean mDispOn;
@@ -174,6 +170,18 @@ public class KeyHandler implements DeviceKeyHandler {
     private boolean mToggleTorch = false;
     private boolean mTorchState = false;
     private boolean mDoubleTapToWake;
+
+    private SensorEventListener mProximitySensor = new SensorEventListener() {
+        @Override
+        public void onSensorChanged(SensorEvent event) {
+            mProxyIsNear = event.values[0] == 1;
+            if (DEBUG_SENSOR) Log.i(TAG, "mProxyIsNear = " + mProxyIsNear);
+        }
+
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        }
+    };
 
     private SensorEventListener mTiltSensorListener = new SensorEventListener() {
         @Override
@@ -406,6 +414,9 @@ public class KeyHandler implements DeviceKeyHandler {
 
     private void onDisplayOn() {
         if (DEBUG) Log.i(TAG, "Display on");
+        if (enableProxiSensor()) {
+            mSensorManager.unregisterListener(mProximitySensor, mPocketSensor);
+        }
         if ((mClientObserver == null) && (isOPCameraAvail)) {
             mClientObserver = new ClientPackageNameObserver(CLIENT_PACKAGE_PATH);
             mClientObserver.startWatching();
@@ -432,6 +443,10 @@ public class KeyHandler implements DeviceKeyHandler {
 
     private void onDisplayOff() {
         if (DEBUG) Log.i(TAG, "Display off");
+        if (enableProxiSensor()) {
+            mSensorManager.registerListener(mProximitySensor, mPocketSensor,
+                    SensorManager.SENSOR_DELAY_NORMAL);
+        }
         if (mUseTiltCheck) {
             mSensorManager.registerListener(mTiltSensorListener, mTiltSensor,
                     SensorManager.SENSOR_DELAY_NORMAL);
