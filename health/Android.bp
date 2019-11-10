@@ -1,0 +1,46 @@
+cc_binary {
+    name: "android.hardware.health@2.0-service.oneplus7pro",
+    stem: "android.hardware.health@2.0-service",
+    init_rc: ["android.hardware.health@2.0-service.rc"],
+    vendor: false,
+    product_overlay_specific: true,
+    relative_install_path: "hw",
+    srcs: [
+        "HealthServiceDefault.cpp"
+    ],
+
+    cflags: [
+        "-Wall",
+    ],
+
+    static_libs: [
+        "android.hardware.health@2.0-impl",
+        "android.hardware.health@1.0-convert",
+        "libhealthservice",
+        "libhealthstoragedefault",
+        "libbatterymonitor",
+    ],
+
+    shared_libs: [
+        "libbase",
+        "libcutils",
+        "libhidlbase",
+        "libhidltransport",
+        "libhwbinder",
+        "liblog",
+        "libutils",
+        "android.hardware.health@2.0",
+    ],
+
+    include_dirs: [
+        "system/core/healthd/include/healthd",
+        "system/core/base/include",
+    ],
+
+    header_libs: ["libhealthd_headers"],
+
+    overrides: [
+        "healthd",
+    ],
+}
+
