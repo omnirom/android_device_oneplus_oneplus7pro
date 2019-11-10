@@ -64,6 +64,9 @@ import org.omnirom.device.CameraMotorController;
 
 import vendor.oneplus.camera.CameraHIDL.V1_0.IOnePlusCameraProvider;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class KeyHandler implements DeviceKeyHandler {
 
     private static final String TAG = "KeyHandler";
@@ -102,6 +105,9 @@ public class KeyHandler implements DeviceKeyHandler {
 
     public static final String CLIENT_PACKAGE_NAME = "com.oneplus.camera";
     public static final String CLIENT_PACKAGE_PATH = "/data/misc/omni/client_package_name";
+
+    private static final String TRI_STATE_CALIB_DATA = "/mnt/vendor/persist/engineermode/tri_state_hall_data";
+    private static final String TRI_STATE_CALIB_PATH = "/sys/bus/platform/devices/soc:tri_state_key/hall_data_calib";
 
     private static final int[] sSupportedGestures6 = new int[]{
         GESTURE_TWO_SWIPE_DOWN,
@@ -307,7 +313,7 @@ public class KeyHandler implements DeviceKeyHandler {
                     boolean ringing = state.contains("USB=0");
                     boolean silent = state.contains("(null)=0");
                     boolean vibrate = state.contains("USB-HOST=0");
-                    android.util.Log.v("DeviceParts", "Got ringing = " + ringing + ", silent = " + silent + ", vibrate = " + vibrate);
+                    if (DEBUG) Log.i(TAG, "state = " + state + " Got ringing = " + ringing + ", silent = " + silent + ", vibrate = " + vibrate);
                     if(ringing && !silent && !vibrate)
                         doHandleSliderAction(2);
                     if(silent && !ringing && !vibrate)
@@ -315,7 +321,7 @@ public class KeyHandler implements DeviceKeyHandler {
                     if(vibrate && !silent && !ringing)
                         doHandleSliderAction(1);
                 } catch(Exception e) {
-                    android.util.Log.d("DeviceParts", "Failed parsing uevent", e);
+                    Log.e(TAG, "Failed parsing uevent", e);
                 }
 
             }
@@ -325,6 +331,9 @@ public class KeyHandler implements DeviceKeyHandler {
         if (isOPCameraAvail) {
             mClientObserver = new ClientPackageNameObserver(CLIENT_PACKAGE_PATH);
             mClientObserver.startWatching();
+        }
+        if (!sIsOnePlus7pro) {
+            initTriStateHallSensor();
         }
     }
 
@@ -728,5 +737,22 @@ public class KeyHandler implements DeviceKeyHandler {
                 }
             }
         }
+    }
+
+    private void initTriStateHallSensor() {
+        String calibData = Utils.getFileValue(TRI_STATE_CALIB_DATA, "0,0;0,0;0,0");
+        if (DEBUG) Log.i(TAG, "calibData = " + calibData);
+        String[] pairs = calibData.split(";");
+        List<String> valueList = new ArrayList<>();
+        for (String pair : pairs) {
+            String[] valuePair = pair.split(",");
+            String lowValue = valuePair[0];
+            valueList.add(lowValue);
+            String hightValue = valuePair[1];
+            valueList.add(hightValue);
+        }
+        String calibDataString = TextUtils.join(",", valueList);
+        if (DEBUG) Log.i(TAG, "calibDataString = " + calibDataString);
+        Utils.writeValue(TRI_STATE_CALIB_PATH, calibDataString);
     }
 }
