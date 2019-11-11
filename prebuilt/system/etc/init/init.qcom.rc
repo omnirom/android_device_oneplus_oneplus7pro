@@ -4,7 +4,6 @@ on init
     mount none /dev/null /vendor/overlay/BluetoothResCommon.apk bind
     mount none /dev/null /vendor/overlay/SystemUIResCommon.apk bind
     mount none /dev/null /vendor/overlay/FrameworksResCommon.apk bind
-    mount none /dev/null /vendor/overlay/FrameworksResTarget.apk bind
     mount none /dev/null /vendor/overlay/OPFrameworkConfigOverlay.apk bind
     mount none /dev/null /vendor/overlay/SystemUIResCommon.apk bind
     mount none /dev/null /vendor/overlay/TelecommResCommon.apk bind
