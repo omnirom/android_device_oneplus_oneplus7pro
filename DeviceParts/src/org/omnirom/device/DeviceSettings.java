@@ -17,25 +17,13 @@
 */
 package org.omnirom.device;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.res.Resources;
-import android.content.Intent;
 import android.os.Bundle;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.ListPreference;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceCategory;
-import androidx.preference.PreferenceScreen;
 import androidx.preference.TwoStatePreference;
+import androidx.preference.Preference;
 import android.provider.Settings;
 import android.text.TextUtils;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ListView;
-import android.util.Log;
 
 public class DeviceSettings extends PreferenceFragment implements
         Preference.OnPreferenceChangeListener {
@@ -56,6 +44,7 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String KEY_WIDE_SWITCH = "wide";
 
     public static final String KEY_OTG_SWITCH = "otg_switch";
+    public static final String KEY_REFRESH_RATE = "refresh_rate";
 
     public static final String SLIDER_DEFAULT_VALUE = "2,1,0";
 
@@ -68,6 +57,7 @@ public class DeviceSettings extends PreferenceFragment implements
     private static TwoStatePreference mHBMModeSwitch;
     private static TwoStatePreference mDCDModeSwitch;
     private static TwoStatePreference mOtgSwitch;
+    private static TwoStatePreference mRefreshRate;
 
 
     @Override
@@ -115,6 +105,9 @@ public class DeviceSettings extends PreferenceFragment implements
         mOtgSwitch.setChecked(UsbOtgSwitch.isCurrentlyEnabled(this.getContext()));
         mOtgSwitch.setOnPreferenceChangeListener(new UsbOtgSwitch(getContext()));
 
+        mRefreshRate = (TwoStatePreference) findPreference(KEY_REFRESH_RATE);
+        mRefreshRate.setChecked(RefreshRateSwitch.isCurrentlyEnabled(this.getContext()));
+        mRefreshRate.setOnPreferenceChangeListener(new RefreshRateSwitch(getContext()));
     }
 
     @Override
@@ -142,7 +135,11 @@ public class DeviceSettings extends PreferenceFragment implements
             setSliderAction(2, sliderMode);
             int valueIndex = mSliderModeBottom.findIndexOfValue(value);
             mSliderModeBottom.setSummary(mSliderModeBottom.getEntries()[valueIndex]);
-        }
+        }// else if (preference == mRefreshRate) {
+          //  boolean enabled = (Boolean) newValue;
+          //  Settings.System.putInt(getActivity().getContentResolver(),
+          //      Settings.System.PEAK_REFRESH_RATE, enabled ? 90 : 60);
+        //}
         return true;
     }
 
