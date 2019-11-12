@@ -18,7 +18,6 @@
 
 #include "FingerprintInscreen.h"
 #include <android-base/logging.h>
-#include <android-base/properties.h>
 #include <hidl/HidlTransportSupport.h>
 #include <fstream>
 
@@ -50,10 +49,6 @@ namespace implementation {
 
 int dimAmount;
 bool dcDimState;
-bool isOneplus7t;
-
-using android::base::GetProperty;
-
 /*
  * Write value to path and close file.
  */
@@ -75,8 +70,6 @@ static T get(const std::string& path, const T& def) {
 FingerprintInscreen::FingerprintInscreen() {
     this->mVendorFpService = IVendorFingerprintExtensions::getService();
     this->mVendorDisplayService = IOneplusDisplay::getService();
-    std::string device = android::base::GetProperty("ro.product.device", "");
-    isOneplus7t = device == "oneplus7t";
 }
 
 Return<void> FingerprintInscreen::onStartEnroll() {
@@ -182,19 +175,11 @@ Return<void> FingerprintInscreen::setCallback(const sp<IFingerprintInscreenCallb
 }
 
 Return<int32_t> FingerprintInscreen::getPositionX() {
-    if (isOneplus7t) {
-        return 425;
-    } else {
-        return 605;
-    }
+    return 605;
 }
 
 Return<int32_t> FingerprintInscreen::getPositionY() {
-    if (isOneplus7t) {
-        return 2050;
-    } else {
-        return 2613;
-    }
+    return 2613;
 }
 
 Return<int32_t> FingerprintInscreen::getSize() {
