@@ -97,6 +97,11 @@
         android:key="graphics"
         android:title="@string/graphics_title">
         <SwitchPreference
+            android:key="refresh_rate"
+            android:summary="@string/refresh_rate_summary"
+            android:title="@string/refresh_rate_title"
+            android:persistent="false" />
+        <SwitchPreference
             android:key="dcd"
             android:summary="@string/dcd_mode_summary"
             android:title="@string/dcd_mode_title" />
