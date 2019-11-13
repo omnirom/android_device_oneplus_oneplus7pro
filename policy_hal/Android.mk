@@ -1,4 +1,4 @@
-ifeq ($(TARGET_DEVICE),$(filter $(TARGET_DEVICE),oneplus7 oneplus7pro oneplus7t))
+ifeq ($(TARGET_DEVICE),$(filter $(TARGET_DEVICE),oneplus7 oneplus7pro oneplus7t oneplus7tpro))
 ifneq ($(USE_LEGACY_AUDIO_POLICY), 1)
 ifeq ($(USE_CUSTOM_AUDIO_POLICY), 1)
 LOCAL_PATH := $(call my-dir)
