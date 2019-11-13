@@ -183,7 +183,7 @@ Return<void> FingerprintInscreen::setCallback(const sp<IFingerprintInscreenCallb
 
 Return<int32_t> FingerprintInscreen::getPositionX() {
     if (isOneplus7t) {
-        return 425;
+        return 437;
     } else {
         return 605;
     }
@@ -191,14 +191,18 @@ Return<int32_t> FingerprintInscreen::getPositionX() {
 
 Return<int32_t> FingerprintInscreen::getPositionY() {
     if (isOneplus7t) {
-        return 2050;
+        return 2052;
     } else {
         return 2613;
     }
 }
 
 Return<int32_t> FingerprintInscreen::getSize() {
-    return 230;
+     if (isOneplus7t) {
+        return 208;
+    } else {
+        return 230;
+    }
 }
 
 }  // namespace implementation
