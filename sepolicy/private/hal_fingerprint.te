@@ -1,0 +1,2 @@
+allow hal_fingerprint sysfs_battery_supply:dir search;
+allow hal_fingerprint sysfs_battery_supply:file r_file_perms;
