@@ -100,6 +100,7 @@ PRODUCT_CHARACTERISTICS := nosdcard
 
 # Lights & Health
 PRODUCT_PACKAGES += \
+    libhealthd.msm \
     android.hardware.health@2.0-service.oneplus7pro \
     android.hardware.light@2.0-service.oneplus7pro
 
