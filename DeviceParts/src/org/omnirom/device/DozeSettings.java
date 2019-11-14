@@ -44,7 +44,7 @@ public class DozeSettings extends PreferenceFragment  {
     private static final String KEY_WAVE_CHECK = "wave_check";
     private static final String KEY_POCKET_CHECK = "pocket_check";
     private static final String KEY_FOOTER = "footer";
-    private static final boolean sIsOnePlus7pro = android.os.Build.PRODUCT.equals("OnePlus7pro");
+    private static final boolean sIsOnePlus7t = android.os.Build.DEVICE.equals("oneplus7t");
 
     private boolean mUseTiltCheck;
     private boolean mUseSingleTap;
@@ -87,7 +87,7 @@ public class DozeSettings extends PreferenceFragment  {
                 return true;
             }
         });
-        if (sIsOnePlus7pro) {
+        if (!sIsOnePlus7t) {
             getPreferenceScreen().removePreference(waveSwitch);
         }
         TwoStatePreference pocketSwitch = (TwoStatePreference) findPreference(KEY_POCKET_CHECK);
@@ -100,7 +100,7 @@ public class DozeSettings extends PreferenceFragment  {
                 return true;
             }
         });
-        if (sIsOnePlus7pro) {
+        if (!sIsOnePlus7t) {
             getPreferenceScreen().removePreference(pocketSwitch);
         }
         Preference footer = findPreference(KEY_FOOTER);
