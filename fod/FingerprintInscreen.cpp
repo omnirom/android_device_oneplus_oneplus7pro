@@ -33,6 +33,7 @@
 #define OP_DISPLAY_AOD_MODE 8
 #define OP_DISPLAY_NOTIFY_PRESS 9
 #define OP_DISPLAY_SET_DIM 10
+#define OP_DISPLAY_HIDE_AOD 11
 
 // This is not a typo by me. It's by OnePlus.
 #define HBM_ENABLE_PATH "/sys/class/drm/card0-DSI-1/hbm"
@@ -51,6 +52,7 @@ namespace implementation {
 int dimAmount;
 bool dcDimState;
 bool isOneplus7t;
+bool isOneplus7tpro;
 
 using android::base::GetProperty;
 
@@ -77,6 +79,7 @@ FingerprintInscreen::FingerprintInscreen() {
     this->mVendorDisplayService = IOneplusDisplay::getService();
     std::string device = android::base::GetProperty("ro.product.device", "");
     isOneplus7t = device == "oneplus7t";
+    isOneplus7tpro = device == "oneplus7tpro";
 }
 
 Return<void> FingerprintInscreen::onStartEnroll() {
@@ -93,7 +96,9 @@ Return<void> FingerprintInscreen::onFinishEnroll() {
 }
 
 Return<void> FingerprintInscreen::onPress() {
-    this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 5);
+    //this->mVendorDisplayService->setMode(19, 0);
+    //this->mVendorDisplayService->setMode(OP_DISPLAY_AOD_MODE, 2);
+    //this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 0);
     set(HBM_ENABLE_PATH, 5);
     this->mVendorDisplayService->setMode(OP_DISPLAY_NOTIFY_PRESS, 1);
 
@@ -102,13 +107,22 @@ Return<void> FingerprintInscreen::onPress() {
 
 Return<void> FingerprintInscreen::onRelease() {
     set(HBM_ENABLE_PATH, 0);
+    this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 0);
     this->mVendorDisplayService->setMode(OP_DISPLAY_NOTIFY_PRESS, 0);
 
     return Void();
 }
 
 Return<void> FingerprintInscreen::onShowFODView() {
-    this->mVendorDisplayService->setMode(OP_DISPLAY_AOD_MODE, 2);
+    this->mVendorDisplayService->setMode(7, 0);
+    this->mVendorDisplayService->setMode(16, 0);
+    this->mVendorDisplayService->setMode(17, 0);
+    this->mVendorDisplayService->setMode(18, 0);
+    this->mVendorDisplayService->setMode(20, 0);
+    this->mVendorDisplayService->setMode(21, 0);
+    this->mVendorDisplayService->setMode(17, 1);
+    this->mVendorDisplayService->setMode(19, 0);
+    this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 1);
     dcDimState = get(DC_DIM_PATH, 0);
     set(DC_DIM_PATH, 0);
     set(HBM_DIM_PATH, 260 - getDimAmount(255));
@@ -119,6 +133,15 @@ Return<void> FingerprintInscreen::onHideFODView() {
     set(HBM_ENABLE_PATH, 0);
     set(DC_DIM_PATH, dcDimState);
     this->mVendorDisplayService->setMode(OP_DISPLAY_NOTIFY_PRESS, 0);
+    this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 0);
+    this->mVendorDisplayService->setMode(16, 0);
+    this->mVendorDisplayService->setMode(17, 0);
+    this->mVendorDisplayService->setMode(18, 0);
+    this->mVendorDisplayService->setMode(20, 0);
+    this->mVendorDisplayService->setMode(21, 0);
+    this->mVendorDisplayService->setMode(16, 1);
+    this->mVendorDisplayService->setMode(19, 1);
+    //this->mVendorDisplayService->setMode(OP_DISPLAY_HIDE_AOD, 1);
 
     return Void();
 }
@@ -192,16 +215,20 @@ Return<int32_t> FingerprintInscreen::getPositionX() {
 Return<int32_t> FingerprintInscreen::getPositionY() {
     if (isOneplus7t) {
         return 2052;
+    } else if (isOneplus7tpro) {
+        return 2641;
     } else {
-        return 2613;
+        return 2612;
     }
 }
 
 Return<int32_t> FingerprintInscreen::getSize() {
      if (isOneplus7t) {
         return 208;
+    } else if (isOneplus7tpro) {
+        return 272;
     } else {
-        return 230;
+        return 235;
     }
 }
 
