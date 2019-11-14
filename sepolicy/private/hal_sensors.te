@@ -1,3 +1,5 @@
 allow hal_sensors oem_audio_device:chr_file getattr;
 allow hal_sensors sensors_dbg_prop:file { read open getattr map };
 
+allow hal_sensors omni_sysfs_drm:file r_file_perms;
+allow hal_sensors proc:file r_file_perms;
