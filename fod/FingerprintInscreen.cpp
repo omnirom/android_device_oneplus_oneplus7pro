@@ -96,9 +96,6 @@ Return<void> FingerprintInscreen::onFinishEnroll() {
 }
 
 Return<void> FingerprintInscreen::onPress() {
-    //this->mVendorDisplayService->setMode(19, 0);
-    //this->mVendorDisplayService->setMode(OP_DISPLAY_AOD_MODE, 2);
-    //this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 0);
     set(HBM_ENABLE_PATH, 5);
     this->mVendorDisplayService->setMode(OP_DISPLAY_NOTIFY_PRESS, 1);
 
@@ -107,14 +104,12 @@ Return<void> FingerprintInscreen::onPress() {
 
 Return<void> FingerprintInscreen::onRelease() {
     set(HBM_ENABLE_PATH, 0);
-    this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 0);
     this->mVendorDisplayService->setMode(OP_DISPLAY_NOTIFY_PRESS, 0);
 
     return Void();
 }
 
 Return<void> FingerprintInscreen::onShowFODView() {
-    this->mVendorDisplayService->setMode(7, 0);
     this->mVendorDisplayService->setMode(16, 0);
     this->mVendorDisplayService->setMode(17, 0);
     this->mVendorDisplayService->setMode(18, 0);
@@ -132,7 +127,7 @@ Return<void> FingerprintInscreen::onShowFODView() {
 Return<void> FingerprintInscreen::onHideFODView() {
     set(HBM_ENABLE_PATH, 0);
     set(DC_DIM_PATH, dcDimState);
-    this->mVendorDisplayService->setMode(OP_DISPLAY_NOTIFY_PRESS, 0);
+//    this->mVendorDisplayService->setMode(OP_DISPLAY_NOTIFY_PRESS, 0);
     this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 0);
     this->mVendorDisplayService->setMode(16, 0);
     this->mVendorDisplayService->setMode(17, 0);
@@ -141,7 +136,7 @@ Return<void> FingerprintInscreen::onHideFODView() {
     this->mVendorDisplayService->setMode(21, 0);
     this->mVendorDisplayService->setMode(16, 1);
     this->mVendorDisplayService->setMode(19, 1);
-    //this->mVendorDisplayService->setMode(OP_DISPLAY_HIDE_AOD, 1);
+    this->mVendorDisplayService->setMode(OP_DISPLAY_HIDE_AOD, 1);
 
     return Void();
 }
@@ -215,8 +210,6 @@ Return<int32_t> FingerprintInscreen::getPositionX() {
 Return<int32_t> FingerprintInscreen::getPositionY() {
     if (isOneplus7t) {
         return 2052;
-    } else if (isOneplus7tpro) {
-        return 2641;
     } else {
         return 2612;
     }
@@ -226,9 +219,9 @@ Return<int32_t> FingerprintInscreen::getSize() {
      if (isOneplus7t) {
         return 208;
     } else if (isOneplus7tpro) {
-        return 272;
+        return 273;
     } else {
-        return 235;
+        return 245;
     }
 }
 
