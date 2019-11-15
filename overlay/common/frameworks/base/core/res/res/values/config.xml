@@ -805,7 +805,6 @@
         <item>0</item>
         <item>1</item>
         <item>2</item>
-        <item>3</item>
     </integer-array>
 
     <!-- The default peak refresh rate for a given device. Change this value if you want to allow
