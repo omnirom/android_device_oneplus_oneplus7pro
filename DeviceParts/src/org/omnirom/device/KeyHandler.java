@@ -111,22 +111,6 @@ public class KeyHandler implements DeviceKeyHandler {
     private static final String TRI_STATE_CALIB_DATA = "/mnt/vendor/persist/engineermode/tri_state_hall_data";
     private static final String TRI_STATE_CALIB_PATH = "/sys/bus/platform/devices/soc:tri_state_key/hall_data_calib";
 
-    private static final int[] sSupportedGestures6 = new int[]{
-        GESTURE_TWO_SWIPE_DOWN,
-        GESTURE_CIRCLE,
-        GESTURE_UP_ARROW,
-        GESTURE_LEFT_V,
-        GESTURE_RIGHT_V,
-        GESTURE_M,
-        GESTURE_W,
-        GESTURE_S,
-        KEY_SINGLE_TAP,
-        KEY_DOUBLE_TAP,
-        KEY_SLIDER_TOP,
-        KEY_SLIDER_CENTER,
-        KEY_SLIDER_BOTTOM,
-    };
-
     private static final int[] sSupportedGestures = new int[]{
         GESTURE_TWO_SWIPE_DOWN,
         GESTURE_CIRCLE,
@@ -263,7 +247,7 @@ public class KeyHandler implements DeviceKeyHandler {
                     mContext.getContentResolver(), Settings.System.OMNI_DEVICE_PROXI_CHECK_ENABLED, 1,
                     UserHandle.USER_CURRENT) == 1;
             mDoubleTapToWake = Settings.Secure.getInt(
-                    mContext.getContentResolver(), Settings.Secure.DOUBLE_TAP_TO_WAKE, 1) == 1;
+                    mContext.getContentResolver(), Settings.Secure.DOUBLE_TAP_TO_WAKE, 0) == 1;
             updateDoubleTapToWake();
         }
     }
