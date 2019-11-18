@@ -36,24 +36,24 @@ public class RefreshRateSwitch implements OnPreferenceChangeListener {
     }
 
     public static boolean isCurrentlyEnabled(Context context) {
-        return Settings.System.getInt(context.getContentResolver(),
-                Settings.System.PEAK_REFRESH_RATE, 90) == 90;
+        return Settings.System.getFloat(context.getContentResolver(),
+                Settings.System.PEAK_REFRESH_RATE, 90f) == 90f;
     }
 
     public static void setPeakRefresh (Context context, boolean enabled) {
-        Settings.System.putInt(context.getContentResolver(),
-                Settings.System.PEAK_REFRESH_RATE, enabled ? 90 : 60);
-        Settings.System.putInt(context.getContentResolver(),
-                Settings.System.MIN_REFRESH_RATE, enabled ? 90 : 60);
+        Settings.System.putFloat(context.getContentResolver(),
+                Settings.System.PEAK_REFRESH_RATE, enabled ? 90f : 60f);
+        Settings.System.putFloat(context.getContentResolver(),
+                Settings.System.MIN_REFRESH_RATE, enabled ? 90f : 60f);
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         Boolean enabled = (Boolean) newValue;
-        Settings.System.putInt(mContext.getContentResolver(),
-                Settings.System.PEAK_REFRESH_RATE, enabled ? 90 : 60);
-        Settings.System.putInt(mContext.getContentResolver(),
-                Settings.System.MIN_REFRESH_RATE, enabled ? 90 : 60);
+        Settings.System.putFloat(mContext.getContentResolver(),
+                Settings.System.PEAK_REFRESH_RATE, enabled ? 90f : 60f);
+        Settings.System.putFloat(mContext.getContentResolver(),
+                Settings.System.MIN_REFRESH_RATE, enabled ? 90f : 60f);
         return true;
     }
 }
