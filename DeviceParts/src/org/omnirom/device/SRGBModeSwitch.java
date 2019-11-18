@@ -27,7 +27,7 @@ import org.omnirom.device.DeviceSettings;
 
 public class SRGBModeSwitch {
 
-    private static final String FILE = "/sys/class/drm/card0-DSI-1/native_display_customer_srgb_mode";
+    private static final String FILE = "/sys/class/drm/card0-DSI-1/native_display_srgb_color_mode";
 
     public static final String SETTINGS_KEY = DeviceSettings.KEY_SETTINGS_PREFIX + DeviceSettings.KEY_SRGB_SWITCH;
 
