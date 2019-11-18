@@ -42,10 +42,10 @@ public class AutoRefreshRateSwitch implements OnPreferenceChangeListener {
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         Boolean enabled = (Boolean) newValue;
-        Settings.System.putInt(mContext.getContentResolver(),
-                Settings.System.PEAK_REFRESH_RATE, 90);
-        Settings.System.putInt(mContext.getContentResolver(),
-                Settings.System.MIN_REFRESH_RATE, 60);
+        Settings.System.putFloat(mContext.getContentResolver(),
+                Settings.System.PEAK_REFRESH_RATE, 90f);
+        Settings.System.putFloat(mContext.getContentResolver(),
+                Settings.System.MIN_REFRESH_RATE, 60f);
         Settings.System.putInt(mContext.getContentResolver(), SETTINGS_KEY, enabled ? 1 : 0);
         return true;
     }
