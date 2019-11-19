@@ -22,6 +22,10 @@ BOARD_PATH := device/oneplus/oneplus7pro
 include $(BOARD_PATH)/BoardConfigGsi.mk
 
 PRODUCT_SOONG_NAMESPACES := $(BOARD_PATH)
+ifeq ($(TARGET_DEVICE),oneplus7pro)
+PRODUCT_SOONG_NAMESPACES += vendor/oneplus/oneplus7pro
+endif
+
 TARGET_INIT_VENDOR_LIB := //$(BOARD_PATH):libinit_oneplus7pro
 PRODUCT_FULL_TREBLE := true
 BOARD_VNDK_VERSION := current
@@ -41,8 +45,8 @@ PRODUCT_SEPOLICY_SPLIT := true
 BOARD_USES_METADATA_PARTITION := true
 
 # Enable A/B update
-TARGET_NO_RECOVERY := true
 ifeq ($(TARGET_DEVICE),oneplus7pro)
+TARGET_NO_RECOVERY := true
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 endif
 BOARD_USES_RECOVERY_AS_BOOT := true
