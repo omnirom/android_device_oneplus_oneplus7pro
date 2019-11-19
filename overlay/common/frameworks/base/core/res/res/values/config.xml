@@ -820,14 +820,14 @@
              display brightness <= disp0 && ambient brightness <= amb0
              || display brightness <= disp1 && ambient brightness <= amb1 -->
     <integer-array translatable="false" name="config_brightnessThresholdsOfPeakRefreshRate">
-           <item>1</item>
+           <item>5</item>
     </integer-array>
     <integer-array translatable="false" name="config_ambientThresholdsOfPeakRefreshRate">
            <item>-1</item>
     </integer-array>
     <!-- Default refresh rate in the zone defined by brightness and ambient thresholds.
          If non-positive, then the refresh rate is unchanged even if thresholds are configured. -->
-    <integer name="config_defaultRefreshRateInZone">90</integer>
+    <integer name="config_defaultRefreshRateInZone">60</integer>
 
     <integer name="config_defaultMaxCachedProcesses">64</integer>
 
