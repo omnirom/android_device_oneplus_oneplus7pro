@@ -45,11 +45,11 @@ PRODUCT_SEPOLICY_SPLIT := true
 BOARD_USES_METADATA_PARTITION := true
 
 # Enable A/B update
-ifeq ($(TARGET_DEVICE),oneplus7pro)
 TARGET_NO_RECOVERY := true
+ifeq ($(TARGET_DEVICE),oneplus7pro)
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
-endif
 BOARD_USES_RECOVERY_AS_BOOT := true
+endif
 
 TARGET_NO_BOOTLOADER := true
 ifeq ($(TARGET_DEVICE),oneplus7pro)
