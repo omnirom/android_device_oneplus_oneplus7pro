@@ -188,9 +188,11 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.wifi@1.0 \
     android.hardware.vibrator@1.2-service.oneplus7pro
 
+ifneq ($(TARGET_DEVICE),oneplus7t)
 # Fingerprint
 PRODUCT_PACKAGES += \
     omni.biometrics.fingerprint.inscreen@1.0-service.oneplus7pro
+endif
 
 # Remove unwanted packages
 PRODUCT_PACKAGES += \
