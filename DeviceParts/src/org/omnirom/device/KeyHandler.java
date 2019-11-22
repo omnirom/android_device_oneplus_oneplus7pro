@@ -78,6 +78,7 @@ public class KeyHandler implements DeviceKeyHandler {
     private static final int GESTURE_WAKELOCK_DURATION = 2000;
     private static final String DT2W_CONTROL_PATH = "/proc/touchpanel/double_tap_enable";
     private static final String SINGLE_TAP_CONTROL_PATH = "/proc/touchpanel/single_tap_enable";
+    private static final String REFRESH_RATE_CONTROL_PATH = "/proc/touchpanel/lcd_refresh_rate_switch";
 
     private static final int GESTURE_CIRCLE = 250;
     private static final int GESTURE_UP_ARROW = 252;
@@ -170,6 +171,7 @@ public class KeyHandler implements DeviceKeyHandler {
     private boolean mTorchState = false;
     private boolean mDoubleTapToWake;
     private boolean mUseOpPocketSensor = true;
+    private boolean mUse90Hz = true;
 
     private SensorEventListener mProximitySensor = new SensorEventListener() {
         @Override
@@ -226,6 +228,9 @@ public class KeyHandler implements DeviceKeyHandler {
             mContext.getContentResolver().registerContentObserver(Settings.System.getUriFor(
                     Settings.System.OMNI_DEVICE_FEATURE_SETTINGS),
                     false, this);
+            mContext.getContentResolver().registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.PEAK_REFRESH_RATE),
+                    false, this);
             mContext.getContentResolver().registerContentObserver(Settings.Secure.getUriFor(
                     Settings.Secure.DOUBLE_TAP_TO_WAKE),
                     false, this);
@@ -244,7 +249,7 @@ public class KeyHandler implements DeviceKeyHandler {
                     Settings.System.OMNI_DEVICE_FEATURE_SETTINGS))){
                 updateDozeSettings();
                 return;
-            } 
+            }
             update();
         }
 
@@ -252,6 +257,9 @@ public class KeyHandler implements DeviceKeyHandler {
             mUseProxiCheck = Settings.System.getIntForUser(
                     mContext.getContentResolver(), Settings.System.OMNI_DEVICE_PROXI_CHECK_ENABLED, 1,
                     UserHandle.USER_CURRENT) == 1;
+            mUse90Hz = Settings.System.getFloatForUser(
+                    mContext.getContentResolver(), Settings.System.PEAK_REFRESH_RATE, 90.0f,
+                    UserHandle.USER_CURRENT) == 90.0f;
             mDoubleTapToWake = Settings.Secure.getInt(
                     mContext.getContentResolver(), Settings.Secure.DOUBLE_TAP_TO_WAKE, 0) == 1;
             updateDoubleTapToWake();
@@ -455,6 +463,7 @@ public class KeyHandler implements DeviceKeyHandler {
             //mMotorHandler.removeCallbacksAndMessages(mCameraMotorSwitch);
             CameraMotorController.toggleCameraSwitch(true);
         }
+        Utils.writeValue(REFRESH_RATE_CONTROL_PATH, mUse90Hz ? "1" : "0");
     }
 
     private void updateDoubleTapToWake() {
@@ -490,6 +499,7 @@ public class KeyHandler implements DeviceKeyHandler {
         if (sIsOnePlus7pro || sIsOnePlus7tpro) {
             CameraMotorController.toggleCameraSwitch(false);
         }
+        Utils.writeValue(REFRESH_RATE_CONTROL_PATH, "0");
     }
 
     private int getSliderAction(int position) {
