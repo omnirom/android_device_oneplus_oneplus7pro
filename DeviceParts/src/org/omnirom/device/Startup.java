@@ -66,14 +66,14 @@ public class Startup extends BroadcastReceiver {
             enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_NIGHT_SWITCH, false);
             Settings.System.putInt(context.getContentResolver(), NightModeSwitch.SETTINGS_KEY, enabled ? 1 : 0);
 
-//            enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_WIDE_SWITCH, false);
-//            Settings.System.putInt(context.getContentResolver(), WideModeSwitch.SETTINGS_KEY, enabled ? 1 : 0);
-
             enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_OTG_SWITCH, false);
             Settings.System.putInt(context.getContentResolver(), UsbOtgSwitch.SETTINGS_KEY, enabled ? 1 : 0);
 
             enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_REFRESH_RATE, false);
             Settings.System.putFloat(context.getContentResolver(), Settings.System.PEAK_REFRESH_RATE, enabled ? 90f : 60f);
+
+            enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_FPS_INFO, false);
+            Settings.System.putInt(context.getContentResolver(), FpsInfoSwitch.SETTINGS_KEY, enabled ? 1 : 0);
 
             String vibrStrength = sharedPrefs.getString(DeviceSettings.KEY_VIBSTRENGTH, VibratorStrengthPreference.DEFAULT_VALUE); 
             Settings.System.putString(context.getContentResolver(), VibratorStrengthPreference.SETTINGS_KEY, vibrStrength);
@@ -168,9 +168,6 @@ public class Startup extends BroadcastReceiver {
 
         enabled = Settings.System.getInt(context.getContentResolver(), NightModeSwitch.SETTINGS_KEY, 0) != 0;
         restore(NightModeSwitch.getFile(), enabled);
-
-//        enabled = Settings.System.getInt(context.getContentResolver(), WideModeSwitch.SETTINGS_KEY, 0) != 0;
-//        restore(WideModeSwitch.getFile(), enabled);
 
         enabled = Settings.System.getInt(context.getContentResolver(), HBMModeSwitch.SETTINGS_KEY, 0) != 0;
         restore(HBMModeSwitch.getFile(), enabled);

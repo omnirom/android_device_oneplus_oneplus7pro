@@ -49,6 +49,7 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String KEY_OTG_SWITCH = "otg_switch";
     public static final String KEY_REFRESH_RATE = "refresh_rate";
     public static final String KEY_AUTO_REFRESH_RATE = "auto_refresh_rate";
+    public static final String KEY_FPS_INFO = "fps_info";
 
     public static final String SLIDER_DEFAULT_VALUE = "2,1,0";
 
@@ -63,6 +64,7 @@ public class DeviceSettings extends PreferenceFragment implements
     private static TwoStatePreference mOtgSwitch;
     private static TwoStatePreference mRefreshRate;
     private static SwitchPreference mAutoRefreshRate;
+    private static SwitchPreference mFpsInfo;
 
 
     @Override
@@ -119,6 +121,10 @@ public class DeviceSettings extends PreferenceFragment implements
         mRefreshRate.setChecked(RefreshRateSwitch.isCurrentlyEnabled(this.getContext()));
         mRefreshRate.setOnPreferenceChangeListener(new RefreshRateSwitch(getContext()));
 
+        mFpsInfo = (SwitchPreference) findPreference(KEY_FPS_INFO);
+        mFpsInfo.setChecked(FpsInfoSwitch.isCurrentlyEnabled(this.getContext()));
+        mFpsInfo.setOnPreferenceChangeListener(new FpsInfoSwitch(getContext()));
+
     }
 
     @Override
@@ -149,7 +155,7 @@ public class DeviceSettings extends PreferenceFragment implements
             setSliderAction(2, sliderMode);
             int valueIndex = mSliderModeBottom.findIndexOfValue(value);
             mSliderModeBottom.setSummary(mSliderModeBottom.getEntries()[valueIndex]);
-        }
+        }    
         return true;
     }
 
