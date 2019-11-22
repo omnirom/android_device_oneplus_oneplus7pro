@@ -110,5 +110,8 @@
         <service android:name="org.omnirom.device.FallSensorService"
                  android:permission="OnePlusCameraHelperService">
         </service>
+        <service android:name="org.omnirom.device.FPSInfoService"
+                android:exported="false">
+        </service>
     </application>
 </manifest>
