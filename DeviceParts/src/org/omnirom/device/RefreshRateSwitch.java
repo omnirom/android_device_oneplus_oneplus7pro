@@ -28,11 +28,20 @@ import org.omnirom.device.DeviceSettings;
 
 public class RefreshRateSwitch implements OnPreferenceChangeListener {
 
+    private static final String FILE = "/proc/touchpanel/lcd_refresh_rate_switch";
+
     public static final String SETTINGS_KEY = DeviceSettings.KEY_SETTINGS_PREFIX + DeviceSettings.KEY_REFRESH_RATE;
     private Context mContext;
 
     public RefreshRateSwitch(Context context) {
         mContext = context;
+    }
+
+    public static String getFile() {
+        if (Utils.fileWritable(FILE)) {
+            return FILE;
+        }
+        return null;
     }
 
     public static boolean isCurrentlyEnabled(Context context) {
@@ -45,6 +54,7 @@ public class RefreshRateSwitch implements OnPreferenceChangeListener {
                 Settings.System.PEAK_REFRESH_RATE, enabled ? 90f : 60f);
         Settings.System.putFloat(context.getContentResolver(),
                 Settings.System.MIN_REFRESH_RATE, enabled ? 90f : 60f);
+        Utils.writeValue(getFile(), enabled ? "1" : "0");
     }
 
     @Override
@@ -54,6 +64,7 @@ public class RefreshRateSwitch implements OnPreferenceChangeListener {
                 Settings.System.PEAK_REFRESH_RATE, enabled ? 90f : 60f);
         Settings.System.putFloat(mContext.getContentResolver(),
                 Settings.System.MIN_REFRESH_RATE, enabled ? 90f : 60f);
+        Utils.writeValue(getFile(), enabled ? "1" : "0");
         return true;
     }
 }
