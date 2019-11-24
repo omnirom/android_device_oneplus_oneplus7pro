@@ -35,8 +35,6 @@ BOARD_AVB_ENABLE := true
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --set_hashtree_disabled_flag
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 2
 BOARD_USES_VENDORIMAGE := true
-DEXPREOPT_GENERATE_APEX_IMAGE := true
-DEXPREOPT_USE_APEX_IMAGE := true
 
 # Split selinux policy
 PRODUCT_SEPOLICY_SPLIT := true
@@ -83,9 +81,6 @@ TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 TARGET_USES_64_BIT_BINDER := true
 TARGET_COMPILE_WITH_MSM_KERNEL := true
 
-ENABLE_CPUSETS := true
-ENABLE_SCHEDBOOST := true
-
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 loop.max_part=7 androidboot.usbcontroller=a600000.dwc3
 #BOARD_KERNEL_CMDLINE += androidboot.avb_version=1.0 androidboot.vbmeta.avb_version=1.0
 #BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
@@ -97,7 +92,6 @@ BOARD_ROOT_EXTRA_FOLDERS += op1 op2
 BOARD_ROOT_EXTRA_SYMLINKS := /vendor/dsp:/dsp /vendor/firmware_mnt:/firmware /mnt/vendor/persist:/persist
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
-#TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 BOARD_KERNEL_IMAGE_NAME := Image-dtb
 TARGET_KERNEL_SOURCE := kernel/oneplus/sm8150
 TARGET_KERNEL_CONFIG := vendor/omni_oneplus7pro_defconfig
@@ -118,10 +112,6 @@ BOARD_ODMIMAGE_PARTITION_SIZE := 67108864
 BOARD_PERSISTIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
-
-#File system for ODM
-#TARGET_COPY_OUT_ODM := odm
-#BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := ext4
 
 # global
 TARGET_SPECIFIC_HEADER_PATH := $(BOARD_PATH)/include
@@ -146,8 +136,8 @@ TARGET_HAS_WIDE_COLOR_DISPLAY := true
 TARGET_HAS_HDR_DISPLAY := true
 TARGET_USES_DISPLAY_RENDER_INTENTS := true
 
-#VSYNC_EVENT_PHASE_OFFSET_NS := 2000000
-#SF_VSYNC_EVENT_PHASE_OFFSET_NS := 6000000
+VSYNC_EVENT_PHASE_OFFSET_NS := 2000000
+SF_VSYNC_EVENT_PHASE_OFFSET_NS := 6000000
 
 #Audio
 USE_XML_AUDIO_POLICY_CONF := 1
@@ -279,11 +269,13 @@ BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 ifeq ($(TARGET_DEVICE),oneplus7pro)
 TARGET_RECOVERY_FSTAB := $(BOARD_PATH)/recovery.fstab
 endif
+TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 
 TARGET_USES_ION := true
 TARGET_USES_NEW_ION_API :=true
 TARGET_USES_QCOM_BSP := false
 
+#gapps
 TARGET_INCLUDE_STOCK_ARCORE := true
 
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += $(BOARD_PATH)/vendor_framework_compatibility_matrix.xml
