@@ -110,7 +110,7 @@ Return<void> FingerprintInscreen::onPress() {
 Return<void> FingerprintInscreen::onRelease() {
     set(HBM_ENABLE_PATH, 0);
     this->mVendorDisplayService->setMode(OP_DISPLAY_NOTIFY_PRESS, 0);
-    set(HBM_DIM_PATH, 255 - getDimAmount(255));
+    set(HBM_DIM_PATH, getDimAmount(255));
 
     return Void();
 }
@@ -138,7 +138,7 @@ Return<void> FingerprintInscreen::onShowFODView() {
     set(NATIVE_DISPLAY_NIGHT, 0);
     set(NATIVE_DISPLAY_WIDE, 1);
 
-    set(HBM_DIM_PATH, 255 - getDimAmount(255));
+    set(HBM_DIM_PATH, getDimAmount(255));
 
     return Void();
 }
@@ -204,7 +204,7 @@ Return<void> FingerprintInscreen::setLongPressEnabled(bool enabled) {
 }
 
 Return<int32_t> FingerprintInscreen::getDimAmount(int32_t) {
-    dimAmount = get(DIM_AMOUNT_PATH, 0);
+    dimAmount = 260 - get(DIM_AMOUNT_PATH, 0);
     LOG(INFO) << "dimAmount = " << dimAmount;
 
     return dimAmount;
@@ -228,11 +228,7 @@ Return<int32_t> FingerprintInscreen::getPositionX() {
 }
 
 Return<int32_t> FingerprintInscreen::getPositionY() {
-    if (isOneplus7t) {
-        return 2052;
-    } else {
-        return 2612;
-    }
+    return 2612;
 }
 
 Return<int32_t> FingerprintInscreen::getSize() {
