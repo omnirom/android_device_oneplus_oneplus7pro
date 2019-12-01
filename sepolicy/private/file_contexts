@@ -1,8 +1,6 @@
 /op1(/.*)?              u:object_r:op1_file:s0
 /op2(/.*)?              u:object_r:op2_file:s0
 
-/firmware/firmware_mnt  u:object_r:rootfs:s0
-
 /dev/sensor_ultrasound  u:object_r:oem_audio_device:s0
 
 #/system/etc/audio_policy_configuration_omni.xml    u:object_r:vendor_configs_file:s0
@@ -15,9 +13,9 @@
 
 /sys/devices/platform/soc/ae00000\.qcom,mdss_mdp/drm/card0/card0-DSI-1/native_display_p3_mode              u:object_r:omni_sysfs_drm:s0
 /sys/devices/platform/soc/ae00000\.qcom,mdss_mdp/drm/card0/card0-DSI-1/native_display_wide_color_mode      u:object_r:omni_sysfs_drm:s0
-/sys/devices/platform/soc/ae00000\.qcom,mdss_mdp/drm/card0/card0-DSI-1/native_display_srgb_color_mode      u:object_r:omni_sysfs_drm:s0
 /sys/devices/platform/soc/ae00000\.qcom,mdss_mdp/drm/card0/card0-DSI-1/night_mode                          u:object_r:omni_sysfs_drm:s0
 /sys/devices/platform/soc/ae00000\.qcom,mdss_mdp/drm/card0/card0-DSI-1/native_display_customer_srgb_mode   u:object_r:omni_sysfs_drm:s0
+/sys/devices/platform/soc/ae00000\.qcom,mdss_mdp/drm/card0/card0-DSI-1/native_display_srgb_color_mode   u:object_r:omni_sysfs_drm:s0
 /sys/devices/platform/soc/ae00000\.qcom,mdss_mdp/drm/card0/card0-DSI-1/native_display_customer_p3_mode     u:object_r:omni_sysfs_drm:s0
 /sys/devices/platform/soc/ae00000\.qcom,mdss_mdp/drm/card0/card0-DSI-1/dimlayer_bl_en                      u:object_r:omni_sysfs_drm:s0
 /sys/devices/platform/soc/ae00000\.qcom,mdss_mdp/drm/card0/card0-DSI-1/op_friginer_print_hbm               u:object_r:omni_sysfs_drm:s0
