@@ -182,9 +182,6 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_codecs_google_video.xml
 
 PRODUCT_PACKAGES += \
-    OmniDisplayManager
-
-PRODUCT_PACKAGES += \
     vendor.qti.hardware.wifi@1.0 \
     android.hardware.vibrator@1.2-service.oneplus7pro
 
@@ -198,10 +195,12 @@ PRODUCT_BOOT_JARS += \
     WfdCommon \
     qcnvitems
 
-
 # Video seccomp policy files
 PRODUCT_COPY_FILES += \
     device/oneplus/oneplus7pro/seccomp/codec2.software.ext.policy:$(TARGET_COPY_OUT)/etc/seccomp_policy/codec2.software.ext.policy
+
+PRODUCT_PACKAGES += oneplus-mock
+PRODUCT_BOOT_JARS += oneplus-mock
 
 # Temporary handling
 #
