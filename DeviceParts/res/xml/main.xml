@@ -84,9 +84,17 @@
     <PreferenceCategory
         android:key="audio"
         android:title="@string/audio_title">
+        <SwitchPreference
+            android:key="enable_audio_dolby_atmos"
+            android:summary="@string/enable_audio_dolby_summary"
+            android:title="@string/enable_audio_dolby_title"
+            android:defaultValue="true"
+            android:persistent="true" />
         <Preference
             android:key="audio_dolby_atmos"
-            android:title="@string/dolby_title">
+            android:title="@string/dolby_title"
+            android:summary="@string/dolby_summary"
+            android:dependency="enable_audio_dolby_atmos">
             <intent
                  android:targetPackage="com.oneplus.sound.tuner"
                  android:targetClass="com.oneplus.sound.tuner.panoramic.DolbyPanoramicSoundActivity" />
