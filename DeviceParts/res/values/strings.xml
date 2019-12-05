@@ -32,7 +32,6 @@
     <string name="dcd_mode_summary">Reduce screen flickers at low brightness</string>
     <string name="hbm_mode_summary"></string>
     <string name="hbm_mode_title">High brightness mode</string>
-    <string name="wide_mode_title">Custom P3 mode</string>
     <string name="oneplus_mode_title">OnePlus mode</string>
     <string name="proxi_summary_head_new">Check proximity sensor for handling gestures</string>
     <string name="proxi_title_head">Proximity check</string>
@@ -48,8 +47,8 @@
     <string name="slider_mode_title_top">Top position</string>
     <string name="slider_mode_title_center">Center position</string>
     <string name="slider_mode_title_bottom">Bottom position</string>
-    <string name="dci_mode_summary"></string>
-    <string name="dci_mode_title">Wide color gammut mode</string>
+    <string name="wide_mode_title_new">Wide color mode</string>
+    <string name="dci_mode_title_new">DCI-P3 mode</string>
     <string name="Night_mode_summary"></string>
     <string name="Night_mode_title">Night mode</string>
     <string name="otg_switch_summary">Enable/disable USB-OTG support</string>
@@ -119,5 +118,5 @@
 
     <string name="fps_info_title">FPS overlay</string>
     <string name="fps_info_summary">Show overlay with with current frames per second</string>
-
+    <string name="panel_mode_info">Disable panel mode requires reboot.</string>
 </resources>
