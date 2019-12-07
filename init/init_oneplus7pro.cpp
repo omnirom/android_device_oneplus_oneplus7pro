@@ -37,40 +37,11 @@
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
 
-#define OP_VARIANT       "/sys/project_info/project_name"
-#define BUF_SIZE         16
-
 namespace android {
 namespace init {
 
 using android::base::GetProperty;
 using android::init::property_set;
-
-static unsigned long op_variant;
-static char tmp[BUF_SIZE];
-
-
-int read_file2(const char *fname, char *data, int max_size)
-{
-    int fd, rc;
-
-    if (max_size < 1)
-        return 0;
-
-    fd = open(fname, O_RDONLY);
-    if (fd < 0) {
-        return 0;
-    }
-
-    rc = read(fd, data, max_size - 1);
-    if ((rc > 0) && (rc < max_size))
-        data[rc] = '\0';
-    else
-        data[0] = '\0';
-    close(fd);
-
-    return 1;
-}
 
 void property_override(const std::string& name, const std::string& value)
 {
@@ -95,7 +66,6 @@ void vendor_load_properties()
     LOG(INFO) << "Starting custom init";
 
     name = android::base::GetProperty("ro.product.vendor.name", "");
-    op_variant = read_file2(OP_VARIANT, tmp, sizeof(tmp));
     LOG(INFO) << name;
     if (name == "OnePlus7Pro_EEA") {
         property_override("ro.build.fingerprint", "OnePlus/OnePlus7Pro_EEA/OnePlus7Pro:10/QKQ1.190716.003/1910071200:user/release-keys");
@@ -112,11 +82,11 @@ void vendor_load_properties()
         property_override("ro.build.description", "OnePlus7T_EEA-user 10 QKQ1.190716.003 1910122101 release-keys");
         property_override("ro.build.model", "HD1903");
     }
-    /*if (name == "OnePlus7T") {
-        property_override("ro.build.fingerprint", "OnePlus/OnePlus7T/OnePlus7T:10/QKQ1.190716.003/1910122101:user/release-keys");
-        property_override("ro.build.description", "OnePlus7T-user 10 QKQ1.190716.003 1910122101 release-keys");
-        property_override("ro.build.model", "HD1903");
-    }*/
+    if (name == "OnePlus7T_CH") {
+        property_override("ro.build.fingerprint", "OnePlus/OnePlus7T_CH/OnePlus7T:10/QKQ1.190716.003/1911061831:user/release-keys");
+        property_override("ro.build.description", "OnePlus7T_CH-user 10 QKQ1.190716.003 1911061831 release-keys");
+        property_override("ro.build.model", "HD1900");
+    }
     /*Check for kgsl node and disable HW composition*/
     if (access("/dev/kgsl-3d0", F_OK) < 0) {
         property_set("persist.sys.force_sw_gles", "1");
