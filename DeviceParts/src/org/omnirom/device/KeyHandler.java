@@ -159,22 +159,24 @@ public class KeyHandler implements DeviceKeyHandler {
     private boolean mUseTiltCheck;
     private boolean mProxyWasNear;
     private long mProxySensorTimestamp;
-    private Sensor mPocketSensor;
+    private Sensor mOpPocketSensor;
+    private Sensor mOpProxiSensor;
     private boolean mUseSingleTap;
     private boolean mDispOn;
     private ClientPackageNameObserver mClientObserver;
     private IOnePlusCameraProvider mProvider;
     private boolean isOPCameraAvail;
     private boolean mRestoreUser;
-    private boolean mToggleTorch = false;
-    private boolean mTorchState = false;
+    private boolean mToggleTorch;
+    private boolean mTorchState;
     private boolean mDoubleTapToWake;
     private boolean mUseOpPocketSensor = true;
+    private boolean mAODEnabled;
 
     private SensorEventListener mProximitySensor = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent event) {
-            if (!mUseOpPocketSensor) {
+            if (mAODEnabled && !mUseOpPocketSensor) {
                 mProxyIsNear = event.values[0] < event.sensor.getMaximumRange();
             } else {
                 mProxyIsNear = event.values[0] == 1;
@@ -229,6 +231,9 @@ public class KeyHandler implements DeviceKeyHandler {
             mContext.getContentResolver().registerContentObserver(Settings.Secure.getUriFor(
                     Settings.Secure.DOUBLE_TAP_TO_WAKE),
                     false, this);
+            mContext.getContentResolver().registerContentObserver(Settings.Secure.getUriFor(
+                    Settings.Secure.DOZE_ALWAYS_ON),
+                    false, this);
             update();
             updateDozeSettings();
         }
@@ -252,8 +257,12 @@ public class KeyHandler implements DeviceKeyHandler {
             mUseProxiCheck = Settings.System.getIntForUser(
                     mContext.getContentResolver(), Settings.System.OMNI_DEVICE_PROXI_CHECK_ENABLED, 1,
                     UserHandle.USER_CURRENT) == 1;
-            mDoubleTapToWake = Settings.Secure.getInt(
-                    mContext.getContentResolver(), Settings.Secure.DOUBLE_TAP_TO_WAKE, 0) == 1;
+            mDoubleTapToWake = Settings.Secure.getIntForUser(
+                    mContext.getContentResolver(), Settings.Secure.DOUBLE_TAP_TO_WAKE, 0,
+                    UserHandle.USER_CURRENT) == 1;
+            mAODEnabled = Settings.Secure.getIntForUser(
+                    mContext.getContentResolver(), Settings.Secure.DOZE_ALWAYS_ON, 1,
+                    UserHandle.USER_CURRENT) == 1;
             updateDoubleTapToWake();
         }
     }
@@ -294,13 +303,8 @@ public class KeyHandler implements DeviceKeyHandler {
         mAudioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
         mSensorManager = (SensorManager) mContext.getSystemService(Context.SENSOR_SERVICE);
         mTiltSensor = getSensor(mSensorManager, "oneplus.sensor.op_motion_detect");
-        if (!mUseOpPocketSensor) {
-            if (DEBUG_SENSOR) Log.i(TAG, "proxy sensor: android.sensor.proximity");
-            mPocketSensor = getSensor(mSensorManager, "android.sensor.proximity");
-        } else {
-            if (DEBUG_SENSOR) Log.i(TAG, "proxy sensor: oneplus.sensor.pocket");
-            mPocketSensor = getSensor(mSensorManager, "oneplus.sensor.pocket");
-        }
+        mOpProxiSensor = getSensor(mSensorManager, "android.sensor.proximity");
+        mOpPocketSensor = getSensor(mSensorManager, "oneplus.sensor.pocket");
         IntentFilter systemStateFilter = new IntentFilter(Intent.ACTION_SCREEN_ON);
         systemStateFilter.addAction(Intent.ACTION_SCREEN_OFF);
         systemStateFilter.addAction(Intent.ACTION_USER_SWITCHED);
@@ -444,8 +448,13 @@ public class KeyHandler implements DeviceKeyHandler {
     private void onDisplayOn() {
         if (DEBUG) Log.i(TAG, "Display on");
         if (enableProxiSensor()) {
-            if (DEBUG_SENSOR) Log.i(TAG, "Unregister pocket sensor");
-            mSensorManager.unregisterListener(mProximitySensor, mPocketSensor);
+            if (mAODEnabled && !mUseOpPocketSensor) {
+                if (DEBUG_SENSOR) Log.i(TAG, "Unregister proxi sensor");
+                mSensorManager.unregisterListener(mProximitySensor, mOpProxiSensor);
+            } else {
+                if (DEBUG_SENSOR) Log.i(TAG, "Unregister pocket sensor");
+                mSensorManager.unregisterListener(mProximitySensor, mOpPocketSensor);
+            }
         }
         if ((mClientObserver == null) && (isOPCameraAvail)) {
             mClientObserver = new ClientPackageNameObserver(CLIENT_PACKAGE_PATH);
@@ -474,9 +483,15 @@ public class KeyHandler implements DeviceKeyHandler {
     private void onDisplayOff() {
         if (DEBUG) Log.i(TAG, "Display off");
         if (enableProxiSensor()) {
-            if (DEBUG_SENSOR) Log.i(TAG, "Register pocket sensor");
-            mSensorManager.registerListener(mProximitySensor, mPocketSensor,
-                    SensorManager.SENSOR_DELAY_NORMAL);
+            if (mAODEnabled && !mUseOpPocketSensor) {
+                if (DEBUG_SENSOR) Log.i(TAG, "Register proxi sensor ");
+                mSensorManager.registerListener(mProximitySensor, mOpProxiSensor,
+                        SensorManager.SENSOR_DELAY_NORMAL);
+            } else {
+                if (DEBUG_SENSOR) Log.i(TAG, "Register pocket sensor ");
+                mSensorManager.registerListener(mProximitySensor, mOpPocketSensor,
+                        SensorManager.SENSOR_DELAY_NORMAL);
+            }
             mProxySensorTimestamp = SystemClock.elapsedRealtime();
         }
         if (mUseTiltCheck) {
@@ -684,7 +699,7 @@ public class KeyHandler implements DeviceKeyHandler {
 
     @Override
     public boolean getCustomProxiIsNear(SensorEvent event) {
-        if (!mUseOpPocketSensor) {
+        if (mAODEnabled && !mUseOpPocketSensor) {
             return event.values[0] < event.sensor.getMaximumRange();
         } else {
             return event.values[0] == 1;
@@ -693,7 +708,7 @@ public class KeyHandler implements DeviceKeyHandler {
 
     @Override
     public String getCustomProxiSensor() {
-        if (!mUseOpPocketSensor) {
+        if (mAODEnabled && !mUseOpPocketSensor) {
             return "android.sensor.proximity";
         } else {
             return "oneplus.sensor.pocket";
