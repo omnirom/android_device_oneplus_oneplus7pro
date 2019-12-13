@@ -39,9 +39,6 @@
 
     <bool name="config_multiColorNotificationLed">false</bool>
 
-    <!-- Enable system navigation keys. -->
-    <bool name="config_supportSystemNavigationKeys">true</bool>
-
     <!-- Show a custom view for FOD -->
     <bool name="config_usesFOD">true</bool>
 

@@ -842,5 +842,7 @@
         <item>error 7</item>
         <item>error 8</item>
     </string-array>
-
+    
+    <!-- Enable system navigation keys. -->
+    <bool name="config_supportSystemNavigationKeys">false</bool>
 </resources>
