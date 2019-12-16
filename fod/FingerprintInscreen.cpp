@@ -35,7 +35,7 @@
 #define OP_DISPLAY_SET_DIM 10
 #define OP_DISPLAY_HIDE_AOD 11
 
-#define HBM_ENABLE_PATH "/sys/class/drm/card0-DSI-1/op_friginer_print_hbm"
+#define HBM_ENABLE_PATH "/sys/class/drm/card0-DSI-1/hbm"
 #define HBM_DIM_PATH "/sys/class/drm/card0-DSI-1/hbm_brightness"
 #define DIM_AMOUNT_PATH "/sys/class/drm/card0-DSI-1/dim_alpha"
 #define DC_DIM_PATH "/sys/class/drm/card0-DSI-1/dimlayer_bl_en"
@@ -100,15 +100,15 @@ Return<void> FingerprintInscreen::onFinishEnroll() {
 }
 
 Return<void> FingerprintInscreen::onPress() {
-    this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 5);
+//    this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 5);
     this->mVendorDisplayService->setMode(OP_DISPLAY_NOTIFY_PRESS, 1);
-    set(HBM_ENABLE_PATH, 1);
+    set(HBM_ENABLE_PATH, 5);
 
     return Void();
 }
 
 Return<void> FingerprintInscreen::onRelease() {
-    set(HBM_ENABLE_PATH, 0);
+    set(HBM_ENABLE_PATH, 1);
     this->mVendorDisplayService->setMode(OP_DISPLAY_NOTIFY_PRESS, 0);
     set(HBM_DIM_PATH, getDimAmount(255));
 
@@ -116,7 +116,7 @@ Return<void> FingerprintInscreen::onRelease() {
 }
 
 Return<void> FingerprintInscreen::onShowFODView() {
-    this->mVendorDisplayService->setMode(OP_DISPLAY_AOD_MODE, 2);
+    this->mVendorDisplayService->setMode(OP_DISPLAY_AOD_MODE, 1);
     this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 1);
     wide = get(NATIVE_DISPLAY_WIDE, 0);
     p3 = get(NATIVE_DISPLAY_P3, 0);
@@ -138,6 +138,7 @@ Return<void> FingerprintInscreen::onShowFODView() {
     set(NATIVE_DISPLAY_NIGHT, 0);
     set(NATIVE_DISPLAY_WIDE, 1);
 
+    set(HBM_ENABLE_PATH, 1);
     set(HBM_DIM_PATH, getDimAmount(255));
 
     return Void();
@@ -204,7 +205,12 @@ Return<void> FingerprintInscreen::setLongPressEnabled(bool enabled) {
 }
 
 Return<int32_t> FingerprintInscreen::getDimAmount(int32_t) {
-    dimAmount = 260 - get(DIM_AMOUNT_PATH, 0);
+    dimAmount = get(DIM_AMOUNT_PATH, 0);
+    if ( dimAmount > 236 ) {
+        dimAmount = 236;
+        set(HBM_DIM_PATH, dimAmount);
+    }
+
     LOG(INFO) << "dimAmount = " << dimAmount;
 
     return dimAmount;
