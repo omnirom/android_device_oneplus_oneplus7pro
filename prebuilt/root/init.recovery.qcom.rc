@@ -60,3 +60,7 @@ on fs
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
     mount ext4 /dev/block/bootdevice/by-name/op2 /op2 noatime nosuid nodev barrier=1
     chown system system /op2
+
+service dashd /sbin/dashd
+    critical
+    seclabel u:r:charger:s0
