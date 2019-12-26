@@ -109,6 +109,8 @@ public class KeyHandler implements DeviceKeyHandler {
     public static final String CLIENT_PACKAGE_NAME = "com.oneplus.camera";
     public static final String CLIENT_PACKAGE_PATH = "/data/misc/omni/client_package_name";
 
+    public static final String DYNAMIC_FPS_PATH = "/sys/class/drm/card-DSI-1/dynamic_fps";
+
     private static final String TRI_STATE_CALIB_DATA = "/mnt/vendor/persist/engineermode/tri_state_hall_data";
     private static final String TRI_STATE_CALIB_PATH = "/sys/bus/platform/devices/soc:tri_state_key/hall_data_calib";
 
@@ -464,6 +466,7 @@ public class KeyHandler implements DeviceKeyHandler {
             //mMotorHandler.removeCallbacksAndMessages(mCameraMotorSwitch);
             CameraMotorController.toggleCameraSwitch(true);
         }
+        Utils.writeValue(DYNAMIC_FPS_PATH, "90");
     }
 
     private void updateDoubleTapToWake() {
