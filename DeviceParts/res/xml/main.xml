@@ -107,13 +107,32 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:key="graphics"
-        android:title="@string/graphics_title">
+        android:key="refresh"
+        android:title="@string/refresh_title">
+        <SwitchPreference
+            android:key="auto_refresh_rate"
+            android:summary="@string/auto_refresh_rate_summary"
+            android:title="@string/auto_refresh_rate_title"
+            android:persistent="true" />
+        <SwitchPreference
+            android:key="refresh_rate"
+            android:summary="@string/refresh_rate_summary"
+            android:title="@string/refresh_rate_title"
+            android:persistent="false" />
+        <Preference
+            android:icon="@drawable/ic_info_outline_24dp"
+            android:persistent="false"
+            android:summary="@string/refresh_rate_warning" />
         <SwitchPreference
             android:key="fps_info"
             android:title="@string/fps_info_title"
             android:summary="@string/fps_info_summary"
             android:persistent="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="graphics"
+        android:title="@string/graphics_title">
         <SwitchPreference
             android:key="dcd"
             android:summary="@string/dcd_mode_summary"
