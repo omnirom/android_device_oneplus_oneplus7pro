@@ -94,10 +94,6 @@ public class Startup extends BroadcastReceiver {
         if (enabled) {
             context.startService(new Intent(context, FPSInfoService.class));
         }
-        // cleanup old 90hz fps
-        Settings.System.putFloat(context.getContentResolver(), Settings.System.PEAK_REFRESH_RATE,
-                (float) context.getResources().getInteger(com.android.internal.R.integer.config_defaultPeakRefreshRate));
-        Settings.System.putFloat(context.getContentResolver(), Settings.System.MIN_REFRESH_RATE, 0f);
     }
 
     public static void restoreAfterUserSwitch(Context context) {
