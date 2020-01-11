@@ -116,14 +116,15 @@ public class DozeSettings extends PreferenceFragment  {
             String[] parts = value.split(":");
             mUseTiltCheck = Boolean.valueOf(parts[0]);
             mUseSingleTap = Boolean.valueOf(parts[1]);
-            if (parts.length >= 3) {
-                mUseWaveCheck = Boolean.valueOf(parts[2]);
+            if (sIsOnePlus7t) {
+                if (parts.length >= 3) {
+                    mUseWaveCheck = Boolean.valueOf(parts[2]);
+                }
+                if (parts.length == 4) {
+                    mUsePocketCheck = Boolean.valueOf(parts[3]);
+                }
             } else {
                 mUseWaveCheck = false;
-            }
-            if (parts.length == 4) {
-                mUsePocketCheck = Boolean.valueOf(parts[3]);
-            } else {
                 mUsePocketCheck = false;
             }
         }
