@@ -15,6 +15,7 @@
      limitations under the License.
 -->
 <resources>
+    <string name="app_name">OnePlus 5</string>
     <string name="category_gestures_title">Gerätegesten</string>
     <string name="category_vibrator">Vibrator</string>
     <string name="vib_strength_title_head">Stärke</string>
@@ -73,12 +74,12 @@
     <string name="browse_scroll_down">Nach unten scrollen</string>
     <string name="navigate_back">Zurück</string>
     <string name="navigate_home">Startbildschirm</string>
-    <string name="navigate_recent">Verlauf</string>
+    <string name="navigate_recent">Anwendungsverlauf</string>
     <string name="not_ready_summary">Lösen...</string>
     <string name="resolve_failed_summary">App lösen fehlgeschlagen</string>
-    <string name="category_s_gesture">S Swipe</string>
-    <string name="category_m_gesture">M Swipe</string>
-    <string name="category_w_gesture">W Swipe</string>
+    <string name="category_s_gesture">S Geste</string>
+    <string name="category_m_gesture">M Geste</string>
+    <string name="category_w_gesture">W Geste</string>
     <string name="doze_category_title">Inaktivitätsdisplay</string>
     <string name="doze_category_summary">Das Display einschalten, wenn eine Benachrichtigung empfangen wurde</string>
     <string name="wave_check_summary">Benachrichtigungen pulsieren, wenn mit der Hand gewunken wird</string>
@@ -95,5 +96,5 @@
     <string name="tile_hbm_mode">Modus für max. Helligkeit</string>
     <string name="wake_entry">Aufwachen</string>
     <string name="single_tap_title">Einmaliges tippen</string>
-    <string name="single_tap_summary">Inaktivitätsdisplay bei einfachem Tippen anzeigen</string>
+    <string name="single_tap_summary">Inaktivitätsdisplay bei einmaligem Tippen anzeigen</string>
 </resources>

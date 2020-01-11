@@ -15,6 +15,7 @@
      limitations under the License.
 -->
 <resources>
+    <string name="app_name">Oneplus 5</string>
     <string name="category_gestures_title">Mouvements du terminal</string>
     <string name="category_vibrator">Vibreur</string>
     <string name="vib_strength_title_head">Intensité</string>

@@ -15,6 +15,7 @@
      limitations under the License.
 -->
 <resources>
+    <string name="app_name">Oneplus 5</string>
     <string name="category_gestures_title">设备手势</string>
     <string name="category_vibrator">振动</string>
     <string name="vib_strength_title_head">强度</string>
