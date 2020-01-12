@@ -182,8 +182,7 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_codecs_google_video.xml
 
 PRODUCT_PACKAGES += \
-    vendor.qti.hardware.wifi@1.0 \
-    android.hardware.vibrator@1.2-service.oneplus7pro
+    vendor.qti.hardware.wifi@1.0
 
 # Remove unwanted packages
 PRODUCT_PACKAGES += \
