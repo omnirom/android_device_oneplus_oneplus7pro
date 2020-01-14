@@ -480,7 +480,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     </hal>
     <hal format="hidl" optional="true">
         <name>android.hardware.vibrator</name>
-        <version>1.0-2</version>
+        <version>1.0-3</version>
         <interface>
             <name>IVibrator</name>
             <instance>default</instance>
