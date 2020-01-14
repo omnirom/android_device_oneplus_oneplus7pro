@@ -13,8 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#define LOG_TAG "android.hardware.vibrator@1.2-service.oneplus7pro"
-#include <android/hardware/vibrator/1.2/IVibrator.h>
+#define LOG_TAG "android.hardware.vibrator@1.3-service.oneplus7pro"
+#include <android/hardware/vibrator/1.3/IVibrator.h>
 #include <cutils/properties.h>
 #include <hidl/HidlSupport.h>
 #include <hidl/HidlTransportSupport.h>
@@ -23,8 +23,8 @@
 #include "Vibrator.h"
 using android::hardware::configureRpcThreadpool;
 using android::hardware::joinRpcThreadpool;
-using android::hardware::vibrator::V1_2::IVibrator;
-using android::hardware::vibrator::V1_2::implementation::Vibrator;
+using android::hardware::vibrator::V1_3::IVibrator;
+using android::hardware::vibrator::V1_3::implementation::Vibrator;
 using namespace android;
 // Refer to non existing
 // kernel documentation on the detail usages for ABIs below
@@ -214,5 +214,6 @@ int main() {
     if (status != OK) {
         return status;
     }
+    ALOGI("Vibrator HAL service ready.");
     joinRpcThreadpool();
 }
