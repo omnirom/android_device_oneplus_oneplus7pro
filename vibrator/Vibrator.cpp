@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#define LOG_TAG "VibratorService"
+#define LOG_TAG "android.hardware.vibrator@1.3-service.oneplus7pro"
 #include <log/log.h>
 #include <hardware/hardware.h>
 #include <hardware/vibrator.h>
@@ -26,7 +26,7 @@
 namespace android {
 namespace hardware {
 namespace vibrator {
-namespace V1_2 {
+namespace V1_3 {
 namespace implementation {
 static constexpr int8_t MAX_RTP_INPUT = 127;
 static constexpr int8_t MIN_RTP_INPUT = 0;
@@ -130,7 +130,6 @@ Return<Status> Vibrator::on(uint32_t timeoutMs, bool isWaveform) {
     }
    return Status::OK;
 }
-// Methods from ::android::hardware::vibrator::V1_2::IVibrator follow.
 Return<Status> Vibrator::on(uint32_t timeoutMs) {
     shouldBright = false;
     return on(timeoutMs, false /* isWaveform */);
@@ -174,6 +173,12 @@ static uint8_t convertEffectStrength(EffectStrength strength) {
     }
     return scale;
 }
+Return<bool> Vibrator::supportsExternalControl() {
+    return false;
+}
+Return<Status> Vibrator::setExternalControl(bool) {
+    return Status::OK;
+}
 Return<void> Vibrator::perform(V1_0::Effect effect, EffectStrength strength, perform_cb _hidl_cb) {
     return performEffect(static_cast<Effect>(effect), strength, _hidl_cb);
 }
@@ -181,7 +186,10 @@ Return<void> Vibrator::perform_1_1(V1_1::Effect_1_1 effect, EffectStrength stren
         perform_cb _hidl_cb) {
     return performEffect(static_cast<Effect>(effect), strength, _hidl_cb);
 }
-Return<void> Vibrator::perform_1_2(Effect effect, EffectStrength strength, perform_cb _hidl_cb) {
+Return<void> Vibrator::perform_1_2(V1_2::Effect effect, EffectStrength strength, perform_cb _hidl_cb) {
+    return performEffect(static_cast<Effect>(effect), strength, _hidl_cb);
+}
+Return<void> Vibrator::perform_1_3(Effect effect, EffectStrength strength, perform_cb _hidl_cb) {
     return performEffect(static_cast<Effect>(effect), strength, _hidl_cb);
 }
 Return<void> Vibrator::performEffect(Effect effect, EffectStrength strength, perform_cb _hidl_cb) {
@@ -251,6 +259,18 @@ Return<void> Vibrator::performEffect(Effect effect, EffectStrength strength, per
         shouldBright = true;
         timeMS = 10;
         break;
+    // TODO for now use the same as CLICK
+    case Effect::TEXTURE_TICK:
+        mActivate << 0 << std::endl;
+        mIgnoreStore << 0 << std::endl;
+        mVmax << VMAX << std::endl;
+        mGain << GAIN << std::endl;
+        mSequencer << WAVEFORM_CLICK_EFFECT_SEQ0 << std::endl;
+        mSequencer << WAVEFORM_CLICK_EFFECT_SEQ1 << std::endl;
+        mCtrlLoop << "0 0x0" << std::endl;
+        shouldBright = true;
+        timeMS = mClickDuration;
+        break;
     default:
         _hidl_cb(Status::UNSUPPORTED_OPERATION, 0);
         shouldBright = false;
@@ -262,7 +282,7 @@ Return<void> Vibrator::performEffect(Effect effect, EffectStrength strength, per
     return Void();
 }
 } // namespace implementation
-}  // namespace V1_2
+}  // namespace V1_3
 }  // namespace vibrator
 }  // namespace hardware
 }  // namespace android
