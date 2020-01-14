@@ -183,7 +183,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.wifi@1.0 \
-    android.hardware.vibrator@1.2-service.oneplus7pro
+    android.hardware.vibrator@1.3-service.oneplus7pro
 
 # Remove unwanted packages
 PRODUCT_PACKAGES += \

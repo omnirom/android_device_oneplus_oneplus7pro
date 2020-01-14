@@ -13,9 +13,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 cc_binary {
-    name: "android.hardware.vibrator@1.2-service.oneplus7pro",
+    name: "android.hardware.vibrator@1.3-service.oneplus7pro",
     relative_install_path: "hw",
-    init_rc: ["android.hardware.vibrator@1.2-service.oneplus7pro.rc"],
+    init_rc: ["android.hardware.vibrator@1.3-service.oneplus7pro.rc"],
     srcs: ["service.cpp", "Vibrator.cpp"],
     cflags: ["-Wall", "-Werror"],
     shared_libs: [
@@ -28,7 +28,8 @@ cc_binary {
         "libhardware",
         "android.hardware.vibrator@1.0",
         "android.hardware.vibrator@1.1",
-        "android.hardware.vibrator@1.2"
+        "android.hardware.vibrator@1.2",
+        "android.hardware.vibrator@1.3",
     ],
     proprietary: false,
 }
