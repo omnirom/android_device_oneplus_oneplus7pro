@@ -78,8 +78,8 @@ void vendor_load_properties()
         property_override("ro.build.model", "GM1913");
     }
     if (name == "OnePlus7T_EEA") {
-        property_override("ro.build.fingerprint", "OnePlus/OnePlus7T_EEA/OnePlus7T:10/QKQ1.190716.003/1910122101:user/release-keys");
-        property_override("ro.build.description", "OnePlus7T_EEA-user 10 QKQ1.190716.003 1910122101 release-keys");
+        property_override("ro.build.fingerprint", "OnePlus/OnePlus7T_EEA/OnePlus7T:10/QKQ1.190716.003/1911061833:user/release-keys");
+        property_override("ro.build.description", "OnePlus7T_EEA-user 10 QKQ1.190716.003 1911061833 release-keys");
         property_override("ro.build.model", "HD1903");
     }
     if (name == "OnePlus7T_CH") {
