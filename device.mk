@@ -144,7 +144,7 @@ PRODUCT_PACKAGES += \
     android.hidl.base@1.0
 
 PRODUCT_PACKAGES += \
-    vendor.display.config@1.10 \
+    vendor.display.config@1.15 \
     libdisplayconfig \
     libqdMetaData.system \
     libqdMetaData \
