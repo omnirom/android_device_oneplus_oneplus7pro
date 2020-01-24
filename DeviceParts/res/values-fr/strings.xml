@@ -26,7 +26,9 @@
     <string name="slider_mode_title">Mode curseur</string>
     <string name="buttons_title">Boutons</string>
     <string name="swap_back_recents_title">Permuter le bouton retour et le bouton app. récents</string>
+    <string name="graphics_title">Graphiques</string>
     <string name="srgb_mode_title">mode sRGB</string>
+    <string name="dcd_mode_title">Variation du CC</string>
     <string name="proxi_title_head">Contrôle de proximité</string>
     <string name="slider_mode_off">Désactivé</string>
     <string name="slider_mode_vibrate">Vibreur</string>
