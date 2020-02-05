@@ -282,5 +282,3 @@ ro.vibrator.hal.heavyclick.duration=10
 
 #HWC
 persist.vendor.color.matrix=2
-
-ro.boot.vendor.overlay.static=false
