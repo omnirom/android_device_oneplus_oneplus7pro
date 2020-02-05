@@ -189,6 +189,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     RemovePackages
 
+PRODUCT_PACKAGES += \
+    FakeOverlay
+
 PRODUCT_BOOT_JARS += \
     com.nxp.nfc \
     tcmiface \
