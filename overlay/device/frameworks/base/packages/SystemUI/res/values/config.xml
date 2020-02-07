@@ -25,5 +25,7 @@
     <integer name="config_maxVisibleNotificationIcons">8</integer>
     <integer name="config_maxVisibleNotificationIconsWhenDark">9</integer>
 
+    <color name="config_fodColor">#00C800</color>
+
 </resources>
 
