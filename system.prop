@@ -255,9 +255,9 @@ persist.vendor.audio_hal.dsp_bit_width_enforce_mode=24
 #omni
 ro.surface_flinger.protected_contents=true
 ro.surface_flinger.use_smart_90_for_video=true
-ro.surface_flinger.set_display_power_timer_ms=10000
+ro.surface_flinger.set_display_power_timer_ms=0
 ro.surface_flinger.set_touch_timer_ms=5000
-ro.surface_flinger.set_idle_timer_ms=9000
+ro.surface_flinger.set_idle_timer_ms=0
 ro.vendor.qti.va_aosp.support=1
 ro.apex.updatable=true
 ro.camera.notify_nfc=0
