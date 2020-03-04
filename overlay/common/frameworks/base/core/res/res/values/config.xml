@@ -822,4 +822,20 @@
     
     <!-- Enable system navigation keys. -->
     <bool name="config_supportSystemNavigationKeys">false</bool>
+
+    <!-- Boolean indicating whether framework needs to set the tx power limit for meeting SAR requirements -->
+    <bool translatable="false" name="config_wifi_framework_enable_sar_tx_power_limit">true</bool>
+
+    <!-- Boolean indicating whether framework should use detection of softAP mode to set the tx
+         power limit for meeting SAR requirements -->
+    <bool translatable="false" name="config_wifi_framework_enable_soft_ap_sar_tx_power_limit">true</bool>
+
+    <!-- Boolean indicating whether framework needs to use body proximity to set the tx power limit
+         for meeting SAR requirements -->
+    <bool translatable="false" name="config_wifi_framework_enable_body_proximity_sar_tx_power_limit">true</bool>
+
+    <!-- String for the sensor type for body/head proximity for SAR -->
+    <string translatable="false" name="config_wifi_sar_sensor_type">qti.sensor.sars</string>
+
+
 </resources>
