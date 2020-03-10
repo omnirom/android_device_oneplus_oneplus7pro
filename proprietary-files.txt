@@ -436,8 +436,6 @@ lib64/libnxpnfc-nci.so
 lib/libnxpnfc-nci.so
 etc/nfcee_access.xml
 
--priv-app/OPNetworkSetting/OPNetworkSetting.apk|d25e3155dc84b34f233e1f543c2d3deace603385
-
 -sbin/dashd;rootfs
 
 product/lib/vendor.qti.hardware.data.connection@1.0.so
