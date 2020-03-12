@@ -31,9 +31,6 @@ PRODUCT_FULL_TREBLE := true
 BOARD_VNDK_VERSION := current
 BOARD_VNDK_RUNTIME_DISABLE := false
 TARGET_NO_KERNEL := false
-BOARD_AVB_ENABLE := true
-BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --set_hashtree_disabled_flag
-BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 2
 BOARD_USES_VENDORIMAGE := true
 
 # Split selinux policy
