@@ -427,7 +427,7 @@ lib/libqvr_cdsp_driver_stub.so
 etc/permissions/com.dolby.daxservice.xml
 -priv-app/daxService/daxService.apk
 
--app/NxpNfcNci/NxpNfcNci.apk|9a32dcf8d46010691bf169e55755e0cd45a41c9b
+-app/NxpNfcNci/NxpNfcNci.apk|88df5ea34fa5f915eb0779d56dcb48e52510fbc6
 -app/NxpSecureElement/NxpSecureElement.apk
 -framework/com.nxp.nfc.jar
 etc/permissions/com.nxp.nfc.xml
