@@ -100,9 +100,10 @@ Return<void> FingerprintInscreen::onFinishEnroll() {
 }
 
 Return<void> FingerprintInscreen::onPress() {
-    set(HBM_ENABLE_PATH, 5);
-    this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 5);
+    this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 2);
+
     this->mVendorDisplayService->setMode(OP_DISPLAY_NOTIFY_PRESS, 1);
+    set(HBM_ENABLE_PATH, 5);
 
     return Void();
 }
@@ -110,7 +111,8 @@ Return<void> FingerprintInscreen::onPress() {
 Return<void> FingerprintInscreen::onRelease() {
     set(HBM_ENABLE_PATH, 0);
     this->mVendorDisplayService->setMode(OP_DISPLAY_NOTIFY_PRESS, 0);
-    set(HBM_DIM_PATH, getDimAmount(255));
+    this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 5);
+    //set(HBM_DIM_PATH, getDimAmount(255));
 
     return Void();
 }
@@ -138,7 +140,7 @@ Return<void> FingerprintInscreen::onShowFODView() {
     set(NATIVE_DISPLAY_NIGHT, 0);
     set(NATIVE_DISPLAY_WIDE, 1);
 
-    set(HBM_DIM_PATH, getDimAmount(255));
+    this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 2);
 
     return Void();
 }
@@ -203,13 +205,21 @@ Return<void> FingerprintInscreen::setLongPressEnabled(bool enabled) {
     return Void();
 }
 
-Return<int32_t> FingerprintInscreen::getDimAmount(int32_t) {
-    dimAmount = get(DIM_AMOUNT_PATH, 0);
-    if (dimAmount == 0) {
-        dimAmount = getDimAmount(255);
+Return<int32_t> FingerprintInscreen::getDimAmount(int32_t suggest) {
+    LOG(INFO) << "dimAmount1 = " << suggest;
+    if (suggest > 0) {
+        if (suggest < 127) {
+            dimAmount = 255 - suggest - 16;
+        } else {
+            dimAmount = 92 + get(DIM_AMOUNT_PATH, suggest);
+            if (dimAmount > 237) {
+                dimAmount = 255;
+            }
+        }
+    } else {
+        dimAmount = 180;
     }
-    LOG(INFO) << "dimAmount = " << dimAmount;
-
+    LOG(INFO) << "dimAmount2 = " << dimAmount;
     return dimAmount;
 }
 
