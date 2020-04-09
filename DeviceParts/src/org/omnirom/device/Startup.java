@@ -66,9 +66,6 @@ public class Startup extends BroadcastReceiver {
             enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_NIGHT_SWITCH, false);
             Settings.System.putInt(context.getContentResolver(), NightModeSwitch.SETTINGS_KEY, enabled ? 1 : 0);
 
-            enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_OTG_SWITCH, false);
-            Settings.System.putInt(context.getContentResolver(), UsbOtgSwitch.SETTINGS_KEY, enabled ? 1 : 0);
-
             enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_REFRESH_RATE, false);
             Settings.System.putFloat(context.getContentResolver(), Settings.System.PEAK_REFRESH_RATE, enabled ? 90f : 60f);
 
@@ -186,9 +183,6 @@ public class Startup extends BroadcastReceiver {
         if (enabled) {
             restore(HBMModeSwitch.getFile(), enabled);
         }
-
-        enabled = Settings.System.getInt(context.getContentResolver(), UsbOtgSwitch.SETTINGS_KEY, 0) != 0;
-        restore(UsbOtgSwitch.getFile(), enabled);
 
         VibratorStrengthPreference.restore(context);
     }

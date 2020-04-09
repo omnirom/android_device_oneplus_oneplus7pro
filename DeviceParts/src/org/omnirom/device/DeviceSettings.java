@@ -50,7 +50,6 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String KEY_NIGHT_SWITCH = "night";
     public static final String KEY_WIDE_SWITCH = "wide";
 
-    public static final String KEY_OTG_SWITCH = "otg_switch";
     public static final String KEY_REFRESH_RATE = "refresh_rate";
     public static final String KEY_AUTO_REFRESH_RATE = "auto_refresh_rate";
     public static final String KEY_FPS_INFO = "fps_info";
@@ -66,7 +65,6 @@ public class DeviceSettings extends PreferenceFragment implements
     private ListPreference mSliderModeBottom;
     private static TwoStatePreference mHBMModeSwitch;
     private static TwoStatePreference mDCDModeSwitch;
-    private static TwoStatePreference mOtgSwitch;
     private static TwoStatePreference mRefreshRate;
     private static SwitchPreference mAutoRefreshRate;
     private static SwitchPreference mFpsInfo;
@@ -112,11 +110,6 @@ public class DeviceSettings extends PreferenceFragment implements
         mDCDModeSwitch.setEnabled(DCDModeSwitch.isSupported());
         mDCDModeSwitch.setChecked(DCDModeSwitch.isCurrentlyEnabled(this.getContext()));
         mDCDModeSwitch.setOnPreferenceChangeListener(new DCDModeSwitch(getContext()));
-
-        mOtgSwitch = (TwoStatePreference) findPreference(KEY_OTG_SWITCH);
-        mOtgSwitch.setEnabled(UsbOtgSwitch.isSupported());
-        mOtgSwitch.setChecked(UsbOtgSwitch.isCurrentlyEnabled(this.getContext()));
-        mOtgSwitch.setOnPreferenceChangeListener(new UsbOtgSwitch(getContext()));
 
         mAutoRefreshRate = (SwitchPreference) findPreference(KEY_AUTO_REFRESH_RATE);
         mAutoRefreshRate.setChecked(AutoRefreshRateSwitch.isCurrentlyEnabled(this.getContext()));
