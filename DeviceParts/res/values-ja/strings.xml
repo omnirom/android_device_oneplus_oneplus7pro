@@ -44,7 +44,7 @@
     <string name="slider_mode_title_top">上部</string>
     <string name="slider_mode_title_center">中央</string>
     <string name="slider_mode_title_bottom">下部</string>
-    <string name="wide_mode_title_new">ワイドカラーモード</string>
+    <string name="wide_mode_title_new">ワイド色モード</string>
     <string name="dci_mode_title_new">DCI-P3 モード</string>
     <string name="Night_mode_title">夜間モード</string>
     <string name="otg_switch_summary">USB-OTG のサポートを切り替える</string>
