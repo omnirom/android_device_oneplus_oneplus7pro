@@ -279,4 +279,6 @@ TARGET_INCLUDE_STOCK_ARCORE := true
 
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += $(BOARD_PATH)/vendor_framework_compatibility_matrix.xml
 # HIDL
+ifneq ($(TARGET_DEVICE),oneplus7t)
 DEVICE_FRAMEWORK_MANIFEST_FILE += $(BOARD_PATH)/framework_manifest.xml
+endif

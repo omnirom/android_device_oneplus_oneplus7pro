@@ -16,8 +16,8 @@
 cc_binary {
     relative_install_path: "hw",
     defaults: ["hidl_defaults"],
-    name: "omni.biometrics.fingerprint.inscreen@1.0-service.oneplus7pro",
-    init_rc: ["omni.biometrics.fingerprint.inscreen@1.0-service.oneplus7pro.rc"],
+    name: "omni.biometrics.fingerprint.inscreen@1.1-service.oneplus7pro",
+    init_rc: ["omni.biometrics.fingerprint.inscreen@1.1-service.oneplus7pro.rc"],
     srcs: ["service.cpp", "FingerprintInscreen.cpp"],
     shared_libs: [
         "libbase",
@@ -28,6 +28,7 @@ cc_binary {
         "libhwbinder",
         "libutils",
         "vendor.omni.biometrics.fingerprint.inscreen@1.0",
+        "vendor.omni.biometrics.fingerprint.inscreen@1.1",
         "vendor.oneplus.fingerprint.extension@1.0",
         "vendor.oneplus.hardware.display@1.0",
     ],

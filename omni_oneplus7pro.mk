@@ -82,6 +82,6 @@ TARGET_VENDOR := oneplus
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    omni.biometrics.fingerprint.inscreen@1.0-service.oneplus7pro
+    omni.biometrics.fingerprint.inscreen@1.1-service.oneplus7pro
 
 $(call inherit-product, vendor/oneplus/oneplus7pro/oneplus7pro-vendor.mk)
