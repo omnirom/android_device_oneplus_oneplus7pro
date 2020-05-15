@@ -271,6 +271,7 @@ persist.sys.camera.preview.size=1920x1080
 
 persist.vendor.radio.aosp_usr_pref_sel=true
 persist.vendor.radio.add_power_save=false
+persist.sys.fflag.override.settings_network_and_internet_v2=true
 
 sdm.debug.disable_inline_rotator=1
 sdm.debug.disable_inline_rotator_secure=1
