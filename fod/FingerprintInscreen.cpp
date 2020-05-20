@@ -41,9 +41,7 @@
 #define DC_DIM_PATH "/sys/class/drm/card0-DSI-1/dimlayer_bl_en"
 
 #define NATIVE_DISPLAY_P3 "/sys/class/drm/card0-DSI-1/native_display_p3_mode"
-#define NATIVE_DISPLAY_SRGB "/sys/class/drm/card0-DSI-1/native_display_customer_srgb_mode"
-#define NATIVE_DISPLAY_NIGHT "/sys/class/drm/card0-DSI-1/night_mode"
-
+#define NATIVE_DISPLAY_SRGB "/sys/class/drm/card0-DSI-1/native_display_srgb_color_mode"
 #define NATIVE_DISPLAY_WIDE "/sys/class/drm/card0-DSI-1/native_display_wide_color_mode"
 
 namespace vendor {
@@ -55,7 +53,7 @@ namespace V1_0 {
 namespace implementation {
 
 int dimAmount;
-int wide,p3,srgb,night;
+int wide,p3,srgb;
 bool dcDimState;
 bool isOneplus7tpro;
 
@@ -123,7 +121,6 @@ Return<void> FingerprintInscreen::onShowFODView() {
     wide = get(NATIVE_DISPLAY_WIDE, 0);
     p3 = get(NATIVE_DISPLAY_P3, 0);
     srgb = get(NATIVE_DISPLAY_SRGB, 0);
-    night = get(NATIVE_DISPLAY_NIGHT, 0);
 
     this->mVendorDisplayService->setMode(16, 0);
     this->mVendorDisplayService->setMode(17, 0);
@@ -137,7 +134,6 @@ Return<void> FingerprintInscreen::onShowFODView() {
     set(DC_DIM_PATH, 0);
     set(NATIVE_DISPLAY_P3, 0);
     set(NATIVE_DISPLAY_SRGB, 0);
-    set(NATIVE_DISPLAY_NIGHT, 0);
     set(NATIVE_DISPLAY_WIDE, 1);
 
     this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 2);
@@ -161,7 +157,6 @@ Return<void> FingerprintInscreen::onHideFODView() {
     set(NATIVE_DISPLAY_WIDE, wide);
     set(NATIVE_DISPLAY_P3, p3);
     set(NATIVE_DISPLAY_SRGB, srgb);
-    set(NATIVE_DISPLAY_NIGHT, night);
 
     this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 0);
     return Void();
