@@ -160,29 +160,15 @@ public class Startup extends BroadcastReceiver {
         restore(getGestureFile(GestureSettings.KEY_GESTURE_S_APP), enabled);
 
         enabled = Settings.System.getInt(context.getContentResolver(), SRGBModeSwitch.SETTINGS_KEY, 0) != 0;
-        if (enabled) {
-            restore(SRGBModeSwitch.getFile(), enabled);
-        }
+        restore(SRGBModeSwitch.getFile(), enabled);
         enabled = Settings.System.getInt(context.getContentResolver(), DCDModeSwitch.SETTINGS_KEY, 0) != 0;
-        if (enabled) {
-            restore(DCDModeSwitch.getFile(), enabled);
-        }
+        restore(DCDModeSwitch.getFile(), enabled);
         enabled = Settings.System.getInt(context.getContentResolver(), DCIModeSwitch.SETTINGS_KEY, 0) != 0;
-        if (enabled) {
-            restore(DCIModeSwitch.getFile(), enabled);
-        }
+        restore(DCIModeSwitch.getFile(), enabled);
         enabled = Settings.System.getInt(context.getContentResolver(), WideColorModeSwitch.SETTINGS_KEY, 0) != 0;
-        if (enabled) {
-            restore(WideColorModeSwitch.getFile(), enabled);
-        }
-        enabled = Settings.System.getInt(context.getContentResolver(), NightModeSwitch.SETTINGS_KEY, 0) != 0;
-        if (enabled) {
-            restore(NightModeSwitch.getFile(), enabled);
-        }
+        restore(WideColorModeSwitch.getFile(), enabled);
         enabled = Settings.System.getInt(context.getContentResolver(), HBMModeSwitch.SETTINGS_KEY, 0) != 0;
-        if (enabled) {
-            restore(HBMModeSwitch.getFile(), enabled);
-        }
+        restore(HBMModeSwitch.getFile(), enabled);
 
         VibratorStrengthPreference.restore(context);
     }
