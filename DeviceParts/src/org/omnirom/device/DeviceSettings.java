@@ -54,6 +54,7 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String KEY_AUTO_REFRESH_RATE = "auto_refresh_rate";
     public static final String KEY_FPS_INFO = "fps_info";
     private static final String KEY_ENABLE_DOLBY_ATMOS = "enable_dolby_atmos";
+    private static final String KEY_DOLBY_ATMOS_CONTROL = "dolby_atmos";
 
     public static final String SLIDER_DEFAULT_VALUE = "2,1,0";
 
@@ -69,6 +70,7 @@ public class DeviceSettings extends PreferenceFragment implements
     private static SwitchPreference mAutoRefreshRate;
     private static SwitchPreference mFpsInfo;
     private SwitchPreference mEnableDolbyAtmos;
+    private Preference mDolbyAtmosControl;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -126,12 +128,36 @@ public class DeviceSettings extends PreferenceFragment implements
 
         mEnableDolbyAtmos = (SwitchPreference) findPreference(KEY_ENABLE_DOLBY_ATMOS);
         mEnableDolbyAtmos.setOnPreferenceChangeListener(this);
+
+        mDolbyAtmosControl = findPreference(KEY_DOLBY_ATMOS_CONTROL);
     }
 
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
         if (preference == mAutoRefreshRate) {
               mRefreshRate.setEnabled(!AutoRefreshRateSwitch.isCurrentlyEnabled(this.getContext()));
+        } else if (preference == mDolbyAtmosControl) {
+            // first check if razer app is installed
+            String pkg = "com.dolby.daxappui";
+            String activity = "com.dolby.daxappui.MainActivity";
+            try {
+                this.getContext().getPackageManager().getPackageInfo(pkg, 0);
+            } catch (PackageManager.NameNotFoundException e) {
+                // fallback
+                pkg = "com.oneplus.sound.tuner";
+                activity = "com.oneplus.sound.tuner.panoramic.DolbyPanoramicSoundActivity";
+                try {
+                    this.getContext().getPackageManager().getPackageInfo(pkg, 0);
+                } catch (PackageManager.NameNotFoundException ex) {
+                    pkg = null;
+                }
+            }
+            if (pkg != null) {
+                Intent i = new Intent();
+                ComponentName n = new ComponentName(pkg, activity);
+                i.setComponent(n);
+                this.getContext().startActivity(i);
+            }
         }
         return super.onPreferenceTreeClick(preference);
     }

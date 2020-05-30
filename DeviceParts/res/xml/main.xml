@@ -89,11 +89,7 @@
             android:title="@string/dolby_title"
             android:summary="@string/dolby_summary"
             android:dependency="enable_dolby_atmos"
-            android:persistent="false" >
-            <intent
-                 android:targetPackage="com.oneplus.sound.tuner"
-                 android:targetClass="com.oneplus.sound.tuner.panoramic.DolbyPanoramicSoundActivity" />
-        </Preference>
+            android:persistent="false" />
         <Preference
             android:icon="@drawable/ic_info_outline_24dp"
             android:persistent="false"
