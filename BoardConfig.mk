@@ -277,6 +277,10 @@ TARGET_USES_QCOM_BSP := false
 #gapps
 TARGET_INCLUDE_STOCK_ARCORE := true
 
+
+# FOD
+TARGET_SURFACEFLINGER_FOD_LIB := //$(BOARD_PATH):libfod_extension.oneplus_msmnile
+
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += $(BOARD_PATH)/vendor_framework_compatibility_matrix.xml
 # HIDL
 DEVICE_FRAMEWORK_MANIFEST_FILE += $(BOARD_PATH)/framework_manifest.xml
