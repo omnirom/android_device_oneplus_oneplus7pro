@@ -51,7 +51,7 @@ endif
 
 TARGET_NO_BOOTLOADER := true
 ifeq ($(TARGET_DEVICE),oneplus7pro)
-TARGET_OTA_ASSERT_DEVICE := oneplus7pro
+TARGET_OTA_ASSERT_DEVICE := oneplus7pro,OnePlus7Pro
 endif
 TARGET_KERNEL_VERSION := 4.14
 TARGET_KERNEL_CLANG_COMPILE := true
