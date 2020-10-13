@@ -1,0 +1,6 @@
+service fingerprint-inscreen-1-1 /vendor/bin/hw/omni.biometrics.fingerprint.inscreen@1.1-service.oneplus7pro
+    interface vendor.omni.biometrics.fingerprint.inscreen@1.1::IFingerprintInscreen default
+    class hal
+    user system
+    group system
+    shutdown critical

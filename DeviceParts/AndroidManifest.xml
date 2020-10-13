@@ -13,7 +13,7 @@
 
     <uses-sdk
         android:minSdkVersion="26"
-        android:targetSdkVersion="26" />
+        android:targetSdkVersion="30" />
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/advanced_settings"

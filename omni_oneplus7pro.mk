@@ -35,7 +35,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 # must be before including omni part
 TARGET_BOOTANIMATION_SIZE := 1080p
 AB_OTA_UPDATER := true
-
 DEVICE_PACKAGE_OVERLAYS += device/oneplus/oneplus7pro/overlay/common
 DEVICE_PACKAGE_OVERLAYS += device/oneplus/oneplus7pro/overlay/device
 DEVICE_PACKAGE_OVERLAYS += vendor/omni/overlay/CarrierConfig

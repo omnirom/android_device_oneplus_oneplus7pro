@@ -3,6 +3,9 @@ ifeq ($(TARGET_DEVICE),$(filter $(TARGET_DEVICE),oneplus7 oneplus7pro oneplus7t 
 include $(CLEAR_VARS)
 
 LOCAL_MODULE_TAGS := optional
+LOCAL_PRIVATE_PLATFORM_APIS := true
+
+#LOCAL_SDK_VERSION := current
 LOCAL_STATIC_ANDROID_LIBRARIES := \
     androidx.core_core \
     androidx.preference_preference

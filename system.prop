@@ -281,6 +281,6 @@ ro.vibrator.hal.tick.duration=0
 ro.vibrator.hal.click.duration=0
 ro.vibrator.hal.heavyclick.duration=10
 persist.radio.physical.slot.count=2
-
+ro.build.ab_update=true
 #HWC
 persist.vendor.color.matrix=2

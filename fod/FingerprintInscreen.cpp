@@ -164,6 +164,7 @@ Return<void> FingerprintInscreen::onHideFODView() {
     set(DC_DIM_PATH, dcDimState);
 
     this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 0);
+    this->mVendorDisplayService->setMode(OP_DISPLAY_NOTIFY_PRESS, 0);
     return Void();
 }
 
@@ -229,7 +230,7 @@ Return<void> FingerprintInscreen::setCallback(const sp<IFingerprintInscreenCallb
 }
 
 Return<int32_t> FingerprintInscreen::getPositionX() {
-    return 598;
+    return 578;
 }
 
 Return<int32_t> FingerprintInscreen::getPositionY() {

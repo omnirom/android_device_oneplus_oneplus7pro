@@ -1,1 +1,2 @@
 type sysfs_kgsl, sysfs_type,fs_type;
+type omni_sysfs_drm, sysfs_type, fs_type;

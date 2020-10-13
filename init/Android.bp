@@ -10,5 +10,6 @@ cc_library_static {
     ],
     srcs: ["init_oneplus7pro.cpp"],
     recovery_available: true,
+    shared_libs: ["libbase"],
 }
 

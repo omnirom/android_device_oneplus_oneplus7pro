@@ -19,12 +19,17 @@
 # device-specific aspects (drivers) with a device-agnostic
 # product configuration (apps).
 #
-PRODUCT_PACKAGES += com.android.apex.cts.shim.v1_prebuilt
-TARGET_FLATTEN_APEX := false
-
 PRODUCT_PACKAGES += \
     libinit_oneplus7pro \
     omnipreopt_script
+
+PRODUCT_PACKAGES += \
+    libhidltransport \
+    libhwbinder \
+    android.hidl.manager@1.0 \
+    android.hidl.manager@1.1 \
+    android.hidl.manager@1.2 \
+    libcutils
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.build.version.all_codenames=$(PLATFORM_VERSION_ALL_CODENAMES) \
@@ -101,7 +106,6 @@ PRODUCT_CHARACTERISTICS := nosdcard
 
 # Lights & Health
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.0-service.oneplus7pro \
     android.hardware.light@2.0-service.oneplus7pro
 
 PRODUCT_COPY_FILES += \
@@ -151,12 +155,15 @@ PRODUCT_PACKAGES += \
     libqdMetaData \
     vendor.nxp.nxpese@1.0 \
     vendor.nxp.nxpnfc@1.0 \
-    vendor.oneplus.camera.CameraHIDL@1.0 \
-    vendor.oneplus.fingerprint.extension@1.0 \
     vendor.qti.hardware.camera.device@1.0 \
     vendor.qti.hardware.camera.postproc@1.0 \
     vendor.qti.hardware.systemhelper@1.1 \
-    vendor.qti.hardware.bluetooth_dun@1.0
+    vendor.qti.hardware.bluetooth_dun@1.0 \
+    android.hardware.bluetooth@1.0
+
+PRODUCT_HOST_PACKAGES += \
+    vendor.oneplus.camera.CameraHIDL@1.0 \
+    vendor.oneplus.fingerprint.extension@1.0
 
 #Nfc
 PRODUCT_PACKAGES += \
@@ -173,10 +180,6 @@ PRODUCT_PACKAGES += \
     libtinyalsa
 
 
-# TODO(b/78308559): includes vr_hwc into GSI before vr_hwc move to vendor
-PRODUCT_PACKAGES += \
-    vr_hwc
-
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_codecs_google_telephony.xml \
@@ -187,7 +190,7 @@ PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.3-service.oneplus7pro
 
 # Remove unwanted packages
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
     RemovePackages
 
 PRODUCT_BOOT_JARS += \
@@ -202,19 +205,15 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += oneplus-mock
 PRODUCT_BOOT_JARS += oneplus-mock
+PRODUCT_BOOT_JARS += UxPerformance
+PRODUCT_BOOT_JARS += QPerformance
+#PRODUCT_BOOT_JARS += android.hidl.manager-V1.0-java
 
-# Temporary handling
-#
-# Include config.fs get only if legacy device/qcom/<target>/android_filesystem_config.h
-# does not exist as they are mutually exclusive.  Once all target's android_filesystem_config.h
-# have been removed, TARGET_FS_CONFIG_GEN should be made unconditional.
-DEVICE_CONFIG_DIR := $(dir $(firstword $(subst ]],, $(word 2, $(subst [[, ,$(_node_import_context))))))
-ifeq ($(wildcard device/oneplus/oneplus7pro/android_filesystem_config.h),)
-  TARGET_FS_CONFIG_GEN := device/oneplus/oneplus7pro/config.fs
-else
-  $(warning **********)
-  $(warning TODO: Need to replace legacy $(DEVICE_CONFIG_DIR)android_filesystem_config.h with config.fs)
-  $(warning **********)
-endif
 
+TARGET_FS_CONFIG_GEN := device/oneplus/oneplus7pro/config.fs
+
+PRODUCT_MANIFEST_FILES += \
+    device/oneplus/oneplus7pro/vintf/android.hardware.vibrator.1.0-service.xml \
+    device/oneplus/oneplus7pro/vintf/vendor.omni.biometrics.fingerprint.inscreen-1.0-service.xml
+     
 $(call inherit-product, build/make/target/product/gsi_keys.mk)

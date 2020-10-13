@@ -25,6 +25,7 @@ PRODUCT_SOONG_NAMESPACES := $(BOARD_PATH)
 ifeq ($(TARGET_DEVICE),oneplus7pro)
 PRODUCT_SOONG_NAMESPACES += vendor/oneplus/oneplus7pro
 endif
+PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/commonsys/packages/apps/Bluetooth
 
 TARGET_INIT_VENDOR_LIB := //$(BOARD_PATH):libinit_oneplus7pro
 PRODUCT_FULL_TREBLE := true
@@ -59,6 +60,8 @@ TARGET_KERNEL_CLANG_COMPILE := true
 #TARGET_KERNEL_CLANG_PATH := "./vendor/qcom/sdclang/8.0/prebuilt/linux-x86_64"
 TARGET_BOOTLOADER_BOARD_NAME := msmnile
 #TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
+TARGET_MOUNT_POINTS_SYMLINKS := true
+
 
 # Platform
 TARGET_BOARD_PLATFORM := msmnile
@@ -81,6 +84,10 @@ TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 TARGET_USES_64_BIT_BINDER := true
 TARGET_COMPILE_WITH_MSM_KERNEL := true
 
+BOARD_BOOT_HEADER_VERSION := 2
+BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
+BOARD_INCLUDE_RECOVERY_DTBO := true
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 loop.max_part=7 androidboot.usbcontroller=a600000.dwc3
 #BOARD_KERNEL_CMDLINE += androidboot.avb_version=1.0 androidboot.vbmeta.avb_version=1.0
 #BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
@@ -183,7 +190,7 @@ USE_CUSTOM_AUDIO_POLICY := 1
 AUDIO_FEATURE_ENABLED_RECORD_PLAY_CONCURRENCY := true
 
 #Modules
-NEED_KERNEL_MODULE_SYSTEM := true
+NEED_KERNEL_MODULE_VENDOR_OVERLAY := true
 
 # Camera
 TARGET_MOTORIZED_CAMERA := true
@@ -251,15 +258,11 @@ BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
 # selinux
 include vendor/omni/sepolicy/sepolicy.mk
+include device/qcom/sepolicy/SEPolicy.mk
 BOARD_PLAT_PUBLIC_SEPOLICY_DIR += $(BOARD_PATH)/sepolicy/public
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(BOARD_PATH)/sepolicy/private
-BOARD_PLAT_PUBLIC_SEPOLICY_DIR += \
-    device/qcom/sepolicy/generic/public \
-    device/qcom/sepolicy/qva/public
-
-BOARD_PLAT_PRIVATE_SEPOLICY_DIR += \
-    device/qcom/sepolicy/generic/private \
-    device/qcom/sepolicy/qva/private
+PRODUCT_PRIVATE_SEPOLICY_DIRS += $(BOARD_PATH)/sepolicy/product/priv
+PRODUCT_PUBLIC_SEPOLICY_DIRS += $(BOARD_PATH)/sepolicy/product/public
 
 BOARD_SECCOMP_POLICY += $(BOARD_PATH)/seccomp_policy
 
@@ -283,4 +286,8 @@ TARGET_SURFACEFLINGER_FOD_LIB := //$(BOARD_PATH):libfod_extension.oneplus_msmnil
 
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += $(BOARD_PATH)/vendor_framework_compatibility_matrix.xml
 # HIDL
-DEVICE_FRAMEWORK_MANIFEST_FILE += $(BOARD_PATH)/framework_manifest.xml
+#DEVICE_FRAMEWORK_MANIFEST_FILE += $(BOARD_PATH)/framework_manifest.xml
+
+OMNI_PRODUCT_PROPERTIES += \
+    ro.sf.lcd_density=560
+

@@ -20,11 +20,13 @@ TARGET_COPY_OUT_PRODUCT := system/product
 BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE :=
 endif
 
+TARGET_OUT_SYSTEM_EXT := system/system_ext
+
 # GSI specific System Properties
 ifneq (,$(filter userdebug eng,$(TARGET_BUILD_VARIANT)))
-TARGET_SYSTEM_PROP += build/make/target/board/gsi_system.prop
+TARGET_SYSTEM_PROP += build/make/target/board/gsi_system_ext.prop
 else
-TARGET_SYSTEM_PROP += build/make/target/board/gsi_system_user.prop
+TARGET_SYSTEM_PROP += build/make/target/board/gsi_system_ext_user.prop
 endif
 
 # Setup a vendor image to let PRODUCT_PROPERTY_OVERRIDES does not affect GSI
@@ -32,3 +34,4 @@ BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 
 # Disable 64 bit mediadrmserver
 TARGET_ENABLE_MEDIADRM_64 := true
+

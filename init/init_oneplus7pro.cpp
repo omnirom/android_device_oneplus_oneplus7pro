@@ -32,7 +32,6 @@
 #include <unistd.h>
 #include <android-base/properties.h>
 #include <android-base/logging.h>
-#include "property_service.h"
 #include <sys/resource.h>
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
@@ -41,7 +40,6 @@ namespace android {
 namespace init {
 
 using android::base::GetProperty;
-using android::init::property_set;
 
 void property_override(const std::string& name, const std::string& value)
 {
@@ -124,12 +122,6 @@ void vendor_load_properties()
         property_override("ro.build.model", "HD1925");
         property_override("ro.vendor.boot.project_name", "19861");
         property_override("ro.boot.project_name", "19861");
-    }
-    /*Check for kgsl node and disable HW composition*/
-    if (access("/dev/kgsl-3d0", F_OK) < 0) {
-        property_set("persist.sys.force_sw_gles", "1");
-    } else {
-        property_set("persist.sys.force_sw_gles", "0");
     }
 }
 

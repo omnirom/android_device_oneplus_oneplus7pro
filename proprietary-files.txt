@@ -436,7 +436,6 @@ lib64/libnxpnfc-nci.so
 lib/libnxpnfc-nci.so
 etc/nfcee_access.xml
 
--sbin/dashd;rootfs
 
 product/lib/vendor.qti.hardware.data.connection@1.0.so
 product/lib64/vendor.qti.hardware.data.connection@1.0.so

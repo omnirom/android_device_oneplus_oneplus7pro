@@ -17,16 +17,9 @@
 */
 -->
 
-<resources>
-    <string-array translatable="false" name="config_gpsParameters">
-        <item>SUPL_HOST=supl.google.com</item>
-        <item>SUPL_PORT=7275</item>
-        <item>SUPL_VER=0x20000</item>
-        <item>SUPL_MODE=3</item>
-        <item>SUPL_ES=0</item>
-        <item>LPP_PROFILE=3</item>
-        <item>USE_EMERGENCY_PDN_FOR_EMERGENCY_SUPL=1</item>
-        <item>A_GLONASS_POS_PROTOCOL_SELECT=0</item>
-        <item>GPS_LOCK=0</item>
-    </string-array>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Threshold in micro watts above which a charger is rated as "fast"; 1.5A @ 5V  -->
+    <integer name="config_chargingDashThreshold">18000001</integer>
+
 </resources>

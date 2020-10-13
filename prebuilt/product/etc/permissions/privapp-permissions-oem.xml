@@ -23,6 +23,9 @@ applications that come with the platform
     <!-- Additional permissions on top of privapp-permissions-platform.xml -->
     <privapp-permissions package="com.dolby.daxservice">
         <permission name="android.permission.INTERACT_ACROSS_USERS"/>
+        <permission name="android.permission.SUBSTITUTE_NOTIFICATION_APP_NAME"/>
+        <permission name="android.permission.MANAGE_USERS"/>
+        <permission name="android.permission.WRITE_SECURE_SETTINGS"/>
     </privapp-permissions>
 </permissions>
 

@@ -1,0 +1,25 @@
+cc_binary {
+    name: "android.hardware.light@2.0-service.oneplus7pro",
+    stem: "android.hardware.light@2.0-service",
+    init_rc: ["android.hardware.light@2.0-service.oneplus7pro.rc"],
+    vendor: false,
+    product_specific: true,
+//    product_overlay_specific: true,
+    relative_install_path: "hw",
+    srcs: [
+        "service.cpp",
+        "Light.cpp",
+    ],
+        shared_libs: [
+        "libbase",
+        "libhardware",
+        "libhidlbase",
+        "liblog",
+        "libutils",
+        "android.hardware.light@2.0",
+    ],
+    overrides: [
+        "android.hardware.light@2.0-service",
+    ],
+}
+

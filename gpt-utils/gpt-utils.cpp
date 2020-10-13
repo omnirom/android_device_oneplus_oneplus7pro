@@ -32,7 +32,6 @@
 /******************************************************************************
  * INCLUDE SECTION
  ******************************************************************************/
-#include <stdio.h>
 #include <fcntl.h>
 #include <string.h>
 #include <errno.h>
@@ -50,7 +49,7 @@
 #include <vector>
 #include <string>
 #define LOG_TAG "gpt-utils"
-#include <log/log.h>
+#include <cutils/log.h>
 #include <cutils/properties.h>
 #include "gpt-utils.h"
 #include <endian.h>
@@ -61,6 +60,7 @@
  * DEFINE SECTION
  ******************************************************************************/
 #define BLK_DEV_FILE    "/dev/block/mmcblk0"
+
 /* list the names of the backed-up partitions to be swapped */
 /* extension used for the backup partitions - tzbak, abootbak, etc. */
 #define BAK_PTN_NAME_EXT    "bak"
@@ -639,7 +639,7 @@ error:
         return -1;
 }
 
-//Swtich betwieen using either the primary or the backup
+//Switch between using either the primary or the backup
 //boot LUN for boot. This is required since UFS boot partitions
 //cannot have a backup GPT which is what we use for failsafe
 //updates of the other 'critical' partitions. This function will
@@ -1049,7 +1049,7 @@ int prepare_boot_update(enum boot_update_stage stage)
 
 //Given a parttion name(eg: rpm) get the path to the block device that
 //represents the GPT disk the partition resides on. In the case of emmc it
-//would be the default emmc dev(/dev/mmcblk0). In the case of UFS we look
+//would be the default emmc dev(/dev/block/mmcblk0). In the case of UFS we look
 //through the /dev/block/bootdevice/by-name/ tree for partname, and resolve
 //the path to the LUN from there.
 static int get_dev_path_from_partition_name(const char *partname,
@@ -1078,7 +1078,7 @@ static int get_dev_path_from_partition_name(const char *partname,
                         buf[PATH_TRUNCATE_LOC] = '\0';
                 }
         } else {
-                snprintf(buf, buflen, "/dev/mmcblk0");
+                snprintf(buf, buflen, "/dev/block/mmcblk0");
         }
         return 0;
 
@@ -1530,7 +1530,6 @@ int gpt_disk_commit(struct gpt_disk *disk)
                                 __func__);
                 goto error;
         }
-        fsync(fd);
         close(fd);
         return 0;
 error:

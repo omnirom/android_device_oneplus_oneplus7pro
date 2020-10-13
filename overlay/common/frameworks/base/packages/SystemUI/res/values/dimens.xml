@@ -18,5 +18,5 @@
 <resources>
 
     <dimen name="burn_in_prevention_offset_x">0dp</dimen>
-
+    <dimen name="keyguard_indication_margin_bottom">18dp</dimen>
 </resources>

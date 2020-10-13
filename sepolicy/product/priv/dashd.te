@@ -1,0 +1,2 @@
+allow dashd dashd:file { entrypoint execute };
+

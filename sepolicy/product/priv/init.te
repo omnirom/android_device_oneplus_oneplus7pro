@@ -1,0 +1,2 @@
+allow init dashd:file execute;
+
