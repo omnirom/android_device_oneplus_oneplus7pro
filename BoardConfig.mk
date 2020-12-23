@@ -288,6 +288,7 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += $(BOARD_PATH)/vendor_framework_com
 # HIDL
 #DEVICE_FRAMEWORK_MANIFEST_FILE += $(BOARD_PATH)/framework_manifest.xml
 
+ifeq ($(TARGET_DEVICE),oneplus7pro)
 OMNI_PRODUCT_PROPERTIES += \
     ro.sf.lcd_density=560
-
+endif
