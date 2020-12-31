@@ -44,8 +44,8 @@ static constexpr char WAVEFORM_CLICK_EFFECT_SEQ0[] = "0 1";
 static constexpr char WAVEFORM_CLICK_EFFECT_SEQ1[] = "1 0";
 static constexpr int32_t WAVEFORM_CLICK_EFFECT_MS = 0;
 // Use effect #2 in the waveform library for TICK effect
-static constexpr char WAVEFORM_TICK_EFFECT_SEQ0[] = "0 1";
-static constexpr char WAVEFORM_TICK_EFFECT_SEQ1[] = "1 0";
+//static constexpr char WAVEFORM_TICK_EFFECT_SEQ0[] = "0 1";
+//static constexpr char WAVEFORM_TICK_EFFECT_SEQ1[] = "1 0";
 static constexpr int32_t WAVEFORM_TICK_EFFECT_MS = 0;
 // Use effect #3 in the waveform library for DOUBLE_CLICK effect
 static constexpr char WAVEFORM_DOUBLE_CLICK_EFFECT_SEQ[] = "0 1";
@@ -101,6 +101,8 @@ Vibrator::Vibrator(std::ofstream&& activate,
     shouldBright = false;
 }
 Return<Status> Vibrator::on(uint32_t timeoutMs, bool isWaveform) {
+    //ALOGD("on %d", isWaveform);
+
     mCtrlLoop << LOOP_MODE_OPEN << std::endl;
     mDuration << timeoutMs << std::endl;
     if (!mDuration) {
@@ -135,6 +137,7 @@ Return<Status> Vibrator::on(uint32_t timeoutMs) {
     return on(timeoutMs, false /* isWaveform */);
 }
 Return<Status> Vibrator::off()  {
+    //ALOGD("off");
     mActivate << 0 << std::endl;
     mBrightness << 0 << std::endl;
     if (!mActivate) {
@@ -195,7 +198,9 @@ Return<void> Vibrator::perform_1_3(Effect effect, EffectStrength strength, perfo
 Return<void> Vibrator::performEffect(Effect effect, EffectStrength strength, perform_cb _hidl_cb) {
     Status status = Status::OK;
     uint32_t timeMS;
+    //ALOGD("performEffect %d", effect);
     switch (effect) {
+    case Effect::TICK:
     case Effect::CLICK:
         mActivate << 0 << std::endl;
         mIgnoreStore << 0 << std::endl;
@@ -218,7 +223,8 @@ Return<void> Vibrator::performEffect(Effect effect, EffectStrength strength, per
         shouldBright = true;
         timeMS = WAVEFORM_DOUBLE_CLICK_EFFECT_MS;
         break;
-    case Effect::TICK:
+    // TODO broken
+    /*case Effect::TICK:
         mActivate << 0 << std::endl;
         mIgnoreStore << 0 << std::endl;
         mVmax << VMAX << std::endl;
@@ -228,7 +234,7 @@ Return<void> Vibrator::performEffect(Effect effect, EffectStrength strength, per
         mCtrlLoop << "1 0x0" << std::endl;
         shouldBright = true;
         timeMS = mTickDuration;
-        break;
+        break;*/
     case Effect::HEAVY_CLICK:
         mActivate << 0 << std::endl;
         mIgnoreStore << 0 << std::endl; 
