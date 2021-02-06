@@ -41,6 +41,8 @@ AB_OTA_PARTITIONS += \
     boot \
     dtbo \
     system \
+    system_ext \
+    product \
     vbmeta
 
 AB_OTA_POSTINSTALL_CONFIG += \
@@ -147,6 +149,9 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0
+PRODUCT_PACKAGES += vendor.qti.hardware.btconfigstore@1.0
+PRODUCT_PACKAGES += com.qualcomm.qti.bluetooth_audio@1.0
+PRODUCT_PACKAGES += libbtconfigstore
 
 PRODUCT_PACKAGES += \
     vendor.display.config@1.10 \
@@ -180,30 +185,22 @@ PRODUCT_PACKAGES += \
     libtinyalsa
 
 
-PRODUCT_COPY_FILES += \
-    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_codecs_google_audio.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_codecs_google_telephony.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_codecs_google_video.xml
-
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.wifi@1.0 \
-    android.hardware.vibrator@1.3-service.oneplus7pro
 
 # Remove unwanted packages
-#PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES += \
     RemovePackages
 
 PRODUCT_BOOT_JARS += \
-    com.nxp.nfc \
     tcmiface \
     WfdCommon \
     qcnvitems
 
-# Video seccomp policy files
-PRODUCT_COPY_FILES += \
-    device/oneplus/oneplus7pro/seccomp/codec2.software.ext.policy:$(TARGET_COPY_OUT)/etc/seccomp_policy/codec2.software.ext.policy
 
 PRODUCT_PACKAGES += oneplus-mock
+PRODUCT_PACKAGES += tune2fs_ramdisk
+PRODUCT_PACKAGES += tune2fs_static
 PRODUCT_BOOT_JARS += oneplus-mock
 PRODUCT_BOOT_JARS += UxPerformance
 PRODUCT_BOOT_JARS += QPerformance
@@ -213,7 +210,8 @@ PRODUCT_BOOT_JARS += QPerformance
 TARGET_FS_CONFIG_GEN := device/oneplus/oneplus7pro/config.fs
 
 PRODUCT_MANIFEST_FILES += \
-    device/oneplus/oneplus7pro/vintf/android.hardware.vibrator.1.0-service.xml \
-    device/oneplus/oneplus7pro/vintf/vendor.omni.biometrics.fingerprint.inscreen-1.0-service.xml
+    device/oneplus/oneplus7pro/vintf/vendor.omni.biometrics.fingerprint.inscreen-1.0-service.xml \
+    device/oneplus/oneplus7pro/vintf/android.hardware.sensors-2.0.xml
+
      
 $(call inherit-product, build/make/target/product/gsi_keys.mk)

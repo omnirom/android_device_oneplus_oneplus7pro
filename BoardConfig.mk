@@ -26,6 +26,9 @@ ifeq ($(TARGET_DEVICE),oneplus7pro)
 PRODUCT_SOONG_NAMESPACES += vendor/oneplus/oneplus7pro
 endif
 PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/commonsys/packages/apps/Bluetooth
+SOONG_CONFIG_NAMESPACES += aosp_vs_qva
+SOONG_CONFIG_aosp_vs_qva += aosp_or_qva
+SOONG_CONFIG_aosp_vs_qva_aosp_or_qva := qva
 
 TARGET_INIT_VENDOR_LIB := //$(BOARD_PATH):libinit_oneplus7pro
 PRODUCT_FULL_TREBLE := true
@@ -88,9 +91,9 @@ BOARD_BOOT_HEADER_VERSION := 2
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_INCLUDE_RECOVERY_DTBO := true
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 loop.max_part=7 androidboot.usbcontroller=a600000.dwc3
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 uart_console=enable lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=2048 loop.max_part=7 androidboot.usbcontroller=a600000.dwc3
 #BOARD_KERNEL_CMDLINE += androidboot.avb_version=1.0 androidboot.vbmeta.avb_version=1.0
-#BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
@@ -102,6 +105,11 @@ BOARD_KERNEL_IMAGE_NAME := Image-dtb
 TARGET_KERNEL_SOURCE := kernel/oneplus/sm8150
 TARGET_KERNEL_CONFIG := vendor/omni_oneplus7pro_defconfig
 BOARD_KERNEL_SEPARATED_DTBO := true
+TARGET_KERNEL_APPEND_DTB := false
+BOARD_BOOT_HEADER_VERSION := 2
+BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
+BOARD_INCLUDE_RECOVERY_DTBO := true
 
 # partitions
 ifeq ($(TARGET_DEVICE),oneplus7pro)
@@ -130,6 +138,10 @@ TARGET_USES_MKE2FS := true
 
 # Generic AOSP image always requires separate vendor.img
 TARGET_COPY_OUT_VENDOR := vendor
+TARGET_COPY_OUT_SYSTEM_EXT := system_ext
+BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := ext4
+
+
 
 # Generic AOSP image does NOT support HWC1
 TARGET_USES_HWC2 := true
@@ -284,7 +296,7 @@ TARGET_INCLUDE_STOCK_ARCORE := true
 # FOD
 TARGET_SURFACEFLINGER_FOD_LIB := //$(BOARD_PATH):libfod_extension.oneplus_msmnile
 
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += $(BOARD_PATH)/vendor_framework_compatibility_matrix.xml
+DEVICE_MATRIX_FILE := $(BOARD_PATH)/vintf/compatibility_matrix.xml
 # HIDL
 #DEVICE_FRAMEWORK_MANIFEST_FILE += $(BOARD_PATH)/framework_manifest.xml
 
@@ -292,3 +304,7 @@ ifeq ($(TARGET_DEVICE),oneplus7pro)
 OMNI_PRODUCT_PROPERTIES += \
     ro.sf.lcd_density=560
 endif
+
+OMNI_PRODUCT_PROPERTIES += ro.build.ab_update=true
+
+DEXPREOPT_GENERATE_APEX_IMAGE := true
