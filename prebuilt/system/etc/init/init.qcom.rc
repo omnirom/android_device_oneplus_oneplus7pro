@@ -1,30 +1,36 @@
 on init
-    mount none /product/overlay/EmptyOverlay/EmptyOverlay.apk /vendor/overlay/FrameworksResCommon.apk bind
-    mount none /product/overlay/EmptyOverlay/EmptyOverlay.apk /vendor/overlay/FrameworksResTarget.apk bind
-    mount none /product/overlay/EmptyOverlay/EmptyOverlay.apk /vendor/overlay/OPFrameworkConfigOverlay.apk bind
-    mount none /product/overlay/EmptyOverlay/EmptyOverlay.apk /vendor/overlay/SystemUIResCommon.apk bind
-    mount none /product/overlay/EmptyOverlay/EmptyOverlay.apk /vendor/overlay/TelecommResCommon.apk bind
-    mount none /product/overlay/EmptyOverlay/EmptyOverlay.apk /vendor/overlay/TelephonyResCommon.apk bind
-    mount none /product/overlay/EmptyOverlay/EmptyOverlay.apk /vendor/overlay/CellBroadcastReceiverResCommon.apk bind
-    mount none /product/overlay/EmptyOverlay/EmptyOverlay.apk /vendor/overlay/oneplus_shape_squircle/OnePlusIconShapeSquircleOverlay.apk bind
-    mount none /product/overlay/EmptyOverlay/EmptyOverlay.apk /vendor/overlay/oneplus_shape_circle/OnePlusIconShapeCircleOverlay.apk bind
-    mount none /product/overlay/EmptyOverlay/EmptyOverlay.apk /vendor/overlay/oneplus_shape_teardrop/OnePlusIconShapeTeardropOverlay.apk bind
-    mount none /product/overlay/EmptyOverlay/EmptyOverlay.apk /vendor/overlay/oneplus_shape_square/OnePlusIconShapeSquareOverlay.apk bind
-    mount none /product/overlay/EmptyOverlay/EmptyOverlay.apk /vendor/overlay/oneplus_shape_roundedrect/OnePlusIconShapeRoundedRectOverlay.apk bind
-#    mount none /dev/null /vendor/overlay/SysuiDarkTheme/SysuiDarkThemeOverlay.apk bind
-#    mount none /dev/null /vendor/overlay/BluetoothResCommon.apk bind
-#    mount none /dev/null /vendor/overlay/SystemUIResCommon.apk bind
-#    mount none /dev/null /vendor/overlay/FrameworksResCommon.apk bind
-#    mount none /dev/null /vendor/overlay/OPFrameworkConfigOverlay.apk bind
-#    mount none /dev/null /vendor/overlay/SystemUIResCommon.apk bind
-#    mount none /dev/null /vendor/overlay/TelecommResCommon.apk bind
-#    mount none /dev/null /vendor/overlay/TelephonyResCommon.apk bind
-#    mount none /dev/null /vendor/overlay/CellBroadcastReceiverResCommon.apk bind
-#    mount none /dev/null /vendor/overlay/oneplus_shape_squircle/OnePlusIconShapeSquircleOverlay.apk bind
-#    mount none /dev/null /vendor/overlay/oneplus_shape_circle/OnePlusIconShapeCircleOverlay.apk bind
-#    mount none /dev/null /vendor/overlay/oneplus_shape_teardrop/OnePlusIconShapeTeardropOverlay.apk bind
-#    mount none /dev/null /vendor/overlay/oneplus_shape_square/OnePlusIconShapeSquareOverlay.apk bind
-#    mount none /dev/null /vendor/overlay/oneplus_shape_roundedrect/OnePlusIconShapeRoundedRectOverlay.apk bind
+    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /vendor/overlay/VendorOverlay-framework-res.apk bind
+    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /vendor/overlay/FrameworksResTarget.apk bind
+    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /vendor/overlay/VendorOverlay-oneplus-framework-res.apk bind
+    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /vendor/overlay/VendorOverlay-OPSettingsProvider.apk bind
+    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /vendor/overlay/VendorOverlay-OPSystemUI.apk bind
+    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /vendor/overlay/VendorOverlay-OPWifiApSettings.apk bind
+    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /vendor/overlay/CellBroadcastReceiverResCommon.apk bind
+    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /vendor/overlay/oneplus_shape_squircle/OnePlusIconShapeSquircleOverlay.apk bind
+    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /vendor/overlay/oneplus_shape_circle/OnePlusIconShapeCircleOverlay.apk bind
+    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /vendor/overlay/oneplus_shape_teardrop/OnePlusIconShapeTeardropOverlay.apk bind
+    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /vendor/overlay/oneplus_shape_square/OnePlusIconShapeSquareOverlay.apk bind
+    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /vendor/overlay/oneplus_shape_roundedrect/OnePlusIconShapeRoundedRectOverlay.apk bind
+
+
+    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /vendor/overlay/SystemUIResCommon.apk bind
+    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /vendor/overlay/OPFrameworkConfigOverlay.apk bind
+    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /vendor/overlay/FrameworksResTarget.apk bind
+    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /vendor/overlay/FrameworksResCommon.apk bind
+    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /vendor/overlay/DisplayCutoutNoCutout/NoCutout.apk bind
+    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /vendor/overlay/VendorOverlay-OPSettingsProvider.apk bind
+    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /vendor/overlay/VendorOverlay-OPSystemUI.apk bind
+#    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /vendor/overlay/VendorOverlay-OPWifiApSettings.apk bind
+    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /vendor/overlay/VendorOverlay-framework-res.apk bind
+    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /vendor/overlay/VendorOverlay-oneplus-framework-res.apk bind
+#    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /vendor/overlay/WifiResTarget.apk bind
+    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /vendor/overlay/oneplus_aodnotification_gold/oneplus_aodnotification_gold.apk bind
+    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /vendor/overlay/oneplus_aodnotification_purple/oneplus_aodnotification_purple.apk bind
+    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /vendor/overlay/oneplus_aodnotification_red/oneplus_aodnotification_red.apk bind
+    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /odm/overlay/OdmOverlay-OPSystemUI.apk bind
+    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /odm/overlay/OdmOverlay-framework-res.apk bind
+    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /odm/overlay/OdmOverlay-oneplus-framework-res.apk bind
+
 on boot
     # default country code
 #    setprop ro.boot.wificountrycode 00
@@ -136,11 +142,11 @@ on property:sys.camera.motor.direction="down"
     write /sys/devices/platform/vendor/vendor:motor_pl/direction 0
     write /sys/devices/platform/vendor/vendor:motor_pl/enable 1
 
-service dashd /product/bin/dashd
-    class core
-#    critical
-    seclabel u:r:dashd:s0
-    group root system
+#service dashd /product/bin/dashd
+#    class core
+##    critical
+#    seclabel u:r:dashd:s0
+#    group root system
 
 service factory-hal-1-0 /system/bin/true
     disabled
@@ -151,5 +157,5 @@ service vendor.vibrator-1-0 /system/bin/true
 service oneplus_brain_service /system/bin/true
     disabled
 
-service vendor.light-hal-2-0 /system/bin/true
-    disabled
+#service vendor.light-hal-2-0 /system/bin/true
+#    disabled
