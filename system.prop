@@ -277,9 +277,6 @@ sdm.debug.disable_inline_rotator=1
 sdm.debug.disable_inline_rotator_secure=1
 persist.vendor.diag.max.size=500
 
-ro.vibrator.hal.tick.duration=0
-ro.vibrator.hal.click.duration=0
-ro.vibrator.hal.heavyclick.duration=10
 persist.radio.physical.slot.count=2
 ro.build.ab_update=true
 #HWC

@@ -29,7 +29,8 @@ PRODUCT_PACKAGES += \
     android.hidl.manager@1.0 \
     android.hidl.manager@1.1 \
     android.hidl.manager@1.2 \
-    libcutils
+    libcutils \
+    fsck.f2fs
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.build.version.all_codenames=$(PLATFORM_VERSION_ALL_CODENAMES) \
@@ -41,6 +42,8 @@ AB_OTA_PARTITIONS += \
     boot \
     dtbo \
     system \
+    system_ext \
+    product \
     vbmeta
 
 AB_OTA_POSTINSTALL_CONFIG += \
@@ -147,6 +150,10 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0
+PRODUCT_PACKAGES += vendor.qti.hardware.btconfigstore@1.0
+PRODUCT_PACKAGES += com.qualcomm.qti.bluetooth_audio@1.0
+PRODUCT_PACKAGES += libbtconfigstore
+PRODUCT_PACKAGES += libbluetooth_qti
 
 PRODUCT_PACKAGES += \
     vendor.display.config@1.10 \
@@ -154,7 +161,6 @@ PRODUCT_PACKAGES += \
     libqdMetaData.system \
     libqdMetaData \
     vendor.nxp.nxpese@1.0 \
-    vendor.nxp.nxpnfc@1.0 \
     vendor.qti.hardware.camera.device@1.0 \
     vendor.qti.hardware.camera.postproc@1.0 \
     vendor.qti.hardware.systemhelper@1.1 \
@@ -166,10 +172,11 @@ PRODUCT_HOST_PACKAGES += \
     vendor.oneplus.fingerprint.extension@1.0
 
 #Nfc
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
     android.hardware.nfc@1.0 \
     android.hardware.nfc@1.1 \
-    android.hardware.nfc@1.2
+    android.hardware.nfc@1.2 \
+    vendor.nxp.nxpnfc@1.0
 
 # Display
 PRODUCT_PACKAGES += \
@@ -180,30 +187,22 @@ PRODUCT_PACKAGES += \
     libtinyalsa
 
 
-PRODUCT_COPY_FILES += \
-    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_codecs_google_audio.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_codecs_google_telephony.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_codecs_google_video.xml
-
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.wifi@1.0 \
-    android.hardware.vibrator@1.3-service.oneplus7pro
 
-# Remove unwanted packages
+# Remove unwanted packages - nfc
 #PRODUCT_PACKAGES += \
     RemovePackages
 
 PRODUCT_BOOT_JARS += \
-    com.nxp.nfc \
     tcmiface \
     WfdCommon \
     qcnvitems
 
-# Video seccomp policy files
-PRODUCT_COPY_FILES += \
-    device/oneplus/oneplus7pro/seccomp/codec2.software.ext.policy:$(TARGET_COPY_OUT)/etc/seccomp_policy/codec2.software.ext.policy
 
 PRODUCT_PACKAGES += oneplus-mock
+PRODUCT_PACKAGES += tune2fs_ramdisk
+PRODUCT_PACKAGES += tune2fs_static
 PRODUCT_BOOT_JARS += oneplus-mock
 PRODUCT_BOOT_JARS += UxPerformance
 PRODUCT_BOOT_JARS += QPerformance
@@ -213,7 +212,36 @@ PRODUCT_BOOT_JARS += QPerformance
 TARGET_FS_CONFIG_GEN := device/oneplus/oneplus7pro/config.fs
 
 PRODUCT_MANIFEST_FILES += \
-    device/oneplus/oneplus7pro/vintf/android.hardware.vibrator.1.0-service.xml \
-    device/oneplus/oneplus7pro/vintf/vendor.omni.biometrics.fingerprint.inscreen-1.0-service.xml
+    device/oneplus/oneplus7pro/vintf/vendor.omni.biometrics.fingerprint.inscreen-1.0-service.xml \
+    device/oneplus/oneplus7pro/vintf/android.hardware.sensors-2.0.xml
+
      
+# for HIDL related packages
+PRODUCT_PACKAGES += \
+    android.hardware.audio@4.0 \
+    android.hardware.audio.common@4.0 \
+    android.hardware.audio.common@4.0-util \
+    android.hardware.audio.effect@4.0 \
+    vendor.qti.hardware.audiohalext@1.0 \
+    vendor.qti.hardware.audiohalext-utils
+
+# enable audio hidl hal 5.0
+PRODUCT_PACKAGES += \
+    android.hardware.audio@5.0 \
+    android.hardware.audio.common@5.0 \
+    android.hardware.audio.common@5.0-util \
+    android.hardware.audio.effect@5.0 \
+
+#enable audio hidl hal 6.0
+PRODUCT_PACKAGES += \
+    android.hardware.audio@6.0 \
+    android.hardware.audio.common@6.0 \
+    android.hardware.audio.common@6.0-util \
+    android.hardware.audio.effect@6.0
+
+PRODUCT_PACKAGES += android.hardware.vibrator-service.oneplus7
+PRODUCT_PACKAGES += libqtivibratoreffect
+PRODUCT_PACKAGES += libtflite
+PRODUCT_PACKAGES += libtextclassifier_hash
+
 $(call inherit-product, build/make/target/product/gsi_keys.mk)
