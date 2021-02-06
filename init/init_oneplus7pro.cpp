@@ -106,11 +106,11 @@ void vendor_load_properties()
         property_override("ro.build.model", "HD1905");
     }
     if (name == "OnePlus7TPro") {
-        property_override("ro.build.fingerprint", "OnePlus/OnePlus7TPro/OnePlus7TPro:10/QKQ1.190716.003/2003130811:user/release-keys");
-        property_override("ro.system.build.fingerprint", "OnePlus/OnePlus7TPro/OnePlus7TPro:10/QKQ1.190716.003/2003130811:user/release-keys");
-        property_override("ro.product.build.fingerprint", "OnePlus/OnePlus7TPro/OnePlus7TPro:10/QKQ1.190716.003/2003130811:user/release-keys");
-        property_override("ro.odm.build.fingerprint", "OnePlus/OnePlus7TPro/OnePlus7TPro:10/QKQ1.190716.003/2003130811:user/release-keys");
-        property_override("ro.build.description", "OnePlus7TPro-user 10 QKQ1.190716.003 2003130811 release-keys");
+        property_override("ro.build.fingerprint", "OnePlus/OnePlus7TPro/OnePlus7TPro:11/RKQ1.201022.002/2101120327:user/release-keys");
+        property_override("ro.system.build.fingerprint", "OnePlus/OnePlus7TPro/OnePlus7TPro:11/RKQ1.201022.002/2101120327:user/release-keys");
+        property_override("ro.product.build.fingerprint", "OnePlus/OnePlus7TPro/OnePlus7TPro:11/RKQ1.201022.002/2101120327:user/release-keys");
+        property_override("ro.odm.build.fingerprint", "OnePlus/OnePlus7TPro/OnePlus7TPro:11/RKQ1.201022.002/2101120327:user/release-keys");
+        property_override("ro.build.description", "OnePlus7TPro-user 11  RKQ1.201022.002 2101120327 release-keys");
         property_override("ro.build.model", "GM1917");
     }
     if (name == "OnePlus7TProNR") {
