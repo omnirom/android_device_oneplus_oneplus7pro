@@ -18,11 +18,11 @@
     <string name="category_vibrator">Vibrador</string>
     <string name="vib_strength_title_head">Intensidad</string>
     <string name="vib_strength_summary_head">Definir la intensidad del vibrador</string>
-    <string name="vib_test">Prueba</string>
+    <string name="vib_test">පරීක්ෂාව</string>
     <string name="advanced_settings">Avanzado</string>
     <string name="category_slider">Control deslizante</string>
     <string name="slider_mode_title">Modo de control deslizante</string>
-    <string name="buttons_title">Botones</string>
+    <string name="buttons_title">බොත්තම්</string>
     <string name="swap_back_recents_title">Cambiar hacia atrás y botón reciente</string>
     <string name="graphics_title">Gráficos</string>
     <string name="srgb_mode_title">modo sRGB</string>
@@ -33,10 +33,13 @@
     <string name="slider_mode_silent">Sessiz</string>
     <string name="slider_mode_priority">Sadece öncelik</string>
     <string name="slider_mode_alarm">Sadece alarmlar</string>
+    <string name="slider_mode_zen">බාධා නොකරන්න</string>
     <string name="slider_mode_title_top">Üst konum</string>
     <string name="slider_mode_title_center">Merkezî konum</string>
     <string name="slider_mode_title_bottom">Alt konum</string>
     <string name="Night_mode_title">Gece modu</string>
+    <string name="dolby_title">වින්‍යාසගත කරන්න</string>
+    <string name="enable_dolby_title">සබල කරන්න</string>
     <string name="choose_app">Uygulama seçin</string>
     <string name="category_double_swipe_gesture">II hareketi</string>
     <string name="offscreen_gesture_title">Kapalı ekran hareketleri</string>
@@ -51,6 +54,8 @@
     <string name="camera_entry">Kamera</string>
     <string name="music_prev_entry">Evvelki parça</string>
     <string name="music_next_entry">Sonraki parça</string>
+    <string name="navigate_back">ආපසු</string>
+    <string name="navigate_home">මුල් පිටුව</string>
     <string name="not_ready_summary">Tahlil ediliyor...</string>
     <string name="resolve_failed_summary">Uygulama tahlil edilemedi</string>
     <string name="doze_category_title">Ortam ekranı</string>
