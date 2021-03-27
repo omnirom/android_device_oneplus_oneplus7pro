@@ -23,10 +23,10 @@
     <string name="category_slider">スライダー</string>
     <string name="slider_mode_title">スライダーモード</string>
     <string name="buttons_title">ボタン</string>
-    <string name="swap_back_recents_title">戻るとアプリ履歴のボタンを交換する</string>
+    <string name="swap_back_recents_title">戻るとアプリ履歴を交換</string>
     <string name="graphics_title">グラフィックス</string>
     <string name="srgb_mode_title">sRGB モード</string>
-    <string name="dcd_mode_title">DC ディミング</string>
+    <string name="dcd_mode_title">DC 調光</string>
     <string name="dcd_mode_summary">低輝度時の画面のちらつきを減らす</string>
     <string name="hbm_mode_title">高輝度モード</string>
     <string name="oneplus_mode_title">OnePlus モード</string>
@@ -84,11 +84,11 @@
     <string name="category_w_gesture">W スワイプ</string>
     <string name="doze_category_title">アンビエント表示</string>
     <string name="doze_category_summary">通知を受け取った時も画面をスリープ状態のままにする</string>
-    <string name="wave_check_summary">手を振った時の通知の点滅</string>
+    <string name="wave_check_summary">手を振った時に通知を点滅させる</string>
     <string name="wave_check_title">手を振る</string>
-    <string name="tilt_check_summary">端末を持ち上げた時の通知の点滅</string>
+    <string name="tilt_check_summary">端末が傾いている時に通知を点滅させる</string>
     <string name="tilt_check_title">持ち上げ</string>
-    <string name="pocket_check_summary">ポケットから出した時の通知の点滅</string>
+    <string name="pocket_check_summary">ポケットから外した時に通知を点滅させる</string>
     <string name="pocket_check_title">ポケット</string>
     <string name="ambient_display_enable">ディスプレイ設定でアンビエント表示を有効にしなければなりません</string>
     <string name="panel_category_title">パネルモード</string>
@@ -98,7 +98,7 @@
     <string name="tile_hbm_mode">高輝度モード</string>
     <string name="wake_entry">スリープ解除</string>
     <string name="single_tap_title">シングルタップ</string>
-    <string name="single_tap_summary">シングルタップでアンビエント表示する</string>
+    <string name="single_tap_summary">アンビエント表示をシングルタップで表示する</string>
     <string name="refresh_title">画面の更新</string>
     <string name="tile_refresh_rate">リフレッシュレート</string>
     <string name="auto_refresh_rate_summary">アプリにリフレッシュレートを決定させる</string>
@@ -107,6 +107,6 @@
     <string name="refresh_rate_title">最大リフレッシュレートを 90Hz に強制化</string>
     <string name="refresh_rate_warning">強制 90Hz 化はかなりのバッテリー消費を伴います</string>
     <string name="fps_info_title">FPS オーバーレイ</string>
-    <string name="fps_info_summary">現在 FSP をオーバーレイ表示する</string>
+    <string name="fps_info_summary">現在の FSP をオーバーレイ表示する</string>
     <string name="panel_mode_info">パネルモード無効化には再起動が必要です</string>
 </resources>
