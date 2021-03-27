@@ -27,7 +27,7 @@
     <string name="graphics_title">Grafik</string>
     <string name="srgb_mode_title">sRGB-Modus</string>
     <string name="dcd_mode_title">DC-Dimmen</string>
-    <string name="dcd_mode_summary">Reduziert die Bildschirmflacker bei niedriger Helligkeit</string>
+    <string name="dcd_mode_summary">Reduziert das Bildschirmflackern bei niedriger Helligkeit</string>
     <string name="hbm_mode_title">Modus für max. Helligkeit</string>
     <string name="oneplus_mode_title">OnePlus Modus</string>
     <string name="proxi_summary_head_new">Näherungssensor für die Nutzung von Gesten überprüfen</string>
@@ -54,7 +54,7 @@
     <string name="dolby_summary">Effekte auswählen und konfigurieren</string>
     <string name="enable_dolby_summary">Dolby Atmos aktivieren/deaktivieren</string>
     <string name="enable_dolby_title">Aktivieren</string>
-    <string name="enable_dolby_info">Aktivieren und deaktivieren erfordert einen Neustart, um wirksam zu werden.</string>
+    <string name="enable_dolby_info">Das Aktivieren und Deaktivieren erfordert einen Neustart, um wirksam zu werden.</string>
     <string name="choose_app">App wählen</string>
     <string name="category_double_swipe_gesture">II-Geste</string>
     <string name="offscreen_gesture_title">Gesten bei ausgeschaltetem Bildschirm</string>
@@ -97,16 +97,16 @@
     <string name="tile_panel_mode">Panel-Modi</string>
     <string name="tile_hbm_mode">Modus für max. Helligkeit</string>
     <string name="wake_entry">Aufwachen</string>
-    <string name="single_tap_title">Einmaliges tippen</string>
+    <string name="single_tap_title">Einmaliges Tippen</string>
     <string name="single_tap_summary">Inaktivitätsdisplay bei einmaligem Tippen anzeigen</string>
-    <string name="refresh_title">Bildschirm Aktualisierung</string>
+    <string name="refresh_title">Bildschirmaktualisierung</string>
     <string name="tile_refresh_rate">Bildschirm Aktualisierungsrate</string>
     <string name="auto_refresh_rate_summary">Apps entscheiden lassen, welche Aktualisierungsrate verwendet werden soll</string>
     <string name="auto_refresh_rate_title">Automatischer Aktualisierungsmodus</string>
-    <string name="refresh_rate_summary">Wählen Sie zwischen 60Hz oder 90Hz Peak-Aktualisierungen</string>
-    <string name="refresh_rate_title">90Hz Peak Aktualisierungsrate erzwingen</string>
+    <string name="refresh_rate_summary">60Hz oder 90Hz als maximale Aktualisierungsrate wählen</string>
+    <string name="refresh_rate_title">90Hz Aktualisierungsrate erzwingen</string>
     <string name="refresh_rate_warning">Die Verwendung von 90Hz wird die Akkulaufzeit erheblich beeinträchtigen</string>
-    <string name="fps_info_title">FPS overlay</string>
-    <string name="fps_info_summary">Zeige eine Overlay mit aktuellen Frames pro Sekunde</string>
-    <string name="panel_mode_info">Panel Modus deaktivieren erfordert einen Neustart.</string>
+    <string name="fps_info_title">FPS Overlay</string>
+    <string name="fps_info_summary">Zeigt ein Overlay mit den aktuellen Frames pro Sekunde</string>
+    <string name="panel_mode_info">Das Deaktivieren der Panel Modi erfordert einen Neustart.</string>
 </resources>

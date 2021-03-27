@@ -54,7 +54,7 @@
     <string name="dolby_summary">Efektleri seçin ve ayarlayın</string>
     <string name="enable_dolby_summary">Dolby Atmos\'u devreye sokar veyâ devre dışı bırakır</string>
     <string name="enable_dolby_title">Devreye sok</string>
-    <string name="enable_dolby_info">Devreye sokmanın ve devre dışı bırakmanın etkili olması için tekrar başlatma gerekmektedir.</string>
+    <string name="enable_dolby_info">Devreye sokmanın ve devre dışı bırakmanın etkili olması için yeniden başlatma gerekmektedir.</string>
     <string name="choose_app">Uygulama seçin</string>
     <string name="category_double_swipe_gesture">II hareketi</string>
     <string name="offscreen_gesture_title">Kapalı ekran hareketleri</string>
@@ -108,5 +108,5 @@
     <string name="refresh_rate_warning">Mecburen 90Hz kullanmak pil ömrünü önemli ölçüde etkileyecektir</string>
     <string name="fps_info_title">FPS bilgisi</string>
     <string name="fps_info_summary">Saniye başına düşen mevcut kare bilgisine sahip bir yardımcı grafik gösterir</string>
-    <string name="panel_mode_info">Panel modunu devre dışı bırakmak tekrar başlatmayı gerektirir.</string>
+    <string name="panel_mode_info">Panel modunu devre dışı bırakmak yeniden başlatmayı gerektirir.</string>
 </resources>
