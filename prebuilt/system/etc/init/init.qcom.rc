@@ -30,6 +30,7 @@ on init
     mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /odm/overlay/OdmOverlay-OPSystemUI.apk bind
     mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /odm/overlay/OdmOverlay-framework-res.apk bind
     mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /odm/overlay/OdmOverlay-oneplus-framework-res.apk bind
+    mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /odm/overlay/OdmOverlay-OPSettings.apk bind
 
 on boot
     # default country code
