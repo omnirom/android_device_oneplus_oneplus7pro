@@ -249,9 +249,6 @@ HEALTHD_USE_BATTERY_INFO := true
 BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
 
-# NFC
-TARGET_USES_NQ_NFC := true
-
 # ANT+
 TARGET_USES_PREBUILT_ANT := true
 BOARD_ANT_WIRELESS_DEVICE := "qualcomm-hidl"
@@ -296,7 +293,7 @@ TARGET_INCLUDE_STOCK_ARCORE := true
 # FOD
 TARGET_SURFACEFLINGER_FOD_LIB := //$(BOARD_PATH):libfod_extension.oneplus_msmnile
 
-DEVICE_MATRIX_FILE := $(BOARD_PATH)/vintf/compatibility_matrix.xml
+DEVICE_MATRIX_FILE := $(BOARD_PATH)/vintf/compatibility_matrix.device.xml
 # HIDL
 #DEVICE_FRAMEWORK_MANIFEST_FILE += $(BOARD_PATH)/framework_manifest.xml
 
