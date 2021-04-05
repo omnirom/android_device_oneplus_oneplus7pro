@@ -1,3 +1,8 @@
+<!--
+    Input:
+        vendor_framework_compatibility_matrix.xml
+        vendor_framework_compatibility_matrix.xml
+-->
 <compatibility-matrix version="2.0" type="framework">
     <hal format="hidl" optional="true">
         <name>android.hardware.automotive.evs</name>
@@ -63,14 +68,6 @@
         <version>1.0-1</version>
         <interface>
             <name>IRadioConfig</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>android.hardware.vibrator</name>
-        <version>1.0</version>
-        <interface>
-            <name>IVibrator</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -144,6 +141,13 @@
             <instance>cnd</instance>
         </interface>
     </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.aac.hardware.richtap.vibrator</name>
+        <interface>
+            <name>IRichtapVibrator</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
     <hal format="hidl" optional="true">
         <name>vendor.display.color</name>
         <version>1.0-5</version>
@@ -177,11 +181,19 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl" optional="false">
+    <hal format="hidl" optional="true">
         <name>vendor.goodix.hardware.biometrics.fingerprint</name>
         <version>2.1</version>
         <interface>
             <name>IGoodixFingerprintDaemon</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.nxp.eventprocessor</name>
+        <version>1.0</version>
+        <interface>
+            <name>INxpEseEvtProcessor</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -191,6 +203,22 @@
         <version>2.0</version>
         <interface>
             <name>INqNfc</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.nxp.nxpese</name>
+        <version>1.0</version>
+        <interface>
+            <name>INxpEse</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.nxp.nxpnfc</name>
+        <version>1.0</version>
+        <interface>
+            <name>INxpNfc</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -243,6 +271,14 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
+        <name>vendor.oneplus.hardware.charger</name>
+        <version>1.0</version>
+        <interface>
+            <name>ICharger</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
         <name>vendor.oneplus.hardware.cwb</name>
         <version>1.0</version>
         <interface>
@@ -287,6 +323,22 @@
         <version>2.0</version>
         <interface>
             <name>IOneplusIfaa</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.oneplus.hardware.lmvibrator</name>
+        <version>1.0</version>
+        <interface>
+            <name>ILinearMotorVibrator</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.oneplus.hardware.motorcontrol</name>
+        <version>1.0</version>
+        <interface>
+            <name>IOPMotorControl</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -509,6 +561,14 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
+        <name>vendor.qti.hardware.display.demura</name>
+        <version>1.0</version>
+        <interface>
+            <name>IDemuraFileFinder</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.display.mapper</name>
         <version>2.0</version>
         <version>3.0</version>
@@ -536,7 +596,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.embmssl</name>
-        <version>1.0</version>
+        <version>1.0-1</version>
         <interface>
             <name>IEmbms</name>
             <instance>embmsslServer0</instance>
@@ -607,8 +667,16 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
+        <name>vendor.qti.hardware.limits</name>
+        <version>1.0</version>
+        <interface>
+            <name>ILimits</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.perf</name>
-        <version>2.0</version>
+        <version>2.0-2</version>
         <interface>
             <name>IPerf</name>
             <instance>default</instance>
@@ -628,6 +696,14 @@
         <interface>
             <name>IQccvndhal</name>
             <instance>qccvndhal</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.qti.hardware.qconfig</name>
+        <version>1.0</version>
+        <interface>
+            <name>IQConfig</name>
+            <instance>default</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
@@ -686,7 +762,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.radio.lpa</name>
-        <version>1.0</version>
+        <version>1.0-1</version>
         <interface>
             <name>IUimLpa</name>
             <instance>UimLpa0</instance>
@@ -852,7 +928,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.wifi.hostapd</name>
-        <version>1.0-2</version>
+        <version>1.0-3</version>
         <interface>
             <name>IHostapdVendor</name>
             <instance>default</instance>
@@ -860,7 +936,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.wifi.supplicant</name>
-        <version>2.0</version>
+        <version>2.0-3</version>
         <interface>
             <name>ISupplicantVendor</name>
             <instance>default</instance>
@@ -968,7 +1044,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>vendor.qti.spu</name>
-        <version>1.0</version>
+        <version>1.0-1</version>
         <interface>
             <name>ISPUManager</name>
             <instance>default</instance>
@@ -1002,4 +1078,3 @@
         <vbmeta-version>1.0</vbmeta-version>
     </avb>
 </compatibility-matrix>
-
