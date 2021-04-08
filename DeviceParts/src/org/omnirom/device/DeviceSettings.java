@@ -22,14 +22,18 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.PreferenceManager;
+import androidx.preference.PreferenceScreen;
 import androidx.preference.ListPreference;
 import androidx.preference.SwitchPreference;
 import androidx.preference.TwoStatePreference;
 import androidx.preference.Preference;
 import android.provider.Settings;
 import android.text.TextUtils;
+
+import com.android.internal.util.omni.PackageUtils;
 
 public class DeviceSettings extends PreferenceFragment implements
         Preference.OnPreferenceChangeListener {
@@ -41,6 +45,7 @@ public class DeviceSettings extends PreferenceFragment implements
     private static final String KEY_SLIDER_MODE_BOTTOM = "slider_mode_bottom";
     private static final String KEY_CATEGORY_GRAPHICS = "graphics";
     private static final String KEY_CATEGORY_REFRESH = "refresh";
+    private static final String KEY_CATEGORY_AUDIO = "audio";
 
     public static final String KEY_SRGB_SWITCH = "srgb";
     public static final String KEY_HBM_SWITCH = "hbm";
@@ -54,6 +59,7 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String KEY_AUTO_REFRESH_RATE = "auto_refresh_rate";
     public static final String KEY_FPS_INFO = "fps_info";
     private static final String KEY_ENABLE_DOLBY_ATMOS = "enable_dolby_atmos";
+    private static final String DOLBY_ATMOS_PKG = "com.dolby.daxservice";
 
     public static final String SLIDER_DEFAULT_VALUE = "2,1,0";
 
@@ -74,6 +80,7 @@ public class DeviceSettings extends PreferenceFragment implements
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this.getContext());
         setPreferencesFromResource(R.xml.main, rootKey);
+        final PreferenceScreen prefScreen = getPreferenceScreen();
 
         mVibratorStrength = (VibratorStrengthPreference) findPreference(KEY_VIBSTRENGTH);
         if (mVibratorStrength != null) {
@@ -124,8 +131,13 @@ public class DeviceSettings extends PreferenceFragment implements
         mFpsInfo.setChecked(prefs.getBoolean(KEY_FPS_INFO, false));
         mFpsInfo.setOnPreferenceChangeListener(this);
 
+        final PreferenceCategory audioCategory =
+                (PreferenceCategory) prefScreen.findPreference(KEY_CATEGORY_AUDIO);
         mEnableDolbyAtmos = (SwitchPreference) findPreference(KEY_ENABLE_DOLBY_ATMOS);
         mEnableDolbyAtmos.setOnPreferenceChangeListener(this);
+        if (!isDolbyAtmosInstalled()) {
+            prefScreen.removePreference(audioCategory);
+        }
     }
 
     @Override
@@ -167,7 +179,7 @@ public class DeviceSettings extends PreferenceFragment implements
         } else if (preference == mEnableDolbyAtmos) {
             boolean enabled = (Boolean) newValue;
             Intent daxService = new Intent();
-            ComponentName name = new ComponentName("com.dolby.daxservice", "com.dolby.daxservice.DaxService");
+            ComponentName name = new ComponentName(DOLBY_ATMOS_PKG, DOLBY_ATMOS_PKG + ".DaxService");
             daxService.setComponent(name);
             if (enabled) {
                 // enable service component and start service
@@ -220,5 +232,9 @@ public class DeviceSettings extends PreferenceFragment implements
                     Settings.System.OMNI_BUTTON_EXTRA_KEY_MAPPING, newValue);
         } catch (Exception e) {
         }
+    }
+
+    private boolean isDolbyAtmosInstalled() {
+        return PackageUtils.isAvailableApp(DOLBY_ATMOS_PKG, getActivity());
     }
 }
