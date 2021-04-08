@@ -102,9 +102,9 @@ public class KeyHandler implements DeviceKeyHandler {
     private static final int HANDWAVE_MAX_DELTA_MS = 1000;
     private static final int POCKET_MIN_DELTA_MS = 5000;
 
-    private static final boolean sIsOnePlus7pro = android.os.Build.DEVICE.equals("oneplus7pro");
-    private static final boolean sIsOnePlus7tpro = android.os.Build.DEVICE.equals("oneplus7tpro");
-    private static final boolean sIsOnePlus7t = android.os.Build.DEVICE.equals("oneplus7t");
+    private static final boolean sIsOnePlus7pro = android.os.Build.DEVICE.equalsIgnoreCase("oneplus7pro");
+    private static final boolean sIsOnePlus7tpro = android.os.Build.DEVICE.equalsIgnoreCase("oneplus7tpro");
+    private static final boolean sIsOnePlus7t = android.os.Build.DEVICE.equalsIgnoreCase("oneplus7t");
 
     public static final String CLIENT_PACKAGE_NAME = "com.oneplus.camera";
     public static final String CLIENT_PACKAGE_PATH = "/data/misc/omni/client_package_name";
@@ -291,6 +291,7 @@ public class KeyHandler implements DeviceKeyHandler {
     };
 
     public KeyHandler(Context context) {
+        if (DEBUG) Log.i(TAG, "device = " + android.os.Build.DEVICE);
         mContext = context;
         mDispOn = true;
         mPowerManager = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
