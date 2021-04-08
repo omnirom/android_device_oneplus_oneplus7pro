@@ -44,7 +44,7 @@ public class DozeSettings extends PreferenceFragment  {
     private static final String KEY_WAVE_CHECK = "wave_check";
     private static final String KEY_POCKET_CHECK = "pocket_check";
     private static final String KEY_FOOTER = "footer";
-    private static final boolean sIsOnePlus7t = android.os.Build.DEVICE.equals("oneplus7t");
+    private static final boolean sIsOnePlus7t = android.os.Build.DEVICE.equals("oneplus7t") || android.os.Build.DEVICE.equals("OnePlus7T");
 
     private boolean mUseTiltCheck;
     private boolean mUseSingleTap;
