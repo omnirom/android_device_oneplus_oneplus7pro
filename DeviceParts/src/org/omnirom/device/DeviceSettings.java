@@ -46,6 +46,7 @@ public class DeviceSettings extends PreferenceFragment implements
     private static final String KEY_CATEGORY_GRAPHICS = "graphics";
     private static final String KEY_CATEGORY_REFRESH = "refresh";
     private static final String KEY_CATEGORY_AUDIO = "audio";
+    private static final String KEY_CATEGORY_VIBRATOR = "vibrator";
 
     public static final String KEY_SRGB_SWITCH = "srgb";
     public static final String KEY_HBM_SWITCH = "hbm";
@@ -83,9 +84,11 @@ public class DeviceSettings extends PreferenceFragment implements
         setPreferencesFromResource(R.xml.main, rootKey);
         final PreferenceScreen prefScreen = getPreferenceScreen();
 
+        final PreferenceCategory vibCategory =
+                (PreferenceCategory) prefScreen.findPreference(KEY_CATEGORY_VIBRATOR);
         mVibratorStrength = (VibratorStrengthPreference) findPreference(KEY_VIBSTRENGTH);
-        if (mVibratorStrength != null) {
-            mVibratorStrength.setEnabled(VibratorStrengthPreference.isSupported());
+        if (!VibratorStrengthPreference.isSupported()) {
+            prefScreen.removePreference(vibCategory);
         }
 
         mSliderModeTop = (ListPreference) findPreference(KEY_SLIDER_MODE_TOP);
