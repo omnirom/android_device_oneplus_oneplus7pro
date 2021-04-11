@@ -1,5 +1,6 @@
-/product/bin/hw/android\.hardware\.vibrator@1\.3-service\.oneplus7pro u:object_r:hal_vibrator_default_exec:s0
 /product/bin/hw/omni\.biometrics\.fingerprint\.inscreen@1.0-service\.oneplus7pro    u:object_r:hal_fod_msmnile_exec:s0
+/product/bin/hw/android\.hardware\.vibrator-service\.oneplus7 u:object_r:hal_vibrator_default_exec:s0
+
 
 # Vendor overlay
 /product/vendor_overlay/[0-9]+/etc(/.*)?      u:object_r:vendor_configs_file:s0
