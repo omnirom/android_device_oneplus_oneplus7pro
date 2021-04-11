@@ -1,0 +1,15 @@
+Common_CFlags = ["-Wall"]
+Common_CFlags += ["-Werror"]
+
+cc_library_shared {
+    name: "libqtivibratoreffect",
+    vendor: false,
+    product_specific: true,
+    cflags: Common_CFlags,
+    srcs: ["effect.cpp"],
+    shared_libs: [
+        "libcutils",
+        "libutils",
+    ],
+    export_include_dirs: ["."]
+}
