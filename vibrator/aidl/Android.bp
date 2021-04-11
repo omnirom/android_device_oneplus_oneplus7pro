@@ -1,0 +1,44 @@
+Common_CFlags = ["-Wall"]
+Common_CFlags += ["-Werror"]
+
+cc_library_shared {
+    name: "android.hardware.vibrator-service.oneplus7.impl",
+    vendor: false,
+    product_specific: true,
+    cflags: Common_CFlags,
+    srcs: [
+        "Vibrator.cpp",
+    ],
+    shared_libs: [
+        "libcutils",
+        "libutils",
+        "liblog",
+        "libqtivibratoreffect",
+        "libbinder_ndk",
+        "android.hardware.vibrator-ndk_platform",
+    ],
+    export_include_dirs: ["include"]
+}
+
+cc_binary {
+    name: "android.hardware.vibrator-service.oneplus7",
+    vendor: false,
+    product_specific: true,
+    relative_install_path: "hw",
+    init_rc: ["android.hardware.vibrator-service.oneplus7.rc"],
+//    vintf_fragments: [
+//        "android.hardware.vibrator-service.oneplus7.xml",
+//    ],
+    cflags: Common_CFlags,
+    srcs: [
+        "service.cpp",
+    ],
+    shared_libs: [
+        "libcutils",
+        "libutils",
+        "libbase",
+        "libbinder_ndk",
+        "android.hardware.vibrator-ndk_platform",
+        "android.hardware.vibrator-service.oneplus7.impl",
+    ],
+}
