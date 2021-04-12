@@ -56,7 +56,7 @@ $(IMS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 ALL_DEFAULT_INSTALLED_MODULES += $(IMS_SYMLINKS)
 
 #NXP_LIB := libnxpnfc_nci_jni.so
-#NXP_SYMLINKS := $(addprefix $(TARGET_OUT_SYSTEM_EXT_APPS_PRIVILEGED)/NxpNfcNci/lib/arm64/,$(notdir $(NXP_LIB)))
+#NXP_SYMLINKS := $(addprefix $(TARGET_OUT_SYSTEM_EXT_APPS)/NxpNfcNci/lib/arm64/,$(notdir $(NXP_LIB)))
 #$(NXP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 #	@echo "NXP lib link: $@"
 #	@mkdir -p $(dir $@)
