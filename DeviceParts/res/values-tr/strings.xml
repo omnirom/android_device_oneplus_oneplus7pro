@@ -72,8 +72,8 @@
     <string name="music_next_entry">Sonraki şarkı</string>
     <string name="volume_up">Ses seviyesini artır</string>
     <string name="volume_down">Ses seviyesini azalt</string>
-    <string name="browse_scroll_up">Yukarı kaydır</string>
-    <string name="browse_scroll_down">Aşağı kaydır</string>
+    <string name="browse_scroll_up">Yukarıya kaydır</string>
+    <string name="browse_scroll_down">Aşağıya kaydır</string>
     <string name="navigate_back">Geri</string>
     <string name="navigate_home">Ana ekran</string>
     <string name="navigate_recent">Son uygulamalar</string>
