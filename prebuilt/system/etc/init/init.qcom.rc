@@ -113,6 +113,9 @@ on boot
     chown cameraserver audio /data/misc/omni/client_package_name
     chmod 0644 /data/misc/omni/client_package_name
 
+    chown system system /dev/input/event9
+    chmod 0666 /dev/input/event9
+
 on post-fs
     # Vibrator
     chown system system /sys/devices/platform/soc/89c000.i2c/i2c-2/2-005a/leds/vibrator/level
