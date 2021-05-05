@@ -113,8 +113,9 @@ on boot
     chown cameraserver audio /data/misc/omni/client_package_name
     chmod 0644 /data/misc/omni/client_package_name
 
-    chown system system /dev/input/event9
+    # light sensor and ultrasound proximity
     chmod 0666 /dev/input/event9
+    chmod 0666 /dev/input/event11
 
 on post-fs
     # Vibrator
