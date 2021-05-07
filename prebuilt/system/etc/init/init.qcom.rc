@@ -14,6 +14,10 @@ on init
     mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /vendor/overlay/oneplus_shape_squircle/OnePlusIconShapeSquircleOverlay.apk bind
     mount none /product/overlay/EmptyProductOverlay/EmptyProductOverlay.apk /vendor/overlay/oneplus_shape_teardrop/OnePlusIconShapeTeardropOverlay.apk bind
 
+    setprop vendor.boot.prj_version ${ro.boot.prj_version}
+    setprop vendor.boot.rf_version ${ro.boot.rf_version}
+    setprop vendor.rf.version ${ro.boot.rf_version}
+
 on boot
     # default country code
 #    setprop ro.boot.wificountrycode 00
