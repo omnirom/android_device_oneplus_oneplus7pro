@@ -3,6 +3,6 @@
     "pageUrl":"https://dl.omnirom.org/oneplus7pro",
     "make": "OnePlus",
     "image": "meta/device_image.jpg",
-    "state": "official",
+    "state": "unofficial",
     "device": "oneplus7pro"
 }
