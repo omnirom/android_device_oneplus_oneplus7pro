@@ -150,6 +150,8 @@ PRODUCT_PACKAGES += vendor.qti.hardware.btconfigstore@1.0
 PRODUCT_PACKAGES += com.qualcomm.qti.bluetooth_audio@1.0
 PRODUCT_PACKAGES += libbtconfigstore
 PRODUCT_PACKAGES += libbluetooth_qti
+PRODUCT_PACKAGES += vendor.qti.hardware.capabilityconfigstore@1.0 \
+    vendor.qti.hardware.capabilityconfigstore-V1.0-java
 
 PRODUCT_PACKAGES += \
     vendor.display.config@1.10 \
