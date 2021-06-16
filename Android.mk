@@ -65,48 +65,4 @@ ALL_DEFAULT_INSTALLED_MODULES += $(IMS_SYMLINKS)
 
 #ALL_DEFAULT_INSTALLED_MODULES += $(NXP_SYMLINKS)
 
-#
-#WCNSS_INI_SYMLINK := $(TARGET_OUT_VENDOR)/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
-#$(WCNSS_INI_SYMLINK): $(LOCAL_INSTALLED_MODULE)
-#	@echo "WCNSS config ini link: $@"
-#	@mkdir -p $(dir $@)
-#	@rm -rf $@
-#	$(hide) ln -sf /system/vendor/etc/wifi/$(notdir $@) $@
-#
-#WCNSS_MAC_SYMLINK := $(TARGET_OUT_VENDOR)/firmware/wlan/qca_cld/wlan_mac.bin
-#$(WCNSS_MAC_SYMLINK): $(LOCAL_INSTALLED_MODULE)
-#	@echo "WCNSS MAC bin link: $@"
-#	@mkdir -p $(dir $@)
-#	@rm -rf $@
-#	$(hide) ln -sf /persist/$(notdir $@) $@
-#
-#ALL_DEFAULT_INSTALLED_MODULES += $(WCNSS_INI_SYMLINK) $(WCNSS_MAC_SYMLINK) $(WCNSS_INI_PERSIST_SYMLINK)
-#
-#$(shell ln -sf /persist/WCNSS_qcom_cfg.ini $(TARGET_OUT_ETC)/firmware/wlan/qca_cld/WCNSS_qcom_cfg_persist.ini)
-#
-#BT_FIRMWARE := apbtfw10.tlv apnv10.bin crbtfw11.tlv crbtfw20.tlv crbtfw21.tlv crnv11.bin crnv20.bin crnv21.bin
-#BT_FIRMWARE_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/firmware/,$(notdir $(BT_FIRMWARE)))
-#$(BT_FIRMWARE_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-#	@echo "Creating BT firmware symlink: $@"
-#	@mkdir -p $(dir $@)
-#	@rm -rf $@
-#	$(hide) ln -sf /bt_firmware/image/$(notdir $@) $@
-#
-#ALL_DEFAULT_INSTALLED_MODULES += $(BT_FIRMWARE_SYMLINKS)
-#
-#$(shell mkdir -p $(TARGET_OUT_VENDOR)/etc/firmware/wcd9320; \
-#        ln -sf /data/vendor/misc/audio/wcd9320_anc.bin \
-#                $(TARGET_OUT_VENDOR)/etc/firmware/wcd9320/wcd9320_anc.bin;\
-#        ln -s /data/vendor/misc/audio/mbhc.bin \
-#                $(TARGET_OUT_VENDOR)/etc/firmware/wcd9320/wcd9320_mbhc.bin; \
-#        ln -s /data/vendor/misc/audio/wcd9320_mad_audio.bin \
-#                $(TARGET_OUT_VENDOR)/etc/firmware/wcd9320/wcd9320_mad_audio.bin)
-#
-## Create symbolic links for msadp
-#$(shell  mkdir -p $(TARGET_OUT_VENDOR)/firmware; \
-#	ln -sf /dev/block/bootdevice/by-name/msadp \
-#	$(TARGET_OUT_VENDOR)/firmware/msadp)
-#
-#-include device/oneplus/oneplus6/tftp.mk
-
 endif
