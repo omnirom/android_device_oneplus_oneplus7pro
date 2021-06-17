@@ -46,6 +46,8 @@ import android.util.Log;
 import static android.provider.Settings.Secure.SYSTEM_NAVIGATION_KEYS_ENABLED;
 import android.os.UserHandle;
 
+import com.android.internal.util.omni.DeviceUtils;
+
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -84,7 +86,6 @@ public class GestureSettings extends PreferenceFragment implements
     private AppSelectListPreference mGestureMApp;
     private AppSelectListPreference mGestureWApp;
     private AppSelectListPreference mGestureSApp;
-    private static final boolean sIsOnePlus6 = android.os.Build.MODEL.equals("ONEPLUS A6003");
     private List<AppSelectListPreference.PackageItem> mInstalledPackages = new LinkedList<AppSelectListPreference.PackageItem>();
     private PackageManager mPm;
 
@@ -96,6 +97,10 @@ public class GestureSettings extends PreferenceFragment implements
         mProxiSwitch = (TwoStatePreference) findPreference(KEY_PROXI_SWITCH);
         mProxiSwitch.setChecked(Settings.System.getInt(getContext().getContentResolver(),
                 Settings.System.OMNI_DEVICE_PROXI_CHECK_ENABLED, 1) != 0);
+        boolean supportPowerButtonProxyCheck = getResources().getBoolean(com.android.internal.R.bool.config_proxiSensorWakupCheck);
+        if (!DeviceUtils.deviceSupportsProximitySensor(getActivity()) || !supportPowerButtonProxyCheck) {
+            getPreferenceScreen().removePreference(mProxiSwitch);
+        }
 
         mDoubleSwipeApp = (AppSelectListPreference) findPreference(KEY_GESTURE_TWO_SWIPE_DOWN_APP);
         mDoubleSwipeApp.setEnabled(isGestureSupported(KEY_GESTURE_TWO_SWIPE_DOWN_APP));

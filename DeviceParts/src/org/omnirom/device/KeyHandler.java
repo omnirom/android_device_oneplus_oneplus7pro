@@ -171,6 +171,7 @@ public class KeyHandler implements DeviceKeyHandler {
     private boolean mToggleTorch;
     private boolean mTorchState;
     private boolean mDoubleTapToWake;
+    private boolean mProxiSensorWakupCheck;
 
     private SensorEventListener mPocketProximitySensor = new SensorEventListener() {
         @Override
@@ -261,7 +262,7 @@ public class KeyHandler implements DeviceKeyHandler {
         public void update() {
             mUseProxiCheck = Settings.System.getIntForUser(
                     mContext.getContentResolver(), Settings.System.OMNI_DEVICE_PROXI_CHECK_ENABLED, 1,
-                    UserHandle.USER_CURRENT) == 1;
+                    UserHandle.USER_CURRENT) == 1 && mProxiSensorWakupCheck;
             mDoubleTapToWake = Settings.Secure.getIntForUser(
                     mContext.getContentResolver(), Settings.Secure.DOUBLE_TAP_TO_WAKE, 0,
                     UserHandle.USER_CURRENT) == 1;
@@ -339,6 +340,7 @@ public class KeyHandler implements DeviceKeyHandler {
         if (sIsOnePlus7t) {
             initTriStateHallSensor();
         }
+        mProxiSensorWakupCheck = context.getResources().getBoolean(com.android.internal.R.bool.config_proxiSensorWakupCheck);
     }
 
     @Override
@@ -442,11 +444,20 @@ public class KeyHandler implements DeviceKeyHandler {
     private void onDisplayOn() {
         if (DEBUG) Log.i(TAG, "Display on");
 
-        if (DEBUG_SENSOR) Log.i(TAG, "Unregister proxi sensor");
-        mSensorManager.unregisterListener(mProximitySensor, mOpProxiSensor);
+        if (mUseProxiCheck) {
+            if (DEBUG_SENSOR) Log.i(TAG, "Unregister proxi sensor");
+            mSensorManager.unregisterListener(mProximitySensor, mOpProxiSensor);
+        }
 
-        if (DEBUG_SENSOR) Log.i(TAG, "Unregister pocket sensor");
-        mSensorManager.unregisterListener(mPocketProximitySensor, mOpPocketSensor);
+        if (mUsePocketCheck || mUseWaveCheck) {
+            if (DEBUG_SENSOR) Log.i(TAG, "Unregister pocket sensor");
+            mSensorManager.unregisterListener(mPocketProximitySensor, mOpPocketSensor);
+        }
+
+        if (mUseTiltCheck) {
+            if (DEBUG_SENSOR) Log.i(TAG, "Unregister tilt sensor");
+            mSensorManager.unregisterListener(mTiltSensorListener, mTiltSensor);
+        }
 
         if ((mClientObserver == null) && (isOPCameraAvail)) {
             mClientObserver = new ClientPackageNameObserver(CLIENT_PACKAGE_PATH);
@@ -487,6 +498,7 @@ public class KeyHandler implements DeviceKeyHandler {
             mProxySensorTimestamp = SystemClock.elapsedRealtime();
         }
         if (mUseTiltCheck) {
+            if (DEBUG_SENSOR) Log.i(TAG, "Register tilt sensor ");
             mSensorManager.registerListener(mTiltSensorListener, mTiltSensor,
                     SensorManager.SENSOR_DELAY_NORMAL);
         }
