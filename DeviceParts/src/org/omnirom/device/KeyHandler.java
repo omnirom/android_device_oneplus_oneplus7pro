@@ -203,7 +203,7 @@ public class KeyHandler implements DeviceKeyHandler {
     private SensorEventListener mProximitySensor = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent event) {
-            mProxyIsNear = event.values[0] < event.sensor.getMaximumRange();
+            mProxyIsNear = getCustomProxiIsNear(event);
             if (DEBUG_SENSOR) Log.i(TAG, "mProxyIsNear = " + mProxyIsNear);
         }
 
@@ -304,7 +304,7 @@ public class KeyHandler implements DeviceKeyHandler {
         mAudioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
         mSensorManager = (SensorManager) mContext.getSystemService(Context.SENSOR_SERVICE);
         mTiltSensor = getSensor(mSensorManager, "oneplus.sensor.op_motion_detect");
-        mOpProxiSensor = getSensor(mSensorManager, "android.sensor.proximity");
+        mOpProxiSensor = getSensor(mSensorManager, getCustomProxiSensor());
         mOpPocketSensor = getSensor(mSensorManager, "oneplus.sensor.pocket");
         IntentFilter systemStateFilter = new IntentFilter(Intent.ACTION_SCREEN_ON);
         systemStateFilter.addAction(Intent.ACTION_SCREEN_OFF);
@@ -699,12 +699,12 @@ public class KeyHandler implements DeviceKeyHandler {
 
     @Override
     public boolean getCustomProxiIsNear(SensorEvent event) {
-        return event.values[0] < event.sensor.getMaximumRange();
+        return event.values[0] == 1;
     }
 
     @Override
     public String getCustomProxiSensor() {
-        return "android.sensor.proximity";
+        return "oneplus.sensor.pocket";
     }
 
     private class ClientPackageNameObserver extends FileObserver {
