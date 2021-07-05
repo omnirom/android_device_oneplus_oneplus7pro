@@ -123,6 +123,8 @@ void vendor_load_properties()
         property_override("ro.vendor.boot.project_name", "19861");
         property_override("ro.boot.project_name", "19861");
     }
+    property_override("ro.boot.verifiedbootstate", "green");
+    property_override("ro.boot.flash.locked", "1");
 }
 
 }
